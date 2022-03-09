@@ -16,9 +16,6 @@ import java.util.List;
 // There will be no default constructor available
 // This is a problem because we're extending from a parent class
 public class DatabaseHelper extends SQLiteOpenHelper {
-
-    public static final String customers = "customers";
-
     // Public constructor found from extends error, or going to SQLOpenHelper site
     public DatabaseHelper(@Nullable Context context) {
         super(context, "customer.db", null, 1);
@@ -39,6 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addOne(CustomerModel customerModel) {
+        // Access database
         SQLiteDatabase db = this.getWritableDatabase();
 
         // Acts like a hashmap
@@ -52,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
         else {
+            // Insert
             long insert = db.insert("customers", null, cv);
             if (insert == -1) {
                 return false;
