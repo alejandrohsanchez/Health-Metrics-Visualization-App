@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="registerActivity">Register</string>
+    <string name="welcome">Welcome</string>
+    <string name="startActivity">Open</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+</resources>
