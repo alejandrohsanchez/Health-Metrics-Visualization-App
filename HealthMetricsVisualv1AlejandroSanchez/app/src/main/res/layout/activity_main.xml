@@ -7,12 +7,144 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/topMessage"
+        android:layout_width="258dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:text="Get ready to level up your workout routine with Health Metrics Visualization"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/header1"
+        android:layout_width="228dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="30dp"
+        android:text="Register"
+        android:translationZ="1dp"
+        app:layout_constraintEnd_toEndOf="@+id/topMessage"
+        app:layout_constraintStart_toStartOf="@+id/topMessage"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage" />
+
+    <TextView
+        android:id="@+id/namePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="30dp"
+        android:text="Name"
+        app:layout_constraintStart_toStartOf="@+id/user_name"
+        app:layout_constraintTop_toBottomOf="@+id/header1" />
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="258dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:capitalize="none"
+        android:ems="10"
+        android:hint="John Doe"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namePrompt" />
+
+    <TextView
+        android:id="@+id/agePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="30dp"
+        android:text="Age"
+        app:layout_constraintStart_toStartOf="@+id/user_name"
+        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+    <EditText
+        android:id="@+id/user_age"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/user_name"
+        app:layout_constraintTop_toBottomOf="@+id/agePrompt" />
+
+    <TextView
+        android:id="@+id/heightPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Height"
+        app:layout_constraintStart_toStartOf="@+id/user_height_1"
+        app:layout_constraintTop_toTopOf="@+id/agePrompt" />
+
+    <EditText
+        android:id="@+id/user_height_1"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="40dp"
+        android:ems="10"
+        android:hint="Feet"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/user_age"
+        app:layout_constraintTop_toTopOf="@+id/user_age" />
+
+    <EditText
+        android:id="@+id/user_height_2"
+        android:layout_width="60dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="Inches"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/user_name"
+        app:layout_constraintStart_toEndOf="@+id/user_height_1"
+        app:layout_constraintTop_toTopOf="@+id/user_height_1" />
+
+    <TextView
+        android:id="@+id/weightPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="30dp"
+        android:text="Weight"
+        app:layout_constraintStart_toStartOf="@+id/user_age"
+        app:layout_constraintTop_toBottomOf="@+id/user_age" />
+
+    <EditText
+        android:id="@+id/user_weight"
+        android:layout_width="108dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="lbs"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/user_age"
+        app:layout_constraintTop_toBottomOf="@+id/weightPrompt" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#A9BE57"
+        android:text="Create your profile >"
+        app:layout_constraintEnd_toEndOf="@+id/user_height_2"
+        app:layout_constraintTop_toBottomOf="@+id/user_weight" />
+
+    <FrameLayout
+        android:layout_width="312dp"
+        android:layout_height="476dp"
+        android:backgroundTint="#F5F5F5"
+        app:layout_constraintBottom_toBottomOf="@+id/createButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header1">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
