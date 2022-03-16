@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     Button createButton;
     EditText user_name,user_age, user_height_1, user_height_2, user_weight;
     DatabaseHelper databaseHelper;
+    ArrayAdapter userArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(MainActivity.this);
 
+        if (userExists()) {
+            openMainActivity2();
+        }
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +64,17 @@ public class MainActivity extends AppCompatActivity {
     public void openMainActivity2() {
         Intent intent = new Intent(this, MainActivity2.class);
         startActivity(intent);
+    }
+
+    public boolean userExists() {
+        DatabaseHelper databaseHelper;
+        databaseHelper = new DatabaseHelper(MainActivity.this);
+        String user_name = databaseHelper.getUsername();
+        if (user_name == "a") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

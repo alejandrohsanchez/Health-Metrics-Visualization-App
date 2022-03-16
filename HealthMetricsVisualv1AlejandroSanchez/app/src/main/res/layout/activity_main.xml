@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7DBA7"
     tools:context=".MainActivity">
 
     <TextView
@@ -140,11 +141,23 @@
         android:id="@+id/frame1"
         android:layout_width="312dp"
         android:layout_height="476dp"
-        android:backgroundTint="#F5F5F5"
+        android:background="#F5F5F5"
         app:layout_constraintBottom_toBottomOf="@+id/createButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header1">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frame2"
+        android:layout_width="427dp"
+        android:layout_height="748dp"
+        android:backgroundTint="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 

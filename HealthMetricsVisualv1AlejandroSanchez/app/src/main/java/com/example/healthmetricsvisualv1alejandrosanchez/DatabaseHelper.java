@@ -56,6 +56,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public String getUsername() {
+        String username;
+        username = "a";
+        return username;
+    }
+
     public List<UserModel> getEveryone() {
         List<UserModel> returnList = new ArrayList<>();
 
