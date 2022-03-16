@@ -137,6 +137,7 @@
         app:layout_constraintTop_toBottomOf="@+id/user_weight" />
 
     <FrameLayout
+        android:id="@+id/frame1"
         android:layout_width="312dp"
         android:layout_height="476dp"
         android:backgroundTint="#F5F5F5"
