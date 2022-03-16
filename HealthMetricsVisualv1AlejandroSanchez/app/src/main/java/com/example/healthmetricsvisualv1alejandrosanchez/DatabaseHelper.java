@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String getUsername() {
         String username;
-        username = "a";
+        username = "b";
         return username;
     }
 
