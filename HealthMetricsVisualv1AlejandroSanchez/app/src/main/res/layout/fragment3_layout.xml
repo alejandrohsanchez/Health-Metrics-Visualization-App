@@ -8,16 +8,13 @@
     tools:context=".ui.main.PlaceholderFragment">
 
     <TextView
-        android:id="@+id/section_label"
-        android:layout_width="88dp"
-        android:layout_height="81dp"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight Section"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

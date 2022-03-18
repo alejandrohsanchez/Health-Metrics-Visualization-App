@@ -57,8 +57,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public String getUsername() {
-        String username;
-        username = "b";
+        String username = "";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "SELECT u_name FROM users LIMIT 1;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()){
+            username = cursor.getString(0);
+        }
+//
+//        cursor.close();
         return username;
     }
 
