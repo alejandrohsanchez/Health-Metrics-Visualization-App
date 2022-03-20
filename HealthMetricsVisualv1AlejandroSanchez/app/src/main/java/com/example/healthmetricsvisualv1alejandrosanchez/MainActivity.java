@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Check if user exists before prompting registration
+        if (userExists()) openMainActivity2();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -31,10 +34,6 @@ public class MainActivity extends AppCompatActivity {
         user_weight = findViewById(R.id.user_weight);
 
         databaseHelper = new DatabaseHelper(MainActivity.this);
-
-        if (userExists()) {
-            openMainActivity2();
-        }
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
