@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Health Metrics Visualization</string>
+    <string name="tab_text_1">Home</string>
+    <string name="tab_text_2">Calorie</string>
+    <string name="tab_text_3">Fitness</string>
+    <string name="tab_text_4">Profile</string>
+</resources>
