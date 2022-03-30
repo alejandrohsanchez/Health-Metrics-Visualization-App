@@ -22,21 +22,7 @@ public class Fragment1 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        DatabaseHelper databaseHelper;
-        databaseHelper = new DatabaseHelper(Fragment1.this);
-        String user_name = databaseHelper.getUsername();
-        TextView name = (TextView) findViewById(R.id.textView4);
-        name.setText("hi " +  user_name);
 
-        DatabaseHelper databaseWeight;
-        databaseWeight = new DatabaseHelper(Fragment1.this);
-        double user_weight = databaseHelper.getWeight();
-        TextView weight = (TextView) findViewById(R.id.wellnessweight);
-        weight.setText("Weight: " + user_weight);
-
-        double usercalories = 0;
-        TextView calories = (TextView) findViewById(R.id.wellnessCalories);
-        calories.setText("Calories: " + usercalories);
         return inflater.inflate(R.layout.fragment1_layout, container, false);
     }
 
