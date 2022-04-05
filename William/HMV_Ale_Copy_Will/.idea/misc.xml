@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/HMV_Ale_Copy_Will/app/src/main/res/drawable-v24/borders.xml" value="0.2585" />
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/HMV_Ale_Copy_Will/app/src/main/res/drawable-v24/round_corner_bottom.xml" value="0.303" />
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/HMV_Ale_Copy_Will/app/src/main/res/drawable-v24/round_corner_top.xml" value="0.303" />
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/HMV_Ale_Copy_Will/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/HMV_Ale_Copy_Will/app/src/main/res/layout/activity_main2.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/HMV_Ale_Copy_Will/app/src/main/res/layout/fragmentprofile_layout.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3054892601431981" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment1_layout.xml" value="0.2989496866861979" />

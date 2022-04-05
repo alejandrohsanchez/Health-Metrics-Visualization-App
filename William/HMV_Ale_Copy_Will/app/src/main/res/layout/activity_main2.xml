@@ -14,9 +14,9 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#A9BE57"
+            android:background="@color/green"
             android:gravity="center"
             android:minHeight="?actionBarSize"
             android:padding="@dimen/appbar_padding"
@@ -27,8 +27,9 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="#A9BE57"
-            app:tabTextColor="#A9BE57" />
+            app:tabBackground="@color/lightbrown"
+            app:tabIndicatorColor="#424242"
+            app:tabTextColor="#424242" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -37,17 +38,6 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="227dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:clickable="true"
-        android:soundEffectsEnabled="false"
-        android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="#A9BE57"
-        app:tint="@color/white" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

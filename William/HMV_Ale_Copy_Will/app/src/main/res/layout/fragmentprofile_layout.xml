@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/title_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:gravity="center"
+        android:text="Profile"
+        android:textColor="@color/header_color"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/content_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/content_profile"
+        android:layout_width="369dp"
+        android:layout_height="521dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borders"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/name_profile"
+        android:layout_width="177dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile" />
+
+    <EditText
+        android:id="@+id/height_profile"
+        android:layout_width="167dp"
+        android:layout_height="49dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <EditText
+        android:id="@+id/weight_profile"
+        android:layout_width="150dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toEndOf="@+id/age_profile"
+        app:layout_constraintTop_toBottomOf="@+id/name_profile" />
+
+    <EditText
+        android:id="@+id/age_profile"
+        android:layout_width="125dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile"
+        app:layout_constraintVertical_bias="0.264" />
+
+    <EditText
+        android:id="@+id/water_profile"
+        android:layout_width="100dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.435" />
+
+    <EditText
+        android:id="@+id/workout_profile"
+        android:layout_width="167dp"
+        android:layout_height="49dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/water_profile"
+        app:layout_constraintVertical_bias="0.29" />
+
+    <EditText
+        android:id="@+id/calories_profile"
+        android:layout_width="167dp"
+        android:layout_height="49dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/water_profile"
+        app:layout_constraintTop_toBottomOf="@+id/weight_profile"
+        app:layout_constraintVertical_bias="0.626" />
+
+    <Button
+        android:id="@+id/saveChangesButton_profile"
+        android:layout_width="301dp"
+        android:layout_height="72dp"
+        android:backgroundTint="@color/green"
+        android:text="Save Changes"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile"
+        app:layout_constraintVertical_bias="0.951" />
+
+    <TextView
+        android:id="@+id/nameView_profile"
+        android:layout_width="29dp"
+        android:layout_height="13dp"
+        android:text="Name"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/name_profile"
+        app:layout_constraintEnd_toEndOf="@+id/name_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/name_profile"
+        app:layout_constraintTop_toTopOf="@+id/name_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ageView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/age_profile"
+        app:layout_constraintEnd_toEndOf="@+id/age_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/age_profile"
+        app:layout_constraintTop_toTopOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/weightView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/weight_profile"
+        app:layout_constraintEnd_toEndOf="@+id/weight_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/weight_profile"
+        app:layout_constraintTop_toTopOf="@+id/weight_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/heightView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Height"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/height_profile"
+        app:layout_constraintEnd_toEndOf="@+id/height_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/height_profile"
+        app:layout_constraintTop_toTopOf="@+id/height_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/dailygoalsView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daily Goals"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/water_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/height_profile"
+        app:layout_constraintVertical_bias="0.704" />
+
+    <TextView
+        android:id="@+id/waterView_profile"
+        android:layout_width="30dp"
+        android:layout_height="12dp"
+        android:text="Water"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/water_profile"
+        app:layout_constraintEnd_toEndOf="@+id/water_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/water_profile"
+        app:layout_constraintTop_toTopOf="@+id/water_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/workoutView_profile"
+        android:layout_width="85dp"
+        android:layout_height="12dp"
+        android:text="Time Working Out"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/workout_profile"
+        app:layout_constraintEnd_toEndOf="@+id/workout_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/workout_profile"
+        app:layout_constraintTop_toTopOf="@+id/workout_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/caloriesView_profile"
+        android:layout_width="41dp"
+        android:layout_height="13dp"
+        android:text="Calories"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/calories_profile"
+        app:layout_constraintEnd_toEndOf="@+id/calories_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/calories_profile"
+        app:layout_constraintTop_toTopOf="@+id/calories_profile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="99dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/age_profile"
+        app:layout_constraintEnd_toStartOf="@+id/name_profile"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile"
+        tools:srcCompat="@tools:sample/avatars" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
