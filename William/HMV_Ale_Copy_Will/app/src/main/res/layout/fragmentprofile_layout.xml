@@ -52,17 +52,29 @@
         app:layout_constraintTop_toTopOf="@+id/content_profile" />
 
     <EditText
-        android:id="@+id/height_profile"
-        android:layout_width="167dp"
+        android:id="@+id/heightFeet_profile"
+        android:layout_width="75dp"
         android:layout_height="49dp"
         android:backgroundTint="@color/black"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/content_profile"
         app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="@+id/content_profile"
         app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.083" />
+
+    <EditText
+        android:id="@+id/heightInches_profile"
+        android:layout_width="75dp"
+        android:layout_height="49dp"
+        android:backgroundTint="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.083" />
 
     <EditText
         android:id="@+id/weight_profile"
@@ -185,12 +197,37 @@
         android:layout_height="wrap_content"
         android:text="Height"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/height_profile"
-        app:layout_constraintEnd_toEndOf="@+id/height_profile"
+        app:layout_constraintBottom_toBottomOf="@+id/heightFeet_profile"
+        app:layout_constraintEnd_toEndOf="@+id/heightFeet_profile"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/height_profile"
-        app:layout_constraintTop_toTopOf="@+id/height_profile"
+        app:layout_constraintStart_toStartOf="@+id/heightFeet_profile"
+        app:layout_constraintTop_toTopOf="@+id/heightFeet_profile"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/heightFeetView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="feet"
+        android:textSize="15dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/dailygoalsView_profile"
+        app:layout_constraintStart_toEndOf="@+id/heightFeet_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.66" />
+
+    <TextView
+        android:id="@+id/heightInchesView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="inches"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/calories_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/heightInches_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.453" />
 
     <TextView
         android:id="@+id/dailygoalsView_profile"
@@ -203,7 +240,7 @@
         app:layout_constraintEnd_toEndOf="@+id/content_profile"
         app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/height_profile"
+        app:layout_constraintTop_toBottomOf="@+id/heightFeet_profile"
         app:layout_constraintVertical_bias="0.704" />
 
     <TextView
@@ -249,11 +286,13 @@
         android:id="@+id/imageView"
         android:layout_width="99dp"
         android:layout_height="90dp"
+        android:background="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toTopOf="@+id/age_profile"
         app:layout_constraintEnd_toStartOf="@+id/name_profile"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="@+id/content_profile"
         app:layout_constraintTop_toTopOf="@+id/content_profile"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.714" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
