@@ -16,6 +16,8 @@ import android.view.View;
 import com.example.healthmetricsvisualv1alejandrosanchez.ui.main.SectionsPagerAdapter;
 import com.example.healthmetricsvisualv1alejandrosanchez.databinding.ActivityMain2Binding;
 
+// if user already has an account. Main activity
+
 public class MainActivity2 extends AppCompatActivity {
 
     private ActivityMain2Binding binding;

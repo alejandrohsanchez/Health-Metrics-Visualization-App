@@ -14,8 +14,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button createButton;
-    EditText user_name,user_age, user_height_1, user_height_2, user_weight;
+    EditText user_name,user_age, user_height_1, user_height_2, user_weight, user_water,
+        user_calories, user_workout;
+
     DatabaseHelper databaseHelper;
+
     ArrayAdapter userArrayAdapter;
 
     @Override
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createButton = findViewById(R.id.createButton);
+
         user_name = findViewById(R.id.user_name);
         user_age = findViewById(R.id.user_age);
         user_height_1 = findViewById(R.id.user_height_1);
@@ -41,7 +45,12 @@ public class MainActivity extends AppCompatActivity {
                 UserModel userModel;
 
                 try {
-                    userModel = new UserModel(-1, user_name.getText().toString(), Integer.parseInt(user_age.getText().toString()), Integer.parseInt(user_height_1.getText().toString()), Integer.parseInt(user_height_2.getText().toString()), Double.parseDouble(user_weight.getText().toString()));
+                    userModel = new UserModel( -1, user_name.getText().toString(),
+                            Integer.parseInt(user_age.getText().toString()),
+                            Integer.parseInt(user_height_1.getText().toString()),
+                            Integer.parseInt(user_height_2.getText().toString()),
+                            Double.parseDouble(user_weight.getText().toString());
+
                     Toast.makeText(MainActivity.this, userModel.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
