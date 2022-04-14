@@ -78,7 +78,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
     }
 
 
-    public void addNoteToDatabase(Note note)
+
 
 
 

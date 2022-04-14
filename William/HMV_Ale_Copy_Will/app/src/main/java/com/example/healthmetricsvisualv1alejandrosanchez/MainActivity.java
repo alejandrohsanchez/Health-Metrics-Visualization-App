@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,11 +13,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Button createButton;
-    EditText user_name,user_age, user_height_1, user_height_2, user_weight, user_water,
-        user_calories, user_workout;
-
+    EditText user_name,user_age, user_height_1, user_height_2, user_weight, user_water, user_calories, user_workout;
     DatabaseHelper databaseHelper;
-
     ArrayAdapter userArrayAdapter;
 
     @Override
@@ -30,12 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createButton = findViewById(R.id.createButton);
-
         user_name = findViewById(R.id.user_name);
         user_age = findViewById(R.id.user_age);
         user_height_1 = findViewById(R.id.user_height_1);
         user_height_2 = findViewById(R.id.user_height_2);
         user_weight = findViewById(R.id.user_weight);
+        user_water = findViewById(R.id.user_water);
+        user_calories = findViewById(R.id.user_calories);
+        user_workout = findViewById(R.id.user_workout);
 
         databaseHelper = new DatabaseHelper(MainActivity.this);
 
@@ -45,17 +43,19 @@ public class MainActivity extends AppCompatActivity {
                 UserModel userModel;
 
                 try {
-                    userModel = new UserModel( -1, user_name.getText().toString(),
+                    userModel = new UserModel(-1, user_name.getText().toString(),
                             Integer.parseInt(user_age.getText().toString()),
                             Integer.parseInt(user_height_1.getText().toString()),
                             Integer.parseInt(user_height_2.getText().toString()),
-                            Double.parseDouble(user_weight.getText().toString());
-
+                            Double.parseDouble(user_weight.getText().toString()),
+                            Integer.parseInt(user_water.getText().toString()),
+                            Integer.parseInt(user_calories.getText().toString()),
+                            Double.parseDouble(user_workout.getText().toString()) );
                     Toast.makeText(MainActivity.this, userModel.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
                     Toast.makeText(MainActivity.this, "Error creating user", Toast.LENGTH_SHORT).show();
-                    userModel = new UserModel(-1, "error", 0, 0, 0, 0);
+                    userModel = new UserModel(-1, "error", 0, 0, 0, 0, 0, 0, 0);
                 }
 
                 DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);

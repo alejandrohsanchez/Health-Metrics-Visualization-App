@@ -14,6 +14,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
+        android:textSize="15dp"
+        android:gravity="center"
         android:text="Get ready to level up your workout routine with Health Metrics Visualization"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,10 +23,13 @@
 
     <TextView
         android:id="@+id/header1"
-        android:layout_width="228dp"
-        android:layout_height="71dp"
+        android:layout_width="150dp"
+        android:layout_height="39dp"
         android:layout_marginTop="30dp"
+        android:gravity="center"
         android:text="Register"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:translationZ="1dp"
         app:layout_constraintEnd_toEndOf="@+id/topMessage"
         app:layout_constraintStart_toStartOf="@+id/topMessage"
@@ -35,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="Name"
         app:layout_constraintStart_toStartOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/header1" />
@@ -44,13 +49,13 @@
         android:id="@+id/user_name"
         android:layout_width="258dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:capitalize="none"
         android:ems="10"
         android:hint="John Doe"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/namePrompt" />
 
@@ -59,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:text="Age"
         app:layout_constraintStart_toStartOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
@@ -68,12 +73,12 @@
         android:id="@+id/user_age"
         android:layout_width="60dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Age"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="@+id/user_name"
-        app:layout_constraintTop_toBottomOf="@+id/agePrompt" />
+        tools:layout_editor_absoluteY="356dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/heightPrompt"
@@ -86,8 +91,8 @@
 
     <EditText
         android:id="@+id/user_height_1"
-        android:layout_width="60dp"
-        android:layout_height="45dp"
+        android:layout_width="46dp"
+        android:layout_height="44dp"
         android:layout_marginStart="40dp"
         android:ems="10"
         android:hint="Feet"
@@ -95,70 +100,177 @@
         app:layout_constraintStart_toEndOf="@+id/user_age"
         app:layout_constraintTop_toTopOf="@+id/user_age" />
 
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="''"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_height_1"
+        app:layout_constraintStart_toEndOf="@+id/user_height_1"
+        app:layout_constraintTop_toBottomOf="@+id/heightPrompt"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="'"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_height_2"
+        app:layout_constraintStart_toEndOf="@+id/user_height_2"
+        app:layout_constraintTop_toTopOf="@+id/user_height_2"
+        app:layout_constraintVertical_bias="0.0" />
+
     <EditText
         android:id="@+id/user_height_2"
-        android:layout_width="60dp"
-        android:layout_height="45dp"
+        android:layout_width="61dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="12dp"
         android:ems="10"
         android:hint="Inches"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/user_name"
-        app:layout_constraintStart_toEndOf="@+id/user_height_1"
+        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/user_height_1" />
 
     <TextView
         android:id="@+id/weightPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginEnd="92dp"
         android:text="Weight"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/user_weight"
+        app:layout_constraintEnd_toStartOf="@+id/waterView_profile"
         app:layout_constraintStart_toStartOf="@+id/user_age"
-        app:layout_constraintTop_toBottomOf="@+id/user_age" />
+        app:layout_constraintTop_toBottomOf="@+id/user_age"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/user_weight"
         android:layout_width="108dp"
         android:layout_height="45dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="lbs"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/user_age"
-        app:layout_constraintTop_toBottomOf="@+id/weightPrompt" />
+        tools:layout_editor_absoluteY="435dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/waterView_profile"
+        android:layout_width="43dp"
+        android:layout_height="18dp"
+        android:text="Water"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/user_water"
+        tools:layout_editor_absoluteX="210dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/user_water"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/user_weight"
+        app:layout_constraintTop_toBottomOf="@+id/user_height_2" />
+
+    <TextView
+        android:id="@+id/caloriesView_profile"
+        android:layout_width="59dp"
+        android:layout_height="19dp"
+        android:text="Calories"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/user_calories"
+        app:layout_constraintEnd_toStartOf="@+id/workoutView_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/weightPrompt"
+        app:layout_constraintTop_toBottomOf="@+id/user_weight"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/user_calories"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/black"
+        android:hint="2000"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/createButton"
+        app:layout_constraintStart_toStartOf="@+id/user_weight" />
+
+    <TextView
+        android:id="@+id/workoutView_profile"
+        android:layout_width="125dp"
+        android:layout_height="19dp"
+        android:text="Time Working Out"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/user_workout"
+        app:layout_constraintEnd_toEndOf="@+id/user_name" />
+
+    <TextView
+        android:id="@+id/workout_hours"
+        android:layout_width="56dp"
+        android:layout_height="21dp"
+        android:text="hour(s)"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/user_workout"
+        app:layout_constraintStart_toEndOf="@+id/user_workout"
+        app:layout_constraintTop_toBottomOf="@+id/workoutView_profile" />
+
+    <EditText
+        android:id="@+id/user_workout"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/black"
+        android:hint="2.5"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/createButton"
+        app:layout_constraintEnd_toEndOf="@+id/user_water"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toEndOf="@+id/user_calories" />
 
     <Button
         android:id="@+id/createButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_width="222dp"
+        android:layout_height="50dp"
         android:backgroundTint="#A9BE57"
         android:text="Create your profile >"
-        app:layout_constraintEnd_toEndOf="@+id/user_height_2"
-        app:layout_constraintTop_toBottomOf="@+id/user_weight" />
+        tools:layout_editor_absoluteX="96dp"
+        tools:layout_editor_absoluteY="600dp"
+        tools:ignore="MissingConstraints" />
 
-    <FrameLayout
-        android:id="@+id/frame1"
-        android:layout_width="312dp"
-        android:layout_height="476dp"
-        android:background="#F5F5F5"
-        android:translationZ="-1dp"
-        app:layout_constraintBottom_toBottomOf="@+id/createButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header1">
+        <FrameLayout
+            android:id="@+id/frame1"
+            android:layout_width="312dp"
+            android:layout_height="476dp"
+            android:background="#F5F5F5"
+            android:translationZ="-1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/header1">
 
-    </FrameLayout>
+        </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/frame2"
-        android:layout_width="432dp"
-        android:layout_height="636dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/topMessage">
+        <FrameLayout
+            android:id="@+id/frame2"
+            android:layout_width="432dp"
+            android:layout_height="636dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-    </FrameLayout>
+        </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

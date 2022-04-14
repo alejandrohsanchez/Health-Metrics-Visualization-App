@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -13,30 +14,46 @@ import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    private Context context;
+    private static final String DATABASE_NAME = "metrics.db";
+    private static final int DATABASE_VERSION = 1;
+
+    private static final String TABLE_NAME = "User Info";
+
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_AGE = "age";
+    private static final String COLUMN_HEIGHTFEET = "heightFeet";
+    private static final String COLUMN_HEIGHTINCHES = "heightInches";
+    private static final String COLUMN_WEIGHT = "weight";
+    private static final String COLUMN_WATER = "water";
+    private static final String COLUMN_CALORIES = "calories";
+    private static final String COLUMN_WORKOUT = "workout";
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "metrics.db", null, 1);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createTableStatement =
-                "CREATE TABLE " +
-                    "users (" +
-                        "u_name TEXT, " +
-                        "u_age INT, " +
-                        "u_height_1 INT, " +
-                        "u_height_2 INT, " +
-                        "u_weight DECIMAL, " +
-                        "u_water INT, " +
-                        "u_calories INT, " +
-                        "u_workout DECIMAL )";
+        String createTableStatement = "CREATE TABLE " + TABLE_NAME +
+                        " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        COLUMN_NAME + "TEXT, " +
+                        COLUMN_AGE + " INTEGER, " +
+                        COLUMN_HEIGHTFEET + " INTEGER, " +
+                        COLUMN_HEIGHTINCHES + " INTEGER, " +
+                        COLUMN_WEIGHT + " DOUBLE, " +
+                        COLUMN_WATER + " INTEGER, " +
+                        COLUMN_CALORIES + " INTEGER, " +
+                        COLUMN_WORKOUT + " DOUBLE);" ;
+
         sqLiteDatabase.execSQL(createTableStatement);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(sqLiteDatabase);
     }
 
     public boolean addOne(UserModel userModel) {
@@ -46,14 +63,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Acts like a hashmap
         ContentValues cv = new ContentValues();
 
-        cv.put("u_name", userModel.getName());
-        cv.put("u_age", userModel.getAge());
-        cv.put("u_height_1", userModel.getHeight1());
-        cv.put("u_height_2", userModel.getHeight2());
-        cv.put("u_weight", userModel.getWeight());
-        cv.put("u_water", userModel.getWater());
-        cv.put("u_calories", userModel.getCalories());
-        cv.put("u_workout", userModel.getWorkout());
+        cv.put(COLUMN_ID, userModel.getId());
+        cv.put(COLUMN_NAME, userModel.getName());
+        cv.put(COLUMN_AGE, userModel.getAge());
+        cv.put(COLUMN_HEIGHTFEET, userModel.getHeight1());
+        cv.put(COLUMN_HEIGHTINCHES, userModel.getHeight2());
+        cv.put(COLUMN_WEIGHT, userModel.getWeight());
+        cv.put(COLUMN_WATER, userModel.getWater());
+        cv.put(COLUMN_CALORIES, userModel.getCalories());
+        cv.put(COLUMN_WORKOUT, userModel.getWorkout());
+
+        long result = db.insert(TABLE_NAME, null, cv);
+
+        if(result == 1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show();
+        }
 
         long insert = db.insert("users", null, cv);
 //        if (cv.get("c_name") == "error" || cv.get("c_name").toString().isEmpty()) {
@@ -137,6 +164,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void insertProfileData(String toString, int id, int id1, int id2, int id3, int id4, int id5, int id6) {
     }
+
+
+
+/*
+    @Override
+    public void onUpdate(SQLiteDatabase db, int i, int i1){
+        db.execSQL("DROP TABLE IF EXISTS" + );
+    }
+*/
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
 public class UserModel {
+    private int id;
     private String name;
     private int age;
     private int height1;
@@ -12,6 +13,7 @@ public class UserModel {
 
     public  UserModel(int id, String name, int age, int height1, int height2,
                      double weight, int water, int calories, double workout) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.height1 = height1;
@@ -28,6 +30,7 @@ public class UserModel {
     @Override
     public String toString() {
         return "UserModel{" +
+                ", id='" + id  +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", height1=" + height1 +
@@ -37,6 +40,14 @@ public class UserModel {
                 ", calories=" + calories +
                 ", workout=" + workout +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(String name) {
+        this.id = id;
     }
 
     public String getName() {
