@@ -1,26 +1,21 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
 public class UserModel {
-   // private int id;
     private String name;
     private int age;
     private int height1;
     private int height2;
     private double weight;
-    private int water;
-    private int calories;
-    private double workout;
 
-    public  UserModel(String name, int age, int height1, int height2,
-                     double weight, int water, int calories, double workout) {
+    public UserModel(int id, String name, int age, int height1, int height2, double weight) {
         this.name = name;
         this.age = age;
         this.height1 = height1;
         this.height2 = height2;
         this.weight = weight;
-        this.water = water;
-        this.calories = calories;
-        this.workout = workout;
+    }
+
+    public UserModel(String userName, int userAge, int userHeight1, int userHeight2, double userWeight) {
     }
 
     @Override
@@ -31,12 +26,8 @@ public class UserModel {
                 ", height1=" + height1 +
                 ", height2=" + height2 +
                 ", weight=" + weight +
-                ", water=" + water +
-                ", calories=" + calories +
-                ", workout=" + workout +
                 '}';
     }
-
 
     public String getName() {
         return name;
@@ -76,29 +67,5 @@ public class UserModel {
 
     public void setWeight(double weight) {
         this.weight = weight;
-    }
-
-    public int getWater() {
-        return water;
-    }
-
-    public void setWater(int water) {
-        this.water = water;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
-
-    public void setCalories(int calories) {
-        this.calories = calories;
-    }
-
-    public double getWorkout() {
-        return workout;
-    }
-
-    public void setWorkout(double workout) {
-        this.workout = workout;
     }
 }
