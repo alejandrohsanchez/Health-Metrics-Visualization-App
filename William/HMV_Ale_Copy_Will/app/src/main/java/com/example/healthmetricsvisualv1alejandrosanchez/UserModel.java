@@ -1,7 +1,6 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
 public class UserModel {
-   // private int id;
     private String name;
     private int age;
     private int height1;
@@ -11,8 +10,7 @@ public class UserModel {
     private int calories;
     private double workout;
 
-    public  UserModel(String name, int age, int height1, int height2,
-                     double weight, int water, int calories, double workout) {
+    public UserModel(int id, String name, int age, int height1, int height2, double weight, int water, int calories, double workout) {
         this.name = name;
         this.age = age;
         this.height1 = height1;
@@ -37,11 +35,9 @@ public class UserModel {
                 '}';
     }
 
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -49,7 +45,6 @@ public class UserModel {
     public int getAge() {
         return age;
     }
-
     public void setAge(int age) {
         this.age = age;
     }
@@ -57,7 +52,6 @@ public class UserModel {
     public int getHeight1() {
         return height1;
     }
-
     public void setHeight1(int height1) {
         this.height1 = height1;
     }
@@ -65,7 +59,6 @@ public class UserModel {
     public int getHeight2() {
         return height2;
     }
-
     public void setHeight2(int height2) {
         this.height2 = height2;
     }
@@ -73,7 +66,6 @@ public class UserModel {
     public double getWeight() {
         return weight;
     }
-
     public void setWeight(double weight) {
         this.weight = weight;
     }
@@ -81,7 +73,6 @@ public class UserModel {
     public int getWater() {
         return water;
     }
-
     public void setWater(int water) {
         this.water = water;
     }
@@ -89,7 +80,6 @@ public class UserModel {
     public int getCalories() {
         return calories;
     }
-
     public void setCalories(int calories) {
         this.calories = calories;
     }
@@ -97,7 +87,6 @@ public class UserModel {
     public double getWorkout() {
         return workout;
     }
-
     public void setWorkout(double workout) {
         this.workout = workout;
     }

@@ -1,5 +1,6 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -18,7 +19,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createTableStatement =   "CREATE TABLE users (u_name TEXT, u_age INT, u_height_1 INT, u_height_2 INT, u_weight DECIMAL);";
+        String createTableStatement = "CREATE TABLE users " +
+                        "(u_name TEXT, " +
+                        "u_age INT, " +
+                        "u_height_1 INT, " +
+                        "u_height_2 INT, " +
+                        "u_weight DECIMAL, " +
+                        "u_water INT, " +
+                        "u_calories INT, " +
+                        "u_workout DECIMAL );";
+
         sqLiteDatabase.execSQL(createTableStatement);
     }
 
@@ -39,8 +49,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("u_height_1", userModel.getHeight1());
         cv.put("u_height_2", userModel.getHeight2());
         cv.put("u_weight", userModel.getWeight());
+        cv.put("u_water", userModel.getWater());
+        cv.put("u_calories", userModel.getCalories());
+        cv.put("u_workout", userModel.getWorkout());
 
         long insert = db.insert("users", null, cv);
+
 //        if (cv.get("c_name") == "error" || cv.get("c_name").toString().isEmpty()) {
 //            return false;
 //        }
@@ -61,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString = "SELECT u_name FROM users LIMIT 1;";
-        Cursor cursor = db.rawQuery(queryString, null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()){
             username = cursor.getString(0);
@@ -96,8 +110,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int userHeight1 = cursor.getInt(3);
                 int userHeight2 = cursor.getInt(4);
                 double userWeight = cursor.getDouble(5);
+                int userWater = cursor.getInt(6);
+                int userCalories = cursor.getInt(7);
+                double userWorkout = cursor.getDouble(8);
 
-                UserModel newCustomer = new UserModel(userID, userName, userAge, userHeight1, userHeight2, userWeight);
+                UserModel newCustomer = new UserModel(userID, userName, userAge, userHeight1, userHeight2, userWeight, userWater, userCalories, userWorkout);
                 returnList.add(newCustomer);
 
 
