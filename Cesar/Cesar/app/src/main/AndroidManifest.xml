@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthMetricsVisualV1AlejandroSanchez">
         <activity
+            android:name=".EventEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WeekViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
             android:exported="false"
             android:label="@string/title_activity_main2"

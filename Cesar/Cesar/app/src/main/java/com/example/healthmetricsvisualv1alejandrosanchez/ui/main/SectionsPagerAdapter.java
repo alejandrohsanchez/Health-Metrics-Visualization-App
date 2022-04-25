@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+//import com.example.healthmetricsvisualv1alejandrosanchez.CalendarViewHolder;
 import com.example.healthmetricsvisualv1alejandrosanchez.Fragment1;
 import com.example.healthmetricsvisualv1alejandrosanchez.Fragment2;
 import com.example.healthmetricsvisualv1alejandrosanchez.Fragment3;
+import com.example.healthmetricsvisualv1alejandrosanchez.Fragment4;
 import com.example.healthmetricsvisualv1alejandrosanchez.R;
 
 /**
@@ -20,7 +22,7 @@ import com.example.healthmetricsvisualv1alejandrosanchez.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3, R.string.tab_text_4};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -41,7 +43,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 fragment = new Fragment3();
                 break;
-
+            case 3:
+                fragment = new Fragment4();
         }
         return fragment;
     }
@@ -55,6 +58,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Number of pages to be shown
-        return 3;
+        return 4;
     }
 }

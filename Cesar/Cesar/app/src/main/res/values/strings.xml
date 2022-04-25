@@ -4,5 +4,7 @@
     <string name="tab_text_1">Wellness</string>
     <string name="tab_text_2">Calories</string>
     <string name="tab_text_3">Weight</string>
-    <string name="tab_text_4">Home</string>
+    <string name="tab_text_4">Workout</string>
+    <string name="forward"><![CDATA[->]]></string>
+    <string name="back"><![CDATA[<-]]></string>
 </resources>
