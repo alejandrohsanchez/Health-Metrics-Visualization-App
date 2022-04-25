@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +19,8 @@ public class Fragment_Profile extends Fragment {
         editProfileHeightFeet, editProfileHeightInches, editProfileWater,
         editProfileCalories, editProfileWorkout;
     Button btnSaveChanges;
+
+    private EditText profileText;
 
     @Nullable
     @Override
@@ -38,6 +41,11 @@ public class Fragment_Profile extends Fragment {
         btnSaveChanges = (Button) rootView.findViewById(R.id.saveChangesButton_profile);
 
         addData();
+
+        Bundle data = getArguments();
+        if(data != null){
+            
+        }
 
         return rootView;
     }

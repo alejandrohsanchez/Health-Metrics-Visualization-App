@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/Ale_copy_Will_V2/app/src/main/res/layout/activity_main.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/willy/Documents/GitHub/Health-Metrics-Visualization-App/William/Ale_copy_Will_V2/app/src/main/res/layout/activity_main2.xml" value="0.3802083333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3054892601431981" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment1_layout.xml" value="0.2989496866861979" />
+        <entry key="app/src/main/res/layout/fragment2_layout.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment3_layout.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/layout/user_register_box.xml" value="0.3541666666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3333333333333333" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

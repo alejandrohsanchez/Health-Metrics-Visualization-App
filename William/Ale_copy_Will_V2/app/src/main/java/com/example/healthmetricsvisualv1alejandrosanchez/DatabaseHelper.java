@@ -20,14 +20,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE users " +
-                "(u_name TEXT, " +
-                "u_age INT, " +
-                "u_height_1 INT, " +
-                "u_height_2 INT, " +
-                "u_weight DECIMAL, " +
-                "u_water INT, " +
-                "u_calories INT, " +
-                "u_workout DECIMAL );";
+                        "(u_name TEXT, " +
+                        "u_age INT, " +
+                        "u_height_1 INT, " +
+                        "u_height_2 INT, " +
+                        "u_weight DECIMAL, " +
+                        "u_water INT, " +
+                        "u_calories INT, " +
+                        "u_workout DECIMAL );";
 
         sqLiteDatabase.execSQL(createTableStatement);
     }
@@ -131,8 +131,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return returnList;
-    }
-
-    public void insertProfileData(String toString, int id, int id1, int id2, int id3, int id4, int id5, int id6) {
     }
 }
