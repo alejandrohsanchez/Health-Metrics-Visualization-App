@@ -133,6 +133,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
+    public Cursor userData(){
+        SQLiteDatabase dbl = this.getWritableDatabase();
+        Cursor cursor = dbl.rawQuery("SELECT * FROM users", null);
+        return cursor;
+
+    }
+
     public void insertProfileData(String toString, int id, int id1, int id2, int id3, int id4, int id5, int id6) {
     }
 }
