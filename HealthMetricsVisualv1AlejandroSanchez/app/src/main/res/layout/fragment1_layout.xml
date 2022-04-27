@@ -8,12 +8,12 @@
     tools:context=".ui.main.PlaceholderFragment">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wellness Section"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/wellness_name_text"
+        android:layout_width="54dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,5 +25,48 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/wellness_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/wellness_name_text"
+        app:layout_constraintStart_toStartOf="@+id/wellness_name_text" />
+
+    <TextView
+        android:id="@+id/wellness_age_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Age"
+        app:layout_constraintStart_toStartOf="@+id/wellness_name_text"
+        app:layout_constraintTop_toBottomOf="@+id/wellness_name_text" />
+
+    <TextView
+        android:id="@+id/wellness_user_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/wellness_age_text"
+        app:layout_constraintStart_toStartOf="@+id/wellness_user_name" />
+
+    <TextView
+        android:id="@+id/wellness_weight_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Weight"
+        app:layout_constraintStart_toStartOf="@+id/wellness_age_text"
+        app:layout_constraintTop_toBottomOf="@+id/wellness_age_text" />
+
+    <TextView
+        android:id="@+id/wellness_user_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/wellness_weight_text"
+        app:layout_constraintStart_toStartOf="@+id/wellness_user_age" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,6 +71,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return username;
     }
 
+    public String getUserAge() {
+        String userage = "";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "SELECT u_age FROM users LIMIT 1;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()){
+            userage = cursor.getString(0);
+        }
+//
+//        cursor.close();
+        return userage;
+    }
+
+    public String getUserWeight() {
+        String userweight = "";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "SELECT u_weight FROM users LIMIT 1;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()){
+            userweight = cursor.getString(0);
+        }
+//
+//        cursor.close();
+        return userweight;
+    }
+
     public List<UserModel> getEveryone() {
         List<UserModel> returnList = new ArrayList<>();
 
