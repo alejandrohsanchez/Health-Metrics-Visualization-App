@@ -218,6 +218,7 @@
         android:backgroundTint="@color/black"
         android:hint="2000"
         android:maxLines="1"
+        android:inputType="number"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="@+id/user_weight"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
@@ -253,6 +254,7 @@
         android:backgroundTint="@color/black"
         android:hint="2.5"
         android:maxLines="1"
+        android:inputType="numberDecimal"
         android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/user_calories"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
