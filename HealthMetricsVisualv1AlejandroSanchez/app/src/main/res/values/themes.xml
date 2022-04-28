@@ -17,6 +17,7 @@
     <style name="Theme.HealthMetricsVisualV1AlejandroSanchez.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="Theme.HealthMetricsVisualV1AlejandroSanchez.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

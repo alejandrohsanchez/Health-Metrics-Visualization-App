@@ -1,5 +1,6 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,6 +66,16 @@ public class Fragment1 extends Fragment {
             }
         });
 
+        subtractButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int current_val = databaseHelper.getUserCurrentWater() - 1;
+                databaseHelper.setUserCurrentWater(current_val);
+                currentWater.setText(current_val);
+            }
+        });
         return rootView;
     }
+
+
 }

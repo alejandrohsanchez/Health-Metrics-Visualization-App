@@ -1,5 +1,6 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -35,7 +36,6 @@ public class MainActivity2 extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
         View welcomeMessage = findViewById(R.id.welcomeText);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,5 +44,8 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
         });
+        overridePendingTransition(0, 0);
     }
+
+
 }

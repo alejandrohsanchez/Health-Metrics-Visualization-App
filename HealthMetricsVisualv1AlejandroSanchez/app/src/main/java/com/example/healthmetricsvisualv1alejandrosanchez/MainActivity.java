@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHelper databaseHelper;
         databaseHelper = new DatabaseHelper(MainActivity.this);
         String user_name = databaseHelper.getUsername();
-        Toast.makeText(MainActivity.this, "Welcome " + user_name, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "Welcome " + user_name, Toast.LENGTH_SHORT).show();
         if (user_name=="") {
             return false;
         } else {

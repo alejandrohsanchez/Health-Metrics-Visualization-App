@@ -132,11 +132,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void setUserCurrentWater(int val) {
         String name = getUsername();
-
         SQLiteDatabase db = this.getReadableDatabase();
-
         String queryString = "replace into users(u_name, u_water_current) values('" + name + "'," + val + ");";
-        db.rawQuery(queryString, null);
+        db.execSQL(queryString);
 
     }
 
