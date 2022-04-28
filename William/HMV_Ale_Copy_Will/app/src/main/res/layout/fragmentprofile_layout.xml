@@ -8,8 +8,7 @@
     android:gravity="center">
 
 
-
-
+    <!-- Profile Header -->
     <TextView
         android:id="@+id/title_profile"
         android:layout_width="wrap_content"
@@ -24,8 +23,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
+    <!-- Profile Header -->
 
 
+    <!-- Content Frame -->
     <TextView
         android:id="@+id/content_profile"
         android:layout_width="369dp"
@@ -42,7 +43,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
+    <!-- Content Frame -->
 
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="99dp"
+        android:layout_height="90dp"
+        android:background="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toTopOf="@+id/age_profile"
+        app:layout_constraintEnd_toStartOf="@+id/name_profile"
+        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile"
+        app:layout_constraintVertical_bias="0.387" />
+    <!-- Profile Image -->
+
+
+    <!-- Name -->
     <TextView
         android:id="@+id/nameView_profile"
         android:layout_width="29dp"
@@ -79,10 +98,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/name_profile"
         app:layout_constraintTop_toTopOf="@+id/name_profile" />
+    <!-- Name -->
 
 
-
-
+    <!-- Age -->
     <TextView
         android:id="@+id/ageView_profile"
         android:layout_width="wrap_content"
@@ -119,9 +138,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/age_profile"
         app:layout_constraintTop_toTopOf="@+id/age_profile" />
+    <!-- Age -->
 
 
-
+    <!-- Weight -->
     <TextView
         android:id="@+id/weightView_profile"
         android:layout_width="wrap_content"
@@ -133,7 +153,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/weight_profile"
         app:layout_constraintTop_toBottomOf="@+id/nameLine" />
-
     <TextView
         android:id="@+id/weightLine"
         android:layout_width="117dp"
@@ -158,8 +177,6 @@
         app:layout_constraintHorizontal_bias="0.257"
         app:layout_constraintStart_toEndOf="@+id/age_profile"
         app:layout_constraintTop_toBottomOf="@+id/name_profile" />
-
-
     <TextView
         android:id="@+id/weight_lbs"
         android:layout_width="wrap_content"
@@ -172,7 +189,10 @@
         app:layout_constraintEnd_toEndOf="@+id/weightLine"
         app:layout_constraintTop_toBottomOf="@+id/nameLine"
         app:layout_constraintVertical_bias="0.964" />
+    <!-- Weight -->
 
+
+    <!-- Height -->
     <TextView
         android:id="@+id/heightView_profile"
         android:layout_width="wrap_content"
@@ -223,6 +243,17 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
+        android:id="@+id/heightInchesView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="176dp"
+        android:text="inches"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/heightInchesLine"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="1.0" />
+    <TextView
         android:id="@+id/heightInchesLine"
         android:layout_width="85dp"
         android:layout_height="16dp"
@@ -245,11 +276,26 @@
         app:layout_constraintHorizontal_bias="0.208"
         app:layout_constraintStart_toStartOf="@+id/heightInchesLine"
         app:layout_constraintTop_toBottomOf="@+id/ageLine" />
+    <!-- Height -->
 
 
+    <!-- Daily Goals -->
+    <TextView
+        android:id="@+id/dailygoalsView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:text="Daily Goals"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile" />
+    <!-- Daily Goals -->
 
 
-
+    <!-- Water -->
     <TextView
         android:id="@+id/waterView_profile"
         android:layout_width="30dp"
@@ -291,8 +337,10 @@
         app:layout_constraintStart_toStartOf="@+id/water_profile"
         app:layout_constraintTop_toTopOf="@+id/water_profile"
         app:layout_constraintVertical_bias="0.714" />
+    <!-- Water -->
 
 
+    <!-- Calories -->
     <TextView
         android:id="@+id/caloriesView_profile"
         android:layout_width="41dp"
@@ -321,8 +369,6 @@
         app:layout_constraintStart_toEndOf="@+id/water_profile"
         app:layout_constraintTop_toBottomOf="@+id/weight_profile"
         app:layout_constraintVertical_bias="0.612" />
-
-
     <TextView
         android:id="@+id/caloriesLine"
         android:layout_width="146dp"
@@ -332,7 +378,23 @@
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/calories_profile"
         app:layout_constraintTop_toTopOf="@+id/calories_profile" />
+    <!-- Calories -->
 
+
+    <!-- Workout -->
+    <TextView
+        android:id="@+id/workoutView_profile"
+        android:layout_width="85dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="80dp"
+        android:text="Time Working Out"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/workout_profile"
+        app:layout_constraintEnd_toEndOf="@+id/workout_profile"
+        app:layout_constraintStart_toStartOf="@+id/dailygoalsView_profile"
+        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/workout_profile"
@@ -348,6 +410,31 @@
         app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile"
         app:layout_constraintVertical_bias="0.747" />
 
+    <TextView
+        android:id="@+id/workoutLine"
+        android:layout_width="167dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/workoutView_profile"
+        app:layout_constraintTop_toTopOf="@+id/workout_profile" />
+    <TextView
+        android:id="@+id/hours_profile"
+        android:layout_width="51dp"
+        android:layout_height="22dp"
+        android:text="hours"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toStartOf="@+id/workout_profile"
+        app:layout_constraintTop_toBottomOf="@+id/calories_profile"
+        app:layout_constraintVertical_bias="0.579" />
+    <!-- Workout -->
+
+
+    <!-- Edit Profile Button -->
     <Button
         android:id="@+id/saveChangesButton_profile"
         android:layout_width="301dp"
@@ -362,83 +449,8 @@
         app:layout_constraintStart_toStartOf="@+id/content_profile"
         app:layout_constraintTop_toTopOf="@+id/content_profile"
         app:layout_constraintVertical_bias="0.951" />
+    <!-- Edit Profile Button -->
 
-
-    <TextView
-        android:id="@+id/heightInchesView_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="176dp"
-        android:text="inches"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/heightInchesLine"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/dailygoalsView_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="260dp"
-        android:text="Daily Goals"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toTopOf="@+id/content_profile" />
-
-
-    <TextView
-        android:id="@+id/workoutView_profile"
-        android:layout_width="85dp"
-        android:layout_height="12dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="80dp"
-        android:text="Time Working Out"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/workout_profile"
-        app:layout_constraintEnd_toEndOf="@+id/workout_profile"
-        app:layout_constraintStart_toStartOf="@+id/dailygoalsView_profile"
-        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile"
-        app:layout_constraintVertical_bias="1.0" />
-
-
-    <TextView
-        android:id="@+id/hours_profile"
-        android:layout_width="51dp"
-        android:layout_height="22dp"
-        android:text="hours"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.385"
-        app:layout_constraintStart_toStartOf="@+id/workout_profile"
-        app:layout_constraintTop_toBottomOf="@+id/calories_profile"
-        app:layout_constraintVertical_bias="0.579" />
-
-    <TextView
-        android:id="@+id/workoutLine"
-        android:layout_width="167dp"
-        android:layout_height="16dp"
-        android:layout_marginTop="11dp"
-        android:text="@string/lineUnder"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/workoutView_profile"
-        app:layout_constraintTop_toTopOf="@+id/workout_profile" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="99dp"
-        android:layout_height="90dp"
-        android:background="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@+id/age_profile"
-        app:layout_constraintEnd_toStartOf="@+id/name_profile"
-        app:layout_constraintHorizontal_bias="0.349"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toTopOf="@+id/content_profile"
-        app:layout_constraintVertical_bias="0.387" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
