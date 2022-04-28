@@ -153,19 +153,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return currentCalorie;
     }
 
-    public void setUserCurrentWater(int val) {
-        int currentWater = getUserCurrentWater();
+    public int getUserGoalWater() {
+        int goalWater = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-//        String queryString = "update users set u_water_current = (replace(u_water_current, currentWater, val));";
-//        db.execSQL(queryString);
+        String queryString = "select u_water_daily_goal from users;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()) {
+            goalWater = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return goalWater;
+    }
+
+    public int getUserGoalCalorie() {
+        int goalCalorie = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select u_calorie_daily_goal from users;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            goalCalorie = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return goalCalorie;
+    }
+
+    public void setUserCurrentWater(int val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update users set u_water_current = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
         db.close();
     }
 
     public void setUserCurrentCalorie(int val) {
-        int currentCalorie = getUserCurrentCalorie();
+        String userName = getUsername();
         SQLiteDatabase db = this.getReadableDatabase();
-//        String queryString = "update users set u_calorie_current = replace(u_calorie_current, currentCalorie, val);";
-//        db.execSQL(queryString);
+        String queryString = "update users set u_calorie_current = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
         db.close();
     }
 

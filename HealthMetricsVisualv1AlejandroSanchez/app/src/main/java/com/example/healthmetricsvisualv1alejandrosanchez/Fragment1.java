@@ -62,8 +62,10 @@ public class Fragment1 extends Fragment {
         user_current_calorie = Integer.toString(databaseHelper.getUserCurrentCalorie());
 
         // Variables and placeholders
-        int updateCalories = Integer.parseInt(newCalorie.getText().toString());
+        int waterGoal = databaseHelper.getUserGoalWater();
+        int calorieGoal = databaseHelper.getUserGoalCalorie();
         double[] heightDataArray = databaseHelper.getUserHeight();
+        String goal = "";
 
         // Update what is on the page
         name.setText(user_name);
@@ -71,6 +73,9 @@ public class Fragment1 extends Fragment {
         weight.setText(user_weight);
         height1.setText(Integer.toString((int) heightDataArray[0]));
         height2.setText(Integer.toString((int) heightDataArray[1]));
+        if (waterGoal == 0) {
+
+        }
         currentWater.setText(user_current_water);
         currentCalorie.setText(user_current_calorie);
 
@@ -82,7 +87,7 @@ public class Fragment1 extends Fragment {
                 // Set the new value into the database
                 databaseHelper.setUserCurrentWater(current_val);
                 // Update the text
-                currentWater.setText(current_val);
+                currentWater.setText(current_val + "/" + current_val);
             }
         });
 
@@ -91,16 +96,17 @@ public class Fragment1 extends Fragment {
             public void onClick(View view) {
                 int current_val = databaseHelper.getUserCurrentWater() - 1;
                 databaseHelper.setUserCurrentWater(current_val);
-                currentWater.setText(current_val);
+                currentWater.setText(current_val + "/" + current_val);
             }
         });
 
         updateCalorieButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int updateCalories = Integer.parseInt(newCalorie.getText().toString());
                 int current_val = updateCalories;
                 databaseHelper.setUserCurrentCalorie(current_val);
-                currentCalorie.setText(current_val);
+                currentCalorie.setText(current_val + "/" + current_val);
             }
         });
         return rootView;
