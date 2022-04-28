@@ -6,6 +6,7 @@ public class UserModel {
     private int height1;
     private int height2;
     private double weight;
+    private double goalWeight;
     private int water;
     private int calories;
     private double workout;

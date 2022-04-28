@@ -7,6 +7,9 @@
     android:background="@color/bg_gray"
     android:gravity="center">
 
+
+
+
     <TextView
         android:id="@+id/title_profile"
         android:layout_width="wrap_content"
@@ -22,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/content_profile"
         android:layout_width="369dp"
@@ -33,175 +37,141 @@
         android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/name_profile"
-        android:layout_width="177dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:inputType="text"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toTopOf="@+id/content_profile" />
-
-    <EditText
-        android:id="@+id/heightFeet_profile"
-        android:layout_width="75dp"
-        android:layout_height="49dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:inputType="number"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.083" />
-
-    <EditText
-        android:id="@+id/heightInches_profile"
-        android:layout_width="75dp"
-        android:layout_height="49dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:inputType="number"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.083" />
-
-    <EditText
-        android:id="@+id/weight_profile"
-        android:layout_width="150dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:inputType="numberDecimal"
-        android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toEndOf="@+id/age_profile"
-        app:layout_constraintTop_toBottomOf="@+id/name_profile" />
-
-    <EditText
-        android:id="@+id/age_profile"
-        android:layout_width="125dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="36dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toTopOf="@+id/content_profile"
-        app:layout_constraintVertical_bias="0.264" />
-
-    <EditText
-        android:id="@+id/water_profile"
-        android:layout_width="100dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="36dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.435" />
-
-    <EditText
-        android:id="@+id/workout_profile"
-        android:layout_width="167dp"
-        android:layout_height="49dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.178"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/water_profile"
-        app:layout_constraintVertical_bias="0.29" />
-
-    <EditText
-        android:id="@+id/calories_profile"
-        android:layout_width="167dp"
-        android:layout_height="49dp"
-        android:backgroundTint="@color/black"
-        android:textSize="20dp"
-        android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toEndOf="@+id/water_profile"
-        app:layout_constraintTop_toBottomOf="@+id/weight_profile"
-        app:layout_constraintVertical_bias="0.626" />
-
-    <Button
-        android:id="@+id/saveChangesButton_profile"
-        android:layout_width="301dp"
-        android:layout_height="72dp"
-        android:backgroundTint="@color/green"
-        android:text="Save Changes"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toTopOf="@+id/content_profile"
-        app:layout_constraintVertical_bias="0.951" />
-
     <TextView
         android:id="@+id/nameView_profile"
         android:layout_width="29dp"
         android:layout_height="13dp"
+        android:layout_marginTop="16dp"
         android:text="Name"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/name_profile"
         app:layout_constraintEnd_toEndOf="@+id/name_profile"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/name_profile"
-        app:layout_constraintTop_toTopOf="@+id/name_profile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/content_profile" />
+    <TextView
+        android:id="@+id/name_profile"
+        android:layout_width="176dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/black"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile" />
+    <TextView
+        android:id="@+id/nameLine"
+        android:layout_width="186dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:gravity="bottom"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/name_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/name_profile"
+        app:layout_constraintTop_toTopOf="@+id/name_profile" />
+
+
+
 
     <TextView
         android:id="@+id/ageView_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Age"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/age_profile"
+        app:layout_constraintBottom_toTopOf="@+id/age_profile"
         app:layout_constraintEnd_toEndOf="@+id/age_profile"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/age_profile"
-        app:layout_constraintTop_toTopOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+    <TextView
+        android:id="@+id/age_profile"
+        android:layout_width="129dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="36dp"
+        android:backgroundTint="@color/black"
+        android:gravity="bottom"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile"
+        app:layout_constraintVertical_bias="0.294" />
+    <TextView
+        android:id="@+id/ageLine"
+        android:layout_width="128dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/age_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/age_profile"
+        app:layout_constraintTop_toTopOf="@+id/age_profile" />
+
+
 
     <TextView
         android:id="@+id/weightView_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:text="Weight"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/weight_profile"
         app:layout_constraintEnd_toEndOf="@+id/weight_profile"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/weight_profile"
-        app:layout_constraintTop_toTopOf="@+id/weight_profile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/nameLine" />
+
+    <TextView
+        android:id="@+id/weightLine"
+        android:layout_width="117dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/weight_profile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/weight_profile"
+        app:layout_constraintTop_toTopOf="@+id/weight_profile" />
+    <TextView
+        android:id="@+id/weight_profile"
+        android:layout_width="99dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="76dp"
+        android:backgroundTint="@color/black"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.257"
+        app:layout_constraintStart_toEndOf="@+id/age_profile"
+        app:layout_constraintTop_toBottomOf="@+id/name_profile" />
+
+
+    <TextView
+        android:id="@+id/weight_lbs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="2dp"
+        android:text="lbs"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/weightLine"
+        app:layout_constraintEnd_toEndOf="@+id/weightLine"
+        app:layout_constraintTop_toBottomOf="@+id/nameLine"
+        app:layout_constraintVertical_bias="0.964" />
 
     <TextView
         android:id="@+id/heightView_profile"
@@ -209,104 +179,254 @@
         android:layout_height="wrap_content"
         android:text="Height"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/heightFeet_profile"
+        app:layout_constraintBottom_toTopOf="@+id/heightFeet_profile"
         app:layout_constraintEnd_toEndOf="@+id/heightFeet_profile"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/heightFeet_profile"
-        app:layout_constraintTop_toTopOf="@+id/heightFeet_profile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/heightFeetLine"
+        app:layout_constraintTop_toBottomOf="@+id/ageLine"
+        app:layout_constraintVertical_bias="1.0" />
+    <TextView
+        android:id="@+id/heightFeet_profile"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:backgroundTint="@color/black"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="0.126" />
+    <TextView
+        android:id="@+id/heightFeetLine"
+        android:layout_width="66dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/heightFeet_profile" />
 
     <TextView
         android:id="@+id/heightFeetView_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:text="feet"
         android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/heightFeetLine"
+        app:layout_constraintStart_toStartOf="@+id/heightFeet_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="1.0" />
 
-        app:layout_constraintBottom_toTopOf="@+id/dailygoalsView_profile"
+    <TextView
+        android:id="@+id/heightInchesLine"
+        android:layout_width="85dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/heightFeet_profile"
-        app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.66" />
-
+        app:layout_constraintTop_toTopOf="@+id/heightInches_profile" />
     <TextView
-        android:id="@+id/heightInchesView_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="inches"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/calories_profile"
-        app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/heightInches_profile"
-        app:layout_constraintTop_toBottomOf="@+id/age_profile"
-        app:layout_constraintVertical_bias="0.453" />
-
-    <TextView
-        android:id="@+id/dailygoalsView_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daily Goals"
+        android:id="@+id/heightInches_profile"
+        android:layout_width="75dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="128dp"
+        android:backgroundTint="@color/black"
+        android:inputType="number"
+        android:maxLines="1"
         android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/water_profile"
         app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="@+id/content_profile"
-        app:layout_constraintTop_toBottomOf="@+id/heightFeet_profile"
-        app:layout_constraintVertical_bias="0.704" />
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="@+id/heightInchesLine"
+        app:layout_constraintTop_toBottomOf="@+id/ageLine" />
+
+
+
+
 
     <TextView
         android:id="@+id/waterView_profile"
         android:layout_width="30dp"
         android:layout_height="12dp"
+        android:layout_marginTop="12dp"
         android:text="Water"
         android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/water_profile"
-        app:layout_constraintEnd_toEndOf="@+id/water_profile"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/water_profile"
+        app:layout_constraintStart_toStartOf="@+id/water_profile"
+        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile" />
+    <TextView
+        android:id="@+id/water_profile"
+        android:layout_width="100dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/black"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile" />
+    <TextView
+        android:id="@+id/waterLine"
+        android:layout_width="113dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/water_profile"
+        app:layout_constraintTop_toTopOf="@+id/water_profile" />
+    <TextView
+        android:id="@+id/waterCups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:text="cup(s)"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/waterLine"
         app:layout_constraintStart_toStartOf="@+id/water_profile"
         app:layout_constraintTop_toTopOf="@+id/water_profile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.714" />
 
-    <TextView
-        android:id="@+id/workoutView_profile"
-        android:layout_width="85dp"
-        android:layout_height="12dp"
-        android:text="Time Working Out"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/workout_profile"
-        app:layout_constraintEnd_toEndOf="@+id/workout_profile"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/workout_profile"
-        app:layout_constraintTop_toTopOf="@+id/workout_profile"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/caloriesView_profile"
         android:layout_width="41dp"
         android:layout_height="13dp"
+        android:layout_marginBottom="24dp"
         android:text="Calories"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/calories_profile"
-        app:layout_constraintEnd_toEndOf="@+id/calories_profile"
+        app:layout_constraintEnd_toEndOf="@+id/caloriesLine"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/calories_profile"
-        app:layout_constraintTop_toTopOf="@+id/calories_profile"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/calories_profile"
+        android:layout_width="144dp"
+        android:layout_height="23dp"
+        android:backgroundTint="@color/black"
+        android:inputType="number"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.438"
+        app:layout_constraintStart_toEndOf="@+id/water_profile"
+        app:layout_constraintTop_toBottomOf="@+id/weight_profile"
+        app:layout_constraintVertical_bias="0.612" />
+
+
+    <TextView
+        android:id="@+id/caloriesLine"
+        android:layout_width="146dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/calories_profile"
+        app:layout_constraintTop_toTopOf="@+id/calories_profile" />
+
+
+    <TextView
+        android:id="@+id/workout_profile"
+        android:layout_width="167dp"
+        android:layout_height="25dp"
+        android:backgroundTint="@color/black"
+        android:maxLines="1"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile"
+        app:layout_constraintVertical_bias="0.747" />
+
+    <Button
+        android:id="@+id/saveChangesButton_profile"
+        android:layout_width="301dp"
+        android:layout_height="72dp"
+        android:backgroundTint="@color/green"
+        android:text="Edit Profile"
+        android:textSize="20dp"
+        android:textColor="#fafafa"
+        app:layout_constraintBottom_toBottomOf="@+id/content_profile"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile"
+        app:layout_constraintVertical_bias="0.951" />
+
+
+    <TextView
+        android:id="@+id/heightInchesView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="176dp"
+        android:text="inches"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/heightInchesLine"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintTop_toBottomOf="@+id/age_profile"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/dailygoalsView_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:text="Daily Goals"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/content_profile"
+        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintStart_toStartOf="@+id/content_profile"
+        app:layout_constraintTop_toTopOf="@+id/content_profile" />
+
+
+    <TextView
+        android:id="@+id/workoutView_profile"
+        android:layout_width="85dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="80dp"
+        android:text="Time Working Out"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/workout_profile"
+        app:layout_constraintEnd_toEndOf="@+id/workout_profile"
+        app:layout_constraintStart_toStartOf="@+id/dailygoalsView_profile"
+        app:layout_constraintTop_toBottomOf="@+id/dailygoalsView_profile"
+        app:layout_constraintVertical_bias="1.0" />
+
 
     <TextView
         android:id="@+id/hours_profile"
         android:layout_width="51dp"
         android:layout_height="22dp"
         android:text="hours"
-
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/saveChangesButton_profile"
         app:layout_constraintEnd_toEndOf="@+id/content_profile"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toEndOf="@+id/workout_profile"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toStartOf="@+id/workout_profile"
         app:layout_constraintTop_toBottomOf="@+id/calories_profile"
-        app:layout_constraintVertical_bias="0.537" />
+        app:layout_constraintVertical_bias="0.579" />
+
+    <TextView
+        android:id="@+id/workoutLine"
+        android:layout_width="167dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/lineUnder"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/workoutView_profile"
+        app:layout_constraintTop_toTopOf="@+id/workout_profile" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -315,10 +435,10 @@
         android:background="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toTopOf="@+id/age_profile"
         app:layout_constraintEnd_toStartOf="@+id/name_profile"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="@+id/content_profile"
         app:layout_constraintTop_toTopOf="@+id/content_profile"
-        app:layout_constraintVertical_bias="0.714" />
+        app:layout_constraintVertical_bias="0.387" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +20,7 @@ public class Fragment_Profile extends Fragment {
 
     SQLiteDatabase sqLiteDatabase;
     DatabaseHelper myDB;
-    EditText editProfileName, editProfileAge, editProfileWeight,
+    TextView editProfileName, editProfileAge, editProfileWeight,
         editProfileHeightFeet, editProfileHeightInches, editProfileWater,
         editProfileCalories, editProfileWorkout;
     Button btnSaveChanges;
@@ -35,14 +36,15 @@ public class Fragment_Profile extends Fragment {
 
         myDB = new DatabaseHelper(getActivity());
 
-        editProfileName = (EditText) rootView.findViewById(R.id.name_profile);
-        editProfileAge = (EditText) rootView.findViewById(R.id.age_profile);
-        editProfileWeight = (EditText) rootView.findViewById(R.id.weight_profile);
-        editProfileHeightFeet = (EditText) rootView.findViewById(R.id.heightFeet_profile);
-        editProfileHeightInches = (EditText) rootView.findViewById(R.id.heightInches_profile);
-        editProfileWater = (EditText) rootView.findViewById(R.id.water_profile);
-        editProfileCalories = (EditText) rootView.findViewById(R.id.calories_profile);
-        editProfileWorkout = (EditText) rootView.findViewById(R.id.workout_profile);
+
+        editProfileName = (TextView) rootView.findViewById(R.id.name_profile);
+        editProfileAge = (TextView) rootView.findViewById(R.id.age_profile);
+        editProfileWeight = (TextView) rootView.findViewById(R.id.weight_profile);
+        editProfileHeightFeet = (TextView) rootView.findViewById(R.id.heightFeet_profile);
+        editProfileHeightInches = (TextView) rootView.findViewById(R.id.heightInches_profile);
+        editProfileWater = (TextView) rootView.findViewById(R.id.water_profile);
+        editProfileCalories = (TextView) rootView.findViewById(R.id.calories_profile);
+        editProfileWorkout = (TextView) rootView.findViewById(R.id.workout_profile);
 
         btnSaveChanges = (Button) rootView.findViewById(R.id.saveChangesButton_profile);
 
@@ -59,6 +61,7 @@ public class Fragment_Profile extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         sqLiteDatabase = myDB.getReadableDatabase();
         cursor = myDB.userData();
 
@@ -66,6 +69,7 @@ public class Fragment_Profile extends Fragment {
             do{
                 String name, age, weight, heightFeet, heightInches, water, calories, workout;
 
+                // sets cursor to specific text boxes from profile layout
                 name = cursor.getString(0);
                 age = cursor.getString(1);
                 heightFeet = cursor.getString(2);
@@ -78,6 +82,7 @@ public class Fragment_Profile extends Fragment {
                 //DatabaseHelper newDB = new DatabaseHelper(name, age, weight, heightFeet, heightInches, water, calories, workout);
                 //la.add(myDB);
 
+                // set edittext boxes with data from database
                 editProfileName.setText(name);
                 editProfileAge.setText(age);
                 editProfileWeight.setText(weight);
@@ -86,9 +91,9 @@ public class Fragment_Profile extends Fragment {
                 editProfileWater.setText(water);
                 editProfileCalories.setText(calories);
                 editProfileWorkout.setText(workout);
+
             } while(cursor.moveToNext());
         }
-
     }
 
     private void addData() {
@@ -105,8 +110,6 @@ public class Fragment_Profile extends Fragment {
                         editProfileCalories.getId(),
                         editProfileWorkout.getId()
                 );
-
-
             }
         });
     }
