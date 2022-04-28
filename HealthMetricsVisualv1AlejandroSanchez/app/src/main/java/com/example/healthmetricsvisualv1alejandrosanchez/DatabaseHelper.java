@@ -57,6 +57,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //                return true;
 //            }
 //        }
+
+        db.close();
         return true;
     }
 
@@ -71,7 +73,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             username = cursor.getString(0);
         }
 //
-//        cursor.close();
+        cursor.close();
+        db.close();
         return username;
     }
 
@@ -86,7 +89,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             userage = cursor.getString(0);
         }
 //
-//        cursor.close();
+        cursor.close();
+        db.close();
         return userage;
     }
 
@@ -101,41 +105,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             userweight = cursor.getString(0);
         }
 //
-//        cursor.close();
+        cursor.close();
+        db.close();
         return userweight;
     }
 
     public double[] getUserHeight() {
         double[] height = new double [2];
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_height_1, u_height_2 from users limit 1";
+        String queryString = "select u_height_1, u_height_2 from users limit 1;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()){
             height[0] = cursor.getDouble(0);
             height[1] = cursor.getDouble(1);
         }
+        cursor.close();
+        db.close();
         return height;
     }
 
     public int getUserCurrentWater() {
         int currentWater = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_water_current from users";
+        String queryString = "select u_water_current from users;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()) {
             currentWater = cursor.getInt(0);
         }
+        cursor.close();
+        db.close();
         return currentWater;
     }
 
-    public void setUserCurrentWater(int val) {
-        String name = getUsername();
+    public int getUserCurrentCalorie() {
+        int currentCalorie = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "replace into users(u_name, u_water_current) values('" + name + "'," + val + ");";
-        db.execSQL(queryString);
+        String queryString = "select u_calorie_current from users;";
+        Cursor cursor = db.rawQuery(queryString, null);
 
+        while (cursor.moveToNext()) {
+            currentCalorie = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return currentCalorie;
+    }
+
+    public void setUserCurrentWater(int val) {
+        int currentWater = getUserCurrentWater();
+        SQLiteDatabase db = this.getReadableDatabase();
+//        String queryString = "update users set u_water_current = (replace(u_water_current, currentWater, val));";
+//        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setUserCurrentCalorie(int val) {
+        int currentCalorie = getUserCurrentCalorie();
+        SQLiteDatabase db = this.getReadableDatabase();
+//        String queryString = "update users set u_calorie_current = replace(u_calorie_current, currentCalorie, val);";
+//        db.execSQL(queryString);
+        db.close();
     }
 
     public List<UserModel> getEveryone() {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Health Metrics Visual v1 Alejandro Sanchez</string>
+    <string name="app_name">Health Visio</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="tab_text_1">Wellness</string>
     <string name="tab_text_2">Calories</string>

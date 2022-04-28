@@ -44,7 +44,7 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
         });
-        overridePendingTransition(0, 0);
+
     }
 
 

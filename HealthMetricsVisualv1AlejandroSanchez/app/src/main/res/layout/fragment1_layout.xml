@@ -11,7 +11,7 @@
         android:id="@+id/wellness_name_text"
         android:layout_width="54dp"
         android:layout_height="19dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Name"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile" />
@@ -38,7 +38,7 @@
         android:id="@+id/wellness_age_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Age"
         app:layout_constraintStart_toStartOf="@+id/wellness_name_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_name_text" />
@@ -55,7 +55,7 @@
         android:id="@+id/wellness_weight_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Weight"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile2"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile2" />
@@ -64,7 +64,7 @@
         android:id="@+id/wellness_waterIntake_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="Water Intake"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile3"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile3" />
@@ -73,7 +73,7 @@
         android:id="@+id/wellness_waterIntake_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:text="Calorie Intake"
         app:layout_constraintStart_toStartOf="@+id/wellness_waterIntake_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_waterIntake_text" />
@@ -102,7 +102,7 @@
         android:id="@+id/wellness_height_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Height"
         app:layout_constraintStart_toStartOf="@+id/wellness_weight_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_weight_text" />
@@ -169,7 +169,7 @@
         android:id="@+id/wellness_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:text="Your Profile"
         android:textSize="20sp"
@@ -180,8 +180,8 @@
         android:id="@+id/wellness_profile2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Your Statistics"
+        android:layout_marginTop="24dp"
+        android:text="Personal Info"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_age_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_age_text" />
@@ -190,17 +190,17 @@
         android:id="@+id/wellness_profile3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Daily Goals"
+        android:layout_marginTop="24dp"
+        android:text="Daily Wellness"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_height_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_height_text" />
 
     <Button
         android:id="@+id/wellness_add_water_button"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_user_water"
         app:layout_constraintStart_toEndOf="@+id/wellness_user_water"
@@ -208,13 +208,36 @@
 
     <Button
         android:id="@+id/wellness_subtract_water_button"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="-"
-        app:layout_constraintBottom_toBottomOf="@+id/wellness_user_water"
+        app:layout_constraintBottom_toBottomOf="@+id/wellness_add_water_button"
         app:layout_constraintStart_toEndOf="@+id/wellness_add_water_button"
-        app:layout_constraintTop_toTopOf="@+id/wellness_user_water"
+        app:layout_constraintTop_toTopOf="@+id/wellness_add_water_button"
         app:layout_constraintVertical_bias="0.476" />
+
+    <Button
+        android:id="@+id/wellness_user_edit_calories_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="UPDATE"
+        app:layout_constraintBottom_toBottomOf="@+id/wellness_user_edit_calories"
+        app:layout_constraintStart_toEndOf="@+id/wellness_user_edit_calories"
+        app:layout_constraintTop_toTopOf="@+id/wellness_user_edit_calories"
+        app:layout_constraintVertical_bias="0.517" />
+
+    <EditText
+        android:id="@+id/wellness_user_edit_calories"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Calories"
+        app:layout_constraintBottom_toBottomOf="@+id/wellness_user_calorie"
+        app:layout_constraintStart_toStartOf="@+id/wellness_add_water_button"
+        app:layout_constraintTop_toTopOf="@+id/wellness_user_calorie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
