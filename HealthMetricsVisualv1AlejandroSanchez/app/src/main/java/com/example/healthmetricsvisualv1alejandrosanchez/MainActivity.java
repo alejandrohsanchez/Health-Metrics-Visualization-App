@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 UserModel userModel;
 
                 try {
-                    userModel = new UserModel(-1, user_name.getText().toString(), Integer.parseInt(user_age.getText().toString()), Integer.parseInt(user_height_1.getText().toString()), Integer.parseInt(user_height_2.getText().toString()), Double.parseDouble(user_weight.getText().toString()));
+                    userModel = new UserModel(-1, user_name.getText().toString(), Integer.parseInt(user_age.getText().toString()), Integer.parseInt(user_height_1.getText().toString()), Integer.parseInt(user_height_2.getText().toString()), Double.parseDouble(user_weight.getText().toString()), 0, 0, 0, 0);
                     Toast.makeText(MainActivity.this, userModel.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
                     Toast.makeText(MainActivity.this, "Error creating user", Toast.LENGTH_SHORT).show();
-                    userModel = new UserModel(-1, "error", 0, 0, 0, 0);
+                    userModel = new UserModel(-1, "error", 0, 0, 0, 0, 0, 0, 0, 0);
                 }
 
                 DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         DatabaseHelper databaseHelper;
         databaseHelper = new DatabaseHelper(MainActivity.this);
         String user_name = databaseHelper.getUsername();
-        Toast.makeText(MainActivity.this, "Welcome " + user_name, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, "Welcome " + user_name, Toast.LENGTH_SHORT).show();
         if (user_name=="") {
             return false;
         } else {

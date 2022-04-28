@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createTableStatement =   "CREATE TABLE users (u_name TEXT, u_age INT, u_height_1 INT, u_height_2 INT, u_weight DECIMAL);";
+        String createTableStatement =   "CREATE TABLE users (u_name TEXT, u_age INT, u_height_1 INT, u_height_2 INT, u_weight DECIMAL, u_water_current INT, u_water_daily_goal INT, u_calorie_current INT, u_calorie_daily_goal INT);";
         sqLiteDatabase.execSQL(createTableStatement);
     }
 
@@ -39,6 +39,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("u_height_1", userModel.getHeight1());
         cv.put("u_height_2", userModel.getHeight2());
         cv.put("u_weight", userModel.getWeight());
+        cv.put("u_water_current", userModel.getCurrentWater());
+        cv.put("u_water_daily_goal", userModel.getDailyWater());
+        cv.put("u_calorie_current", userModel.getCurrentCalorie());
+        cv.put("u_calorie_daily_goal", userModel.getDailyCalorie());
 
         long insert = db.insert("users", null, cv);
 //        if (cv.get("c_name") == "error" || cv.get("c_name").toString().isEmpty()) {
@@ -101,6 +105,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return userweight;
     }
 
+    public double[] getUserHeight() {
+        double[] height = new double [2];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select u_height_1, u_height_2 from users limit 1";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()){
+            height[0] = cursor.getDouble(0);
+            height[1] = cursor.getDouble(1);
+        }
+        return height;
+    }
+
+    public int getUserCurrentWater() {
+        int currentWater = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select u_water_current from users";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()) {
+            currentWater = cursor.getInt(0);
+        }
+        return currentWater;
+    }
+
+    public void setUserCurrentWater(int val) {
+        String name = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "replace into users(u_name, u_water_current) values('" + name + "'," + val + ");";
+        db.execSQL(queryString);
+
+    }
+
     public List<UserModel> getEveryone() {
         List<UserModel> returnList = new ArrayList<>();
 
@@ -126,8 +163,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int userHeight1 = cursor.getInt(3);
                 int userHeight2 = cursor.getInt(4);
                 double userWeight = cursor.getDouble(5);
+                int userCurrentWater = cursor.getInt(6);
+                int userDailyWater = cursor.getInt(7);
+                int userCurrentCalorie = cursor.getInt(8);
+                int userDailyCalorie = cursor.getInt(9);
 
-                UserModel newCustomer = new UserModel(userID, userName, userAge, userHeight1, userHeight2, userWeight);
+                UserModel newCustomer = new UserModel(userID, userName, userAge, userHeight1, userHeight2, userWeight, userCurrentWater, userDailyWater, userCurrentCalorie, userDailyCalorie);
                 returnList.add(newCustomer);
 
 

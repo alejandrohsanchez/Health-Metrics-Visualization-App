@@ -1,5 +1,6 @@
 package com.example.healthmetricsvisualv1alejandrosanchez;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,7 +21,7 @@ import com.example.healthmetricsvisualv1alejandrosanchez.databinding.ActivityMai
 public class MainActivity2 extends AppCompatActivity {
 
     private ActivityMain2Binding binding;
-    DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,22 +36,6 @@ public class MainActivity2 extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
         View welcomeMessage = findViewById(R.id.welcomeText);
-
-        name = findViewById(R.id.wellness_user_name);
-        age = findViewById(R.id.wellness_user_age);
-        weight = findViewById(R.id.wellness_user_weight);
-
-        databaseHelper = new DatabaseHelper(MainActivity2.this);
-
-        String user_name, user_age, user_weight;
-        user_name = databaseHelper.getUsername();
-        user_age = databaseHelper.getUserAge();
-        user_weight = databaseHelper.getUserWeight();
-
-        name.setText(user_name);
-        age.setText(user_age);
-        weight.setText(user_weight);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,5 +44,8 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
         });
+        overridePendingTransition(0, 0);
     }
+
+
 }
