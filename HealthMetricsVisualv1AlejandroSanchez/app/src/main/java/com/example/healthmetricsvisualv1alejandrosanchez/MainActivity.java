@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
                 UserModel userModel;
 
                 try {
-                    userModel = new UserModel(-1, user_name.getText().toString(), Integer.parseInt(user_age.getText().toString()), Integer.parseInt(user_height_1.getText().toString()), Integer.parseInt(user_height_2.getText().toString()), Double.parseDouble(user_weight.getText().toString()), 0, 0, 0, 0);
+                    userModel = new UserModel(-1, user_name.getText().toString(), Integer.parseInt(user_age.getText().toString()), Integer.parseInt(user_height_1.getText().toString()), Integer.parseInt(user_height_2.getText().toString()), Double.parseDouble(user_weight.getText().toString()), 0, 0, 0, 0, 0, 0, 0);
                     Toast.makeText(MainActivity.this, userModel.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e) {
                     Toast.makeText(MainActivity.this, "Error creating user", Toast.LENGTH_SHORT).show();
-                    userModel = new UserModel(-1, "error", 0, 0, 0, 0, 0, 0, 0, 0);
+                    userModel = new UserModel(-1, "error", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
                 }
 
                 DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
 
                 // Proceed to the next page
-                openMainActivity2();
+                //openMainActivity2();
+                openGoalSetup();
             }
         });
 
@@ -62,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMainActivity2() {
         Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
+    }
+
+    public void openGoalSetup() {
+        Intent intent = new Intent(this, GoalSetup.class);
         startActivity(intent);
     }
 

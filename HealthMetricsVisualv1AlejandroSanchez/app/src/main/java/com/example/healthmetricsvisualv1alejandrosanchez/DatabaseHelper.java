@@ -18,7 +18,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String createTableStatement =   "CREATE TABLE users (u_name TEXT, u_age INT, u_height_1 INT, u_height_2 INT, u_weight DECIMAL, u_water_current INT, u_water_daily_goal INT, u_calorie_current INT, u_calorie_daily_goal INT);";
+        String createTableStatement =   "CREATE TABLE user" +
+                                        "(u_name TEXT," +
+                                        "u_age INT," +
+                                        "u_height_1 INT," +
+                                        "u_height_2 INT," +
+                                        "u_weight DECIMAL," +
+                                        "u_weight_goal DECIMAL," +
+                                        "u_water_current INT," +
+                                        "u_water_goal INT," +
+                                        "u_calorie_current DECIMAL," +
+                                        "u_calorie_goal DECIMAL," +
+                                        "u_workout_current INT," +
+                                        "u_workout_goal INT);";
         sqLiteDatabase.execSQL(createTableStatement);
     }
 
@@ -39,12 +51,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("u_height_1", userModel.getHeight1());
         cv.put("u_height_2", userModel.getHeight2());
         cv.put("u_weight", userModel.getWeight());
+        cv.put("u_weight_goal", userModel.getGoalWeight());
         cv.put("u_water_current", userModel.getCurrentWater());
-        cv.put("u_water_daily_goal", userModel.getDailyWater());
+        cv.put("u_water_goal", userModel.getGoalWater());
         cv.put("u_calorie_current", userModel.getCurrentCalorie());
-        cv.put("u_calorie_daily_goal", userModel.getDailyCalorie());
+        cv.put("u_calorie_goal", userModel.getGoalCalorie());
+        cv.put("u_workout_current", userModel.getCurrentWorkout());
+        cv.put("u_workout_goal", userModel.getGoalWorkout());
 
-        long insert = db.insert("users", null, cv);
+        long insert = db.insert("user", null, cv);
 //        if (cv.get("c_name") == "error" || cv.get("c_name").toString().isEmpty()) {
 //            return false;
 //        }
@@ -61,12 +76,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return true;
     }
-
+    // Get personal information -----------------------------------
     public String getUsername() {
         String username = "";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "SELECT u_name FROM users LIMIT 1;";
+        String queryString = "SELECT u_name FROM user LIMIT 1;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()){
@@ -82,7 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String userage = "";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "SELECT u_age FROM users LIMIT 1;";
+        String queryString = "SELECT u_age FROM user LIMIT 1;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()){
@@ -98,7 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String userweight = "";
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "SELECT u_weight FROM users LIMIT 1;";
+        String queryString = "SELECT u_weight FROM user LIMIT 1;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()){
@@ -113,7 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public double[] getUserHeight() {
         double[] height = new double [2];
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_height_1, u_height_2 from users limit 1;";
+        String queryString = "select u_height_1, u_height_2 from user limit 1;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()){
@@ -125,10 +140,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return height;
     }
 
+    // Current data -----------------------------------
     public int getUserCurrentWater() {
         int currentWater = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_water_current from users;";
+        String queryString = "select u_water_current from user;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()) {
@@ -139,10 +155,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return currentWater;
     }
 
-    public int getUserCurrentCalorie() {
+    public double getUserCurrentCalorie() {
         int currentCalorie = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_calorie_current from users;";
+        String queryString = "select u_calorie_current from user;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while (cursor.moveToNext()) {
@@ -153,10 +169,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return currentCalorie;
     }
 
+    public int getUserCurrentWorkout() {
+        int currentWorkout = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select u_workout_current from user;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while(cursor.moveToNext()) {
+            currentWorkout = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return currentWorkout;
+    }
+
+    // Get goal data -----------------------------------
+    public double getUserGoalWeight() {
+        double goalWeight = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select u_weight_goal from user;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            goalWeight = cursor.getDouble(0);
+        }
+        cursor.close();
+        db.close();
+        return goalWeight;
+    }
+
     public int getUserGoalWater() {
         int goalWater = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_water_daily_goal from users;";
+        String queryString = "select u_water_goal from user;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while(cursor.moveToNext()) {
@@ -167,10 +212,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return goalWater;
     }
 
-    public int getUserGoalCalorie() {
-        int goalCalorie = 0;
+    public double getUserGoalCalorie() {
+        double goalCalorie = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "select u_calorie_daily_goal from users;";
+        String queryString = "select u_calorie_goal from user;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         while (cursor.moveToNext()) {
@@ -181,27 +226,92 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return goalCalorie;
     }
 
+    public int getUserGoalWorkout() {
+        int goalWorkout = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select u_workout_goal from user;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            goalWorkout = cursor.getInt(0);
+        }
+        cursor.close();
+        db.close();
+        return goalWorkout;
+    }
+
+    // Set goal data -----------------------------------
+    public void setUserGoalWater(int val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update user set u_water_goal = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setUserGoalCalorie(double val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update user set u_calorie_goal = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setUserGoalWeight(double val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update user set u_weight_goal = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setUserGoalWorkout(int val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update user set u_workout_goal = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    // Set current data -----------------------------------
     public void setUserCurrentWater(int val) {
         String userName = getUsername();
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "update users set u_water_current = " + val + " where u_name = '" + userName + "';";
+        String queryString = "update user set u_water_current = " + val + " where u_name = '" + userName + "';";
         db.execSQL(queryString);
         db.close();
     }
 
-    public void setUserCurrentCalorie(int val) {
+    public void setUserCurrentCalorie(double val) {
         String userName = getUsername();
         SQLiteDatabase db = this.getReadableDatabase();
-        String queryString = "update users set u_calorie_current = " + val + " where u_name = '" + userName + "';";
+        String queryString = "update user set u_calorie_current = " + val + " where u_name = '" + userName + "';";
         db.execSQL(queryString);
         db.close();
     }
 
+    public void setUserCurrentWeight(double val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update user set u_weight = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setUserCurrentWorkout(int val) {
+        String userName = getUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update user set u_workout_current = " + val + " where u_name = '" + userName + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    // Not used or for reference -----------------------------------
     public List<UserModel> getEveryone() {
         List<UserModel> returnList = new ArrayList<>();
 
         // get data from the database
-        String queryString = "SELECT * FROM users";
+        String queryString = "SELECT * FROM user";
         /* Whenever you open up a writable database, the database becomes locked,
          * so no other operations can be done.
          */
@@ -227,8 +337,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int userCurrentCalorie = cursor.getInt(8);
                 int userDailyCalorie = cursor.getInt(9);
 
-                UserModel newCustomer = new UserModel(userID, userName, userAge, userHeight1, userHeight2, userWeight, userCurrentWater, userDailyWater, userCurrentCalorie, userDailyCalorie);
-                returnList.add(newCustomer);
+
+                // If using this object, update to match current arguments
+                //UserModel newCustomer = new UserModel(userID, userName, userAge, userHeight1, userHeight2, userWeight, userCurrentWater, userDailyWater, userCurrentCalorie, userDailyCalorie);
+                //returnList.add(newCustomer);
 
 
             } while (cursor.moveToNext());

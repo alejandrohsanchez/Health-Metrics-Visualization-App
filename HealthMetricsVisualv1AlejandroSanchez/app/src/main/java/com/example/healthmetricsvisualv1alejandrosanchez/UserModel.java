@@ -6,21 +6,26 @@ public class UserModel {
     private int height1;
     private int height2;
     private double weight;
+    private double goalWeight;
     private int currentWater;
-    private int dailyWater;
-    private int currentCalorie;
-    private int dailyCalorie;
+    private int goalWater;
+    private double currentCalorie;
+    private double goalCalorie;
+    private int currentWorkout;
+    private int goalWorkout;
 
-    public UserModel(int id, String name, int age, int height1, int height2, double weight, int currentWater, int dailyWater, int currentCalorie, int dailyCalorie) {
+    public UserModel(int id, String name, int age, int height1, int height2, double weight, double goalWeight, int currentWater, int goalWater, double currentCalorie, double goalCalorie, int currentWorkout, int goalWorkout) {
         this.name = name;
         this.age = age;
         this.height1 = height1;
         this.height2 = height2;
         this.weight = weight;
         this.currentWater = currentWater;
-        this.dailyWater = dailyWater;
+        this.goalWater = goalWater;
         this.currentCalorie = currentCalorie;
-        this.dailyCalorie = dailyCalorie;
+        this.goalCalorie = goalCalorie;
+        this.currentWorkout = currentWorkout;
+        this.goalWorkout = goalWorkout;
     }
 
     public UserModel(String userName, int userAge, int userHeight1, int userHeight2, double userWeight, int userCurrentWater, int userDailyWater, int userCurrentCalorie, int userDailyCalorie) {
@@ -34,10 +39,13 @@ public class UserModel {
                 ", height1=" + height1 +
                 ", height2=" + height2 +
                 ", weight=" + weight +
+                ", goalWeight=" + goalWeight +
                 ", currentWater=" + currentWater +
-                ", dailyWater=" + dailyWater +
+                ", goalWater=" + goalWater +
                 ", currentCalorie=" + currentCalorie +
-                ", dailyCalorie=" + dailyCalorie +
+                ", goalCalorie=" + goalCalorie +
+                ", currentWorkout=" + currentWorkout +
+                ", goalWorkout=" + goalWorkout +
                 '}';
     }
 
@@ -81,6 +89,14 @@ public class UserModel {
         this.weight = weight;
     }
 
+    public double getGoalWeight() {
+        return goalWeight;
+    }
+
+    public void setGoalWeight(double goalWeight) {
+        this.goalWeight = goalWeight;
+    }
+
     public int getCurrentWater() {
         return currentWater;
     }
@@ -89,27 +105,43 @@ public class UserModel {
         this.currentWater = currentWater;
     }
 
-    public int getDailyWater() {
-        return dailyWater;
+    public int getGoalWater() {
+        return goalWater;
     }
 
-    public void setDailyWater(int dailyWater) {
-        this.dailyWater = dailyWater;
+    public void setGoalWater(int goalWater) {
+        this.goalWater = goalWater;
     }
 
-    public int getCurrentCalorie() {
+    public double getCurrentCalorie() {
         return currentCalorie;
     }
 
-    public void setCurrentCalorie(int currentCalorie) {
+    public void setCurrentCalorie(double currentCalorie) {
         this.currentCalorie = currentCalorie;
     }
 
-    public int getDailyCalorie() {
-        return dailyCalorie;
+    public double getGoalCalorie() {
+        return goalCalorie;
     }
 
-    public void setDailyCalorie(int dailyCalorie) {
-        this.dailyCalorie = dailyCalorie;
+    public void setGoalCalorie(double goalCalorie) {
+        this.goalCalorie = goalCalorie;
+    }
+
+    public int getCurrentWorkout() {
+        return currentWorkout;
+    }
+
+    public void setCurrentWorkout(int currentWorkout) {
+        this.currentWorkout = currentWorkout;
+    }
+
+    public int getGoalWorkout() {
+        return goalWorkout;
+    }
+
+    public void setGoalWorkout(int goalWorkout) {
+        this.goalWorkout = goalWorkout;
     }
 }

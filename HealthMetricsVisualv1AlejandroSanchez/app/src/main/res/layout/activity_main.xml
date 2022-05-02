@@ -9,12 +9,14 @@
 
     <TextView
         android:id="@+id/topMessage"
-        android:layout_width="258dp"
-        android:layout_height="73dp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:text="Get ready to level up your workout routine with Health Metrics Visualization"
+        android:textAlignment="center"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,13 +24,14 @@
     <TextView
         android:id="@+id/header1"
         android:layout_width="228dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="30dp"
-        android:text="Register"
+        android:layout_height="wrap_content"
+        android:text="Enter your personal information and click the button below when you are ready to continue!"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:translationZ="1dp"
         app:layout_constraintEnd_toEndOf="@+id/topMessage"
         app:layout_constraintStart_toStartOf="@+id/topMessage"
-        app:layout_constraintTop_toBottomOf="@+id/topMessage" />
+        app:layout_constraintTop_toTopOf="@+id/frame1" />
 
     <TextView
         android:id="@+id/namePrompt"
@@ -131,33 +134,22 @@
         android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:backgroundTint="#A9BE57"
-        android:text="Create your profile >"
-        app:layout_constraintEnd_toEndOf="@+id/user_height_2"
+        android:text="Continue to Goal Setup"
+        app:layout_constraintEnd_toEndOf="@+id/frame1"
+        app:layout_constraintStart_toStartOf="@+id/frame1"
         app:layout_constraintTop_toBottomOf="@+id/user_weight" />
 
     <FrameLayout
         android:id="@+id/frame1"
-        android:layout_width="312dp"
-        android:layout_height="476dp"
+        android:layout_width="320dp"
+        android:layout_height="500dp"
         android:background="#F5F5F5"
         android:translationZ="-1dp"
-        app:layout_constraintBottom_toBottomOf="@+id/createButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header1">
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/frame2"
-        android:layout_width="432dp"
-        android:layout_height="636dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </FrameLayout>
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
