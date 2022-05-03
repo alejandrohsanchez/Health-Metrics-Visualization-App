@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Name"
+        android:text="Name:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile" />
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Age"
+        android:text="Age:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_name_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_name_text" />
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Weight"
+        android:text="Weight:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile2"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile2" />
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Water"
+        android:text="Water:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile3"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile3" />
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Calories"
+        android:text="Calories:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_waterIntake_text"
         app:layout_constraintTop_toBottomOf="@+id/waterProgressBar" />
@@ -123,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Height"
+        android:text="Height:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_weight_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_weight_text" />
@@ -241,7 +241,7 @@
         android:backgroundTint="#A9BE57"
         android:text="-1"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_waterIntake_text"
-        app:layout_constraintStart_toStartOf="@+id/wellness_user_edit_workout"
+        app:layout_constraintStart_toStartOf="@+id/wellness_user_edit_calories_update"
         app:layout_constraintTop_toTopOf="@+id/wellness_waterIntake_text" />
 
     <Button
@@ -297,7 +297,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Workout"
+        android:text="Workout:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_calorie_text"
         app:layout_constraintTop_toBottomOf="@+id/calorieProgressBar" />

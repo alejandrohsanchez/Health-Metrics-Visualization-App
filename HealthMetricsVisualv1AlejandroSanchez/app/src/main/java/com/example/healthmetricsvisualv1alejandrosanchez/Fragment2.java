@@ -22,9 +22,9 @@ public class Fragment2 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Define
         DatabaseHelper databaseHelper;
-        TextView water_goal, calorie_goal, workout_goal;
-        EditText new_water_goal, new_calorie_goal, new_workout_goal;
-        Button updateWater, updateCalorie, updateWorkout;
+        TextView water_goal, calorie_goal, workout_goal, weight_goal;
+        EditText new_water_goal, new_calorie_goal, new_workout_goal, new_weight_goal;
+        Button updateWater, updateCalorie, updateWorkout, updateWeight;
 
         // Initialize View
         View rootView = inflater.inflate(R.layout.fragment2_layout, container, false);
@@ -33,16 +33,19 @@ public class Fragment2 extends Fragment {
         water_goal = (TextView) rootView.findViewById(R.id.goal_currentWater);
         calorie_goal = (TextView) rootView.findViewById(R.id.goal_currentCalorie);
         workout_goal = (TextView) rootView.findViewById(R.id.goal_currentWorkout);
+        weight_goal = (TextView) rootView.findViewById(R.id.goal_currentWeight);
 
         // Assign Edit Text
         new_water_goal = (EditText) rootView.findViewById(R.id.goal_edit_goalWater);
         new_calorie_goal = (EditText) rootView.findViewById(R.id.goal_edit_goalCalorie);
         new_workout_goal = (EditText) rootView.findViewById(R.id.goal_edit_goalWorkout);
+        new_weight_goal = (EditText) rootView.findViewById(R.id.goal_edit_goalWeight);
 
         // Assign Buttons
         updateWater = rootView.findViewById(R.id.update_goalWater_button);
         updateCalorie = rootView.findViewById(R.id.update_goalCalorie_button);
         updateWorkout = rootView.findViewById(R.id.update_goalWorkout_button);
+        updateWeight = rootView.findViewById(R.id.update_goalWeight_button);
 
         // Create database object
         databaseHelper = new DatabaseHelper(getActivity());
@@ -51,6 +54,7 @@ public class Fragment2 extends Fragment {
         water_goal.setText(Integer.toString(databaseHelper.getUserGoalWater()));
         calorie_goal.setText(Integer.toString((int)databaseHelper.getUserGoalCalorie()));
         workout_goal.setText(Integer.toString(databaseHelper.getUserGoalWorkout()));
+        weight_goal.setText(Double.toString(databaseHelper.getUserGoalWeight()));
 
         // Update values in database
         updateWater.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +85,17 @@ public class Fragment2 extends Fragment {
                 int updateWorkout = Integer.parseInt(new_workout_goal.getText().toString());
                 int current_val = updateWorkout;
                 databaseHelper.setUserGoalWorkout(current_val);
+                getActivity().finish();
+                startActivity(getActivity().getIntent());
+            }
+        });
+
+        updateWeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                double updateWeight = Double.parseDouble(new_weight_goal.getText().toString());
+                double current_val = updateWeight;
+                databaseHelper.setUserGoalWeight(current_val);
                 getActivity().finish();
                 startActivity(getActivity().getIntent());
             }
