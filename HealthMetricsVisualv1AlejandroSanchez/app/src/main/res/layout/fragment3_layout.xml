@@ -11,8 +11,37 @@
         android:id="@+id/dateTest"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/today_Button" />
+
+    <Button
+        android:id="@+id/prevWeek_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Prev week"
+        app:layout_constraintStart_toStartOf="@+id/dateTest"
+        app:layout_constraintTop_toBottomOf="@+id/dateTest" />
+
+    <Button
+        android:id="@+id/nextWeek_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Next week"
+        app:layout_constraintEnd_toEndOf="@+id/dateTest"
+        app:layout_constraintTop_toBottomOf="@+id/dateTest" />
+
+    <Button
+        android:id="@+id/today_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Today"
+        app:layout_constraintStart_toStartOf="@+id/dateTest"
         app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ public class Fragment3 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Define
         TextView date;
+        Button previousWeekButton, nextWeekButton, todayButton;
 
         // Initialize View
         View rootView = inflater.inflate(R.layout.fragment3_layout, container, false);
@@ -29,28 +31,72 @@ public class Fragment3 extends Fragment {
         // Assign Text Views
         date = (TextView) rootView.findViewById(R.id.dateTest);
 
+        // Assign Buttons
+        previousWeekButton = rootView.findViewById(R.id.prevWeek_button);
+        nextWeekButton = rootView.findViewById(R.id.nextWeek_button);
+        todayButton = rootView.findViewById(R.id.today_Button);
+
         // Getting today's date in custom format -----------
         // Set the date format
-        SimpleDateFormat format = new SimpleDateFormat("MMM-dd-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yy");
 
-        // Create 2 variables to carry the beginning and the end of the week's date
-        String todayDate, nextDate;
+        // Create 3 variables to carry the current date, beginning, and the end of the week's date
+        String currentDate, beginWeek, endWeek;
+        Calendar cal = Calendar.getInstance();
+        // Get the current date
+        currentDate = format.format(cal.getTime());
 
-        // Calendar objects
-        Date calendar = Calendar.getInstance().getTime();
-        Date calendar2 = Calendar.getInstance().getTime();
+        // Beginning of the current week
+        cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
+        beginWeek = format.format(cal.getTime());
+        // origin will hold onto the original date that beginWeek contains
+        Date origin = cal.getTime();
 
-        Calendar changingCal = Calendar.getInstance();
-        changingCal.add(Calendar.DATE, 35);
+        // Beginning of next week
+        cal.add(Calendar.DAY_OF_WEEK, 6);
+        endWeek = format.format(cal.getTime());
+        cal.add(Calendar.DAY_OF_WEEK, -6);
 
-        calendar2 = changingCal.getTime();
+        // Update what is on the screen
+        date.setText("Today's date: " + currentDate + "\n" + "Week of: " + beginWeek + "\n" + "End of week: " + endWeek);
 
-        // Set to custom date format
-        todayDate = format.format(calendar);
-        nextDate = format.format(calendar2);
+        // Update dates based on the buttons pressed
+        previousWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cal.add(Calendar.DAY_OF_WEEK, -7);
+                String newBeginWeek = format.format(cal.getTime());
+                cal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(cal.getTime());
+                cal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+            }
+        });
 
-        // Test print the date
-        date.setText("Today's date is: " + todayDate + " -- 35 days from now: " + nextDate);
+        nextWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cal.add(Calendar.DAY_OF_WEEK, 7);
+                String newBeginWeek = format.format(cal.getTime());
+                cal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(cal.getTime());
+                cal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+            }
+        });
+
+        todayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cal.setTime(origin);
+                String newBeginWeek = format.format(cal.getTime());
+                cal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(cal.getTime());
+                cal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+            }
+        });
+
         return rootView;
     }
 }
