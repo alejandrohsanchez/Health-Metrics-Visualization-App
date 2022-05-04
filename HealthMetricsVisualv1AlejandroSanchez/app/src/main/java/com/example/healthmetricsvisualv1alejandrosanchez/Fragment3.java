@@ -38,8 +38,10 @@ public class Fragment3 extends Fragment {
         // Define
         DatabaseHelper databaseHelper;
         TextView date;
-        Button waterBarChart_previousWeekButton, waterBarChart_nextWeekButton, waterBarChart_todayButton, calorieBarChart_previousWeekButton, calorieBarChart_nextWeekButton, calorieBarChart_todayButton;
-        BarChart waterChart, calorieChart;
+        Button waterBarChart_previousWeekButton, waterBarChart_nextWeekButton, waterBarChart_todayButton;
+        Button calorieBarChart_previousWeekButton, calorieBarChart_nextWeekButton, calorieBarChart_todayButton;
+        Button workoutBarChart_previousWeekButton, workoutBarChart_nextWeekButton, workoutBarChart_todayButton;
+        BarChart waterChart, calorieChart, workoutChart;
 
         // Initialize View
         View rootView = inflater.inflate(R.layout.fragment3_layout, container, false);
@@ -57,11 +59,15 @@ public class Fragment3 extends Fragment {
         calorieBarChart_previousWeekButton = rootView.findViewById(R.id.calorieBarChart_prevWeek_button);
         calorieBarChart_nextWeekButton = rootView.findViewById(R.id.calorieBarChart_nextWeek_button);
         calorieBarChart_todayButton = rootView.findViewById(R.id.calorieBarChart_today_Button);
+        workoutBarChart_previousWeekButton = rootView.findViewById(R.id.workoutBarChart_prevWeek_button);
+        workoutBarChart_nextWeekButton = rootView.findViewById(R.id.workoutBarChart_nextWeek_button);
+        workoutBarChart_todayButton = rootView.findViewById(R.id.workoutBarChart_today_Button);
 
 
         // Assign graphs
         waterChart = rootView.findViewById(R.id.waterBarChart);
         calorieChart = rootView.findViewById(R.id.calorieBarChart);
+        workoutChart = rootView.findViewById(R.id.workoutBarChart);
 
         // Getting today's date in custom format -----------
         // Set the date format
@@ -72,33 +78,42 @@ public class Fragment3 extends Fragment {
         // for each graph
         String currentDate, beginWeek, endWeek;
         String calorieCurrentDate, calorieBeginWeek, calorieEndWeek;
+        String workoutCurrentDate, workoutBeginWeek, workoutEndWeek;
 
         // Calendars for each graph
         Calendar cal = Calendar.getInstance();
         Calendar calorieCal = Calendar.getInstance();
+        Calendar workoutCal = Calendar.getInstance();
 
         // Get the current date for each graph
         currentDate = format.format(cal.getTime());
         calorieCurrentDate = format.format(calorieCal.getTime());
+        workoutCurrentDate = format.format(workoutCal.getTime());
 
         // Beginning of the current week
         cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
         calorieCal.set(Calendar.DAY_OF_WEEK, calorieCal.getFirstDayOfWeek());
+        workoutCal.set(Calendar.DAY_OF_WEEK, workoutCal.getFirstDayOfWeek());
 
         beginWeek = format.format(cal.getTime());
         calorieBeginWeek = format.format(calorieCal.getTime());
+        workoutBeginWeek = format.format(workoutCal.getTime());
+
         // origin will hold onto the original date that beginWeek contains
         Date origin = cal.getTime();
 
         // Beginning of next week
         cal.add(Calendar.DAY_OF_WEEK, 6);
         calorieCal.add(Calendar.DAY_OF_WEEK,6);
+        workoutCal.add(Calendar.DAY_OF_WEEK,6);
 
         endWeek = format.format(cal.getTime());
         calorieEndWeek = format.format(calorieCal.getTime());
+        workoutEndWeek = format.format(workoutCal.getTime());
 
         cal.add(Calendar.DAY_OF_WEEK, -6); // reset
         calorieCal.add(Calendar.DAY_OF_WEEK,-6);
+        workoutCal.add(Calendar.DAY_OF_WEEK,-6);
 
         // Getting water data
         float[] xData = databaseHelper.getCurrentWaterDateDay(beginWeek, endWeek);
@@ -108,13 +123,19 @@ public class Fragment3 extends Fragment {
         float[] calorie_xData = databaseHelper.getCurrentCalorieDateDay(calorieBeginWeek, calorieEndWeek);
         int[] calorie_yData = databaseHelper.getCurrentCalorieData(calorieBeginWeek, calorieEndWeek);
 
+        // Getting workout data
+        float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(calorieBeginWeek, calorieEndWeek);
+        int[] workout_yData = databaseHelper.getCurrentWorkoutData(calorieBeginWeek, calorieEndWeek);
+
         List<BarEntry> entries = new ArrayList<BarEntry>();
         List<BarEntry> calorieEntries = new ArrayList<BarEntry>();
+        List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
 
         // queryCompare will set date back to normal after using it to
         // ensure every date in the query result has a value
         Date queryCompare = cal.getTime();
         Date calorie_queryCompare = calorieCal.getTime();
+        Date workout_queryCompare = workoutCal.getTime();
 
         // Go through each day of the week, check if there is data for it
         // If no data is found, set its value to zero
@@ -145,7 +166,7 @@ public class Fragment3 extends Fragment {
         for (int j=0; j<7; j++) {
             calorie_DataFound = false;
             calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
-            for (int i=0; i<xData.length; i++) {
+            for (int i=0; i<calorie_xData.length; i++) {
                 if (calorie_dateCheck == calorie_xData[i]) {
                     calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
                     calorie_DataFound = true;
@@ -157,11 +178,32 @@ public class Fragment3 extends Fragment {
             }
             calorieCal.add(Calendar.DAY_OF_WEEK,1);
         }
-        // Set cal back to normal
-        calorieCal.setTime(queryCompare);
+        // Set calorieCal back to normal
+        calorieCal.setTime(calorie_queryCompare);
+
+        // WORKOUT CHECKER
+        float workout_dateCheck;
+        boolean workout_DataFound;
+        for (int j=0; j<7; j++) {
+            workout_DataFound = false;
+            workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+            for (int i=0; i<workout_xData.length; i++) {
+                if (workout_dateCheck == workout_xData[i]) {
+                    workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
+                    workout_DataFound = true;
+                    break;
+                }
+            }
+            if (!workout_DataFound) {
+                calorieEntries.add(new BarEntry(workout_dateCheck, 0));
+            }
+            workoutCal.add(Calendar.DAY_OF_WEEK,1);
+        }
+        // Set workoutCal back to normal
+        workoutCal.setTime(workout_queryCompare);
 
         // Inserting data into water bar graph
-        BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
+        BarDataSet waterDataSet = new BarDataSet(entries, "Daily intake of cups of water");
         waterDataSet.setColor(getResources().getColor(R.color.light_green));
         BarData barData = new BarData(waterDataSet);
         waterChart.setData(barData);
@@ -172,7 +214,7 @@ public class Fragment3 extends Fragment {
         waterChart.invalidate();
 
         // Inserting data into calorie bar graph
-        BarDataSet calorieDataSet = new BarDataSet(calorieEntries, "Calories");
+        BarDataSet calorieDataSet = new BarDataSet(calorieEntries, "Daily intake of calories");
         calorieDataSet.setColor(getResources().getColor(R.color.light_green));
         BarData calorieBarData = new BarData(calorieDataSet);
         calorieChart.setData(calorieBarData);
@@ -181,6 +223,17 @@ public class Fragment3 extends Fragment {
         Description calorieDescription = calorieChart.getDescription();
         calorieDescription.setEnabled(false);
         calorieChart.invalidate();
+
+        // Inserting data into workout bar graph
+        BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
+        workoutDataSet.setColor(getResources().getColor(R.color.light_green));
+        BarData workoutBarData = new BarData(workoutDataSet);
+        workoutChart.setData(workoutBarData);
+        workoutChart.setFitBars(true);
+        workoutChart.animateXY(2000,2000);
+        Description workoutDescription = workoutChart.getDescription();
+        workoutDescription.setEnabled(false);
+        workoutChart.invalidate();
 
 
         // Update what is on the screen
@@ -364,7 +417,7 @@ public class Fragment3 extends Fragment {
                 for (int j=0; j<7; j++) {
                     calorie_DataFound = false;
                     calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
-                    for (int i=0; i<xData.length; i++) {
+                    for (int i=0; i<calorie_xData.length; i++) {
                         if (calorie_dateCheck == calorie_xData[i]) {
                             calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
                             calorie_DataFound = true;
@@ -415,7 +468,7 @@ public class Fragment3 extends Fragment {
                 for (int j=0; j<7; j++) {
                     calorie_DataFound = false;
                     calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
-                    for (int i=0; i<xData.length; i++) {
+                    for (int i=0; i<calorie_xData.length; i++) {
                         if (calorie_dateCheck == calorie_xData[i]) {
                             calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
                             calorie_DataFound = true;
@@ -466,7 +519,7 @@ public class Fragment3 extends Fragment {
                 for (int j=0; j<7; j++) {
                     calorie_DataFound = false;
                     calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
-                    for (int i=0; i<xData.length; i++) {
+                    for (int i=0; i<calorie_xData.length; i++) {
                         if (calorie_dateCheck == calorie_xData[i]) {
                             calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
                             calorie_DataFound = true;
@@ -490,6 +543,159 @@ public class Fragment3 extends Fragment {
                 Description calorieDescription = calorieChart.getDescription();
                 calorieDescription.setEnabled(false);
                 calorieChart.invalidate();
+            }
+        });
+
+        workoutBarChart_previousWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                workoutCal.add(Calendar.DAY_OF_WEEK, -7);
+                String newBeginWeek = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+
+                float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek);
+                int[] workout_yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek);
+
+                List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date workout_queryCompare = workoutCal.getTime();
+
+                float workout_dateCheck;
+                boolean workout_DataFound;
+                for (int j=0; j<7; j++) {
+                    workout_DataFound = false;
+                    workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                    for (int i=0; i<workout_xData.length; i++) {
+                        if (workout_dateCheck == workout_xData[i]) {
+                            workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
+                            workout_DataFound = true;
+                            break;
+                        }
+                    }
+                    if (!workout_DataFound) {
+                        workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                    }
+                    workoutCal.add(Calendar.DAY_OF_WEEK,1);
+                }
+                // Set cal back to normal
+                workoutCal.setTime(workout_queryCompare);
+
+                BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
+                workoutDataSet.setColor(getResources().getColor(R.color.light_green));
+                BarData workoutBarData = new BarData(workoutDataSet);
+                workoutChart.setData(workoutBarData);
+                workoutChart.setFitBars(true);
+                workoutChart.animateXY(2000,2000);
+                Description workoutDescription = workoutChart.getDescription();
+                workoutDescription.setEnabled(false);
+                workoutChart.invalidate();
+            }
+        });
+
+        workoutBarChart_nextWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                workoutCal.add(Calendar.DAY_OF_WEEK, 7);
+                String newBeginWeek = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+
+                float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek);
+                int[] workout_yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek);
+
+                List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date workout_queryCompare = workoutCal.getTime();
+
+                float workout_dateCheck;
+                boolean workout_DataFound;
+                for (int j=0; j<7; j++) {
+                    workout_DataFound = false;
+                    workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                    for (int i=0; i<workout_xData.length; i++) {
+                        if (workout_dateCheck == workout_xData[i]) {
+                            workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
+                            workout_DataFound = true;
+                            break;
+                        }
+                    }
+                    if (!workout_DataFound) {
+                        workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                    }
+                    workoutCal.add(Calendar.DAY_OF_WEEK,1);
+                }
+                // Set cal back to normal
+                workoutCal.setTime(workout_queryCompare);
+
+                BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
+                workoutDataSet.setColor(getResources().getColor(R.color.light_green));
+                BarData workoutBarData = new BarData(workoutDataSet);
+                workoutChart.setData(workoutBarData);
+                workoutChart.setFitBars(true);
+                workoutChart.animateXY(2000,2000);
+                Description workoutDescription = workoutChart.getDescription();
+                workoutDescription.setEnabled(false);
+                workoutChart.invalidate();
+            }
+        });
+
+        workoutBarChart_todayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                workoutCal.setTime(origin);
+                String newBeginWeek = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+
+                float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek);
+                int[] workout_yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek);
+
+                List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date workout_queryCompare = workoutCal.getTime();
+
+                float workout_dateCheck;
+                boolean workout_DataFound;
+                for (int j=0; j<7; j++) {
+                    workout_DataFound = false;
+                    workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                    for (int i=0; i<workout_xData.length; i++) {
+                        if (workout_dateCheck == workout_xData[i]) {
+                            workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
+                            workout_DataFound = true;
+                            break;
+                        }
+                    }
+                    if (!workout_DataFound) {
+                        workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                    }
+                    workoutCal.add(Calendar.DAY_OF_WEEK,1);
+                }
+                // Set cal back to normal
+                workoutCal.setTime(workout_queryCompare);
+
+                BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
+                workoutDataSet.setColor(getResources().getColor(R.color.light_green));
+                BarData workoutBarData = new BarData(workoutDataSet);
+                workoutChart.setData(workoutBarData);
+                workoutChart.setFitBars(true);
+                workoutChart.animateXY(2000,2000);
+                Description workoutDescription = workoutChart.getDescription();
+                workoutDescription.setEnabled(false);
+                workoutChart.invalidate();
             }
         });
 
