@@ -34,28 +34,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(createTableStatement);
 
         String createWaterTable =   "CREATE TABLE waterTracker" +
-                                    "(water_date TEXT," +
+                                    "(water_date DATE," +
                                     "water_current INT," +
                                     "water_goal INT);";
         sqLiteDatabase.execSQL(createWaterTable);
 
         String createCalorieTable = "CREATE TABLE calorieData" +
-                                    "(calorie_date TEXT," +
+                                    "(calorie_date DATE," +
                                     "calorie_current INT," +
                                     "calorie_goal INT);";
         sqLiteDatabase.execSQL(createCalorieTable);
 
         String createWorkoutTable = "CREATE TABLE workoutData" +
-                                    "(workout_date TEXT," +
+                                    "(workout_date DATE," +
                                     "workout_current INT," +
                                     "workout_goal INT);";
         sqLiteDatabase.execSQL(createWorkoutTable);
 
         String createWeightTable =  "CREATE TABLE weightData" +
-                                    "(weight_date TEXT," +
+                                    "(weight_date DATE," +
                                     "weight_current INT," +
                                     "weight_goal INT);";
         sqLiteDatabase.execSQL(createWeightTable);
+
+        String populate_TestData_water =    "INSERT INTO waterTracker (water_date,water_current,water_goal)" +
+                                            "VALUES" +
+                                            "('2022-04-18', 8, 8)," +
+                                            "('2022-04-19', 6, 8)," +
+                                            "('2022-04-20', 7, 8)," +
+                                            "('2022-04-21', 4, 8)," +
+                                            "('2022-04-22', 0, 8)," +
+                                            "('2022-04-23', 3, 8)," +
+                                            "('2022-04-24', 2, 8)," +
+                                            "('2022-04-25', 8, 8)," +
+                                            "('2022-04-26', 9, 8)," +
+                                            "('2022-04-27', 9, 8)," +
+                                            "('2022-04-28', 13, 8)," +
+                                            "('2022-04-29', 7, 8)," +
+                                            "('2022-04-30', 8, 8)," +
+                                            "('2022-04-31', 8, 8)," +
+                                            "('2022-05-01', 8, 8)," +
+                                            "('2022-05-02', 5, 8)," +
+                                            "('2022-05-03', 4, 8)," +
+                                            "('2022-05-04', 8, 8)," +
+                                            "('2022-05-05', 9, 8)," +
+                                            "('2022-05-06', 9, 8)," +
+                                            "('2022-05-07', 9, 8)," +
+                                            "('2022-05-08', 9, 8)," +
+                                            "('2022-05-09', 1, 8)," +
+                                            "('2022-05-10', 8, 8)," +
+                                            "('2022-05-11', 5, 8)," +
+                                            "('2022-05-12', 3, 8)," +
+                                            "('2022-05-13', 4, 8)," +
+                                            "('2022-05-14', 8, 8)";
+        sqLiteDatabase.execSQL(populate_TestData_water);
     }
 
     @Override
@@ -328,6 +360,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String queryString = "update user set u_workout_current = " + val + " where u_name = '" + userName + "';";
         db.execSQL(queryString);
         db.close();
+    }
+
+    // Get graph data
+    public int[] getCurrentWaterData(String beginDate, String endDate) {
+        int[] data = new int[7];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select water_current from waterTracker " +
+                "where water_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by water_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getInt(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
+    }
+
+    public float[] getCurrentWaterDateDay(String beginDate, String endDate) {
+        float[] data = new float[7];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select strftime('%d', water_date) from waterTracker " +
+                "where water_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by water_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getFloat(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
     }
 
     // Not used or for reference -----------------------------------
