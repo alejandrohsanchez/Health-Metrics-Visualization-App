@@ -39,19 +39,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                     "water_goal INT);";
         sqLiteDatabase.execSQL(createWaterTable);
 
-        String createCalorieTable = "CREATE TABLE calorieData" +
+        String createCalorieTable = "CREATE TABLE calorieTracker" +
                                     "(calorie_date DATE," +
                                     "calorie_current INT," +
                                     "calorie_goal INT);";
         sqLiteDatabase.execSQL(createCalorieTable);
 
-        String createWorkoutTable = "CREATE TABLE workoutData" +
+        String createWorkoutTable = "CREATE TABLE workoutTracker" +
                                     "(workout_date DATE," +
                                     "workout_current INT," +
                                     "workout_goal INT);";
         sqLiteDatabase.execSQL(createWorkoutTable);
 
-        String createWeightTable =  "CREATE TABLE weightData" +
+        String createWeightTable =  "CREATE TABLE weightTracker" +
                                     "(weight_date DATE," +
                                     "weight_current INT," +
                                     "weight_goal INT);";
@@ -88,6 +88,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                             "('2022-05-13', 4, 8)," +
                                             "('2022-05-14', 8, 8)";
         sqLiteDatabase.execSQL(populate_TestData_water);
+
+        String populate_TestData_calorie =  "INSERT INTO calorieTracker (calorie_date,calorie_current,calorie_goal)" +
+                                            "VALUES" +
+                                            "('2022-04-18', 1500, 2000)," +
+                                            "('2022-04-19', 1800, 2000)," +
+                                            "('2022-04-20', 1600, 2000)," +
+                                            "('2022-04-21', 1400, 2000)," +
+                                            "('2022-04-22', 1300, 2000)," +
+                                            "('2022-04-23', 1400, 2000)," +
+                                            "('2022-04-24', 1500, 2000)," +
+                                            "('2022-04-25', 2200, 2000)," +
+                                            "('2022-04-26', 2100, 2000)," +
+                                            "('2022-04-27', 1900, 2000)," +
+                                            "('2022-04-28', 2000, 2000)," +
+                                            "('2022-04-29', 2000, 2000)," +
+                                            "('2022-04-30', 2100, 2000)," +
+                                            "('2022-04-31', 1900, 2000)," +
+                                            "('2022-05-01', 1800, 2000)," +
+                                            "('2022-05-02', 2000, 2000)," +
+                                            "('2022-05-03', 1900, 2000)," +
+                                            "('2022-05-04', 2200, 2000)," +
+                                            "('2022-05-05', 1600, 2000)," +
+                                            "('2022-05-06', 1400, 2000)," +
+                                            "('2022-05-07', 1700, 2000)," +
+                                            "('2022-05-08', 1900, 2000)," +
+                                            "('2022-05-09', 1700, 2000)," +
+                                            "('2022-05-10', 2000, 2000)," +
+                                            "('2022-05-11', 2100, 2000)," +
+                                            "('2022-05-12', 2000, 2000)," +
+                                            "('2022-05-13', 1600, 2000)," +
+                                            "('2022-05-14', 1800, 2000)";
+        sqLiteDatabase.execSQL(populate_TestData_calorie);
     }
 
     @Override
@@ -388,6 +420,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String queryString =    "select strftime('%d', water_date) from waterTracker " +
                 "where water_date between '" + beginDate + "' and '" + endDate + "' " +
                 "order by water_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getFloat(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
+    }
+
+    public int[] getCurrentCalorieData(String beginDate, String endDate) {
+        int[] data = new int[7];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select calorie_current from calorieTracker " +
+                "where calorie_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by calorie_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getInt(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
+    }
+
+    public float[] getCurrentCalorieDateDay(String beginDate, String endDate) {
+        float[] data = new float[7];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select strftime('%d', calorie_date) from calorieTracker " +
+                "where calorie_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by calorie_date asc;";
         Cursor cursor = db.rawQuery(queryString, null);
 
         for (int i=0; i < data.length; i++) {

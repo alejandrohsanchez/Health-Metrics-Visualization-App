@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.healthmetricsvisualv1alejandrosanchez.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -39,8 +38,8 @@ public class Fragment3 extends Fragment {
         // Define
         DatabaseHelper databaseHelper;
         TextView date;
-        Button previousWeekButton, nextWeekButton, todayButton;
-        BarChart waterChart;
+        Button waterBarChart_previousWeekButton, waterBarChart_nextWeekButton, waterBarChart_todayButton, calorieBarChart_previousWeekButton, calorieBarChart_nextWeekButton, calorieBarChart_todayButton;
+        BarChart waterChart, calorieChart;
 
         // Initialize View
         View rootView = inflater.inflate(R.layout.fragment3_layout, container, false);
@@ -52,12 +51,17 @@ public class Fragment3 extends Fragment {
         date = (TextView) rootView.findViewById(R.id.dateTest);
 
         // Assign Buttons
-        previousWeekButton = rootView.findViewById(R.id.prevWeek_button);
-        nextWeekButton = rootView.findViewById(R.id.nextWeek_button);
-        todayButton = rootView.findViewById(R.id.today_Button);
+        waterBarChart_previousWeekButton = rootView.findViewById(R.id.waterBarChart_prevWeek_button);
+        waterBarChart_nextWeekButton = rootView.findViewById(R.id.waterBarChart_nextWeek_button);
+        waterBarChart_todayButton = rootView.findViewById(R.id.waterBarChart_today_Button);
+        calorieBarChart_previousWeekButton = rootView.findViewById(R.id.calorieBarChart_prevWeek_button);
+        calorieBarChart_nextWeekButton = rootView.findViewById(R.id.calorieBarChart_nextWeek_button);
+        calorieBarChart_todayButton = rootView.findViewById(R.id.calorieBarChart_today_Button);
+
 
         // Assign graphs
         waterChart = rootView.findViewById(R.id.waterBarChart);
+        calorieChart = rootView.findViewById(R.id.calorieBarChart);
 
         // Getting today's date in custom format -----------
         // Set the date format
@@ -65,35 +69,56 @@ public class Fragment3 extends Fragment {
         SimpleDateFormat queryReturnFormat = new SimpleDateFormat("dd");
 
         // Create 3 variables to carry the current date, beginning, and the end of the week's date
+        // for each graph
         String currentDate, beginWeek, endWeek;
+        String calorieCurrentDate, calorieBeginWeek, calorieEndWeek;
+
+        // Calendars for each graph
         Calendar cal = Calendar.getInstance();
-        // Get the current date
+        Calendar calorieCal = Calendar.getInstance();
+
+        // Get the current date for each graph
         currentDate = format.format(cal.getTime());
+        calorieCurrentDate = format.format(calorieCal.getTime());
 
         // Beginning of the current week
         cal.set(Calendar.DAY_OF_WEEK, cal.getFirstDayOfWeek());
+        calorieCal.set(Calendar.DAY_OF_WEEK, calorieCal.getFirstDayOfWeek());
+
         beginWeek = format.format(cal.getTime());
+        calorieBeginWeek = format.format(calorieCal.getTime());
         // origin will hold onto the original date that beginWeek contains
         Date origin = cal.getTime();
 
         // Beginning of next week
         cal.add(Calendar.DAY_OF_WEEK, 6);
+        calorieCal.add(Calendar.DAY_OF_WEEK,6);
+
         endWeek = format.format(cal.getTime());
+        calorieEndWeek = format.format(calorieCal.getTime());
+
         cal.add(Calendar.DAY_OF_WEEK, -6); // reset
+        calorieCal.add(Calendar.DAY_OF_WEEK,-6);
 
         // Getting water data
-        //String[] xData = databaseHelper.getCurrentWaterDate(beginWeek, endWeek);
         float[] xData = databaseHelper.getCurrentWaterDateDay(beginWeek, endWeek);
         int[] yData = databaseHelper.getCurrentWaterData(beginWeek, endWeek);
 
+        // Getting calorie data
+        float[] calorie_xData = databaseHelper.getCurrentCalorieDateDay(calorieBeginWeek, calorieEndWeek);
+        int[] calorie_yData = databaseHelper.getCurrentCalorieData(calorieBeginWeek, calorieEndWeek);
+
         List<BarEntry> entries = new ArrayList<BarEntry>();
+        List<BarEntry> calorieEntries = new ArrayList<BarEntry>();
 
         // queryCompare will set date back to normal after using it to
         // ensure every date in the query result has a value
         Date queryCompare = cal.getTime();
+        Date calorie_queryCompare = calorieCal.getTime();
 
         // Go through each day of the week, check if there is data for it
         // If no data is found, set its value to zero
+        // WATER INTAKE CHECKER
         float dateCheck;
         boolean found;
         for (int j=0; j<7; j++) {
@@ -114,8 +139,30 @@ public class Fragment3 extends Fragment {
         // Set cal back to normal
         cal.setTime(queryCompare);
 
+        // CALORIE INTAKE CHECKER
+        float calorie_dateCheck;
+        boolean calorie_DataFound;
+        for (int j=0; j<7; j++) {
+            calorie_DataFound = false;
+            calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
+            for (int i=0; i<xData.length; i++) {
+                if (calorie_dateCheck == calorie_xData[i]) {
+                    calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
+                    calorie_DataFound = true;
+                    break;
+                }
+            }
+            if (!calorie_DataFound) {
+                calorieEntries.add(new BarEntry(calorie_dateCheck, 0));
+            }
+            calorieCal.add(Calendar.DAY_OF_WEEK,1);
+        }
+        // Set cal back to normal
+        calorieCal.setTime(queryCompare);
+
+        // Inserting data into water bar graph
         BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
-        waterDataSet.setColor(getResources().getColor(R.color.purple_200));
+        waterDataSet.setColor(getResources().getColor(R.color.light_green));
         BarData barData = new BarData(waterDataSet);
         waterChart.setData(barData);
         waterChart.setFitBars(true);
@@ -124,11 +171,23 @@ public class Fragment3 extends Fragment {
         description.setEnabled(false);
         waterChart.invalidate();
 
+        // Inserting data into calorie bar graph
+        BarDataSet calorieDataSet = new BarDataSet(calorieEntries, "Calories");
+        calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+        BarData calorieBarData = new BarData(calorieDataSet);
+        calorieChart.setData(calorieBarData);
+        calorieChart.setFitBars(true);
+        calorieChart.animateXY(2000,2000);
+        Description calorieDescription = calorieChart.getDescription();
+        calorieDescription.setEnabled(false);
+        calorieChart.invalidate();
+
+
         // Update what is on the screen
         date.setText("Today's date: " + currentDate + "\n" + "Week of: " + beginWeek + "\n" + "End of week: " + endWeek);
 
         // Update dates based on the buttons pressed
-        previousWeekButton.setOnClickListener(new View.OnClickListener() {
+        waterBarChart_previousWeekButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cal.add(Calendar.DAY_OF_WEEK, -7);
@@ -170,7 +229,7 @@ public class Fragment3 extends Fragment {
                 cal.setTime(queryCompare);
 
                 BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
-                waterDataSet.setColor(getResources().getColor(R.color.purple_200));
+                waterDataSet.setColor(getResources().getColor(R.color.light_green));
                 BarData barData = new BarData(waterDataSet);
                 waterChart.setData(barData);
                 waterChart.setFitBars(true);
@@ -179,7 +238,7 @@ public class Fragment3 extends Fragment {
             }
         });
 
-        nextWeekButton.setOnClickListener(new View.OnClickListener() {
+        waterBarChart_nextWeekButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cal.add(Calendar.DAY_OF_WEEK, 7);
@@ -221,7 +280,7 @@ public class Fragment3 extends Fragment {
                 cal.setTime(queryCompare);
 
                 BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
-                waterDataSet.setColor(getResources().getColor(R.color.purple_200));
+                waterDataSet.setColor(getResources().getColor(R.color.light_green));
                 BarData barData = new BarData(waterDataSet);
                 waterChart.setData(barData);
                 waterChart.setFitBars(true);
@@ -230,7 +289,7 @@ public class Fragment3 extends Fragment {
             }
         });
 
-        todayButton.setOnClickListener(new View.OnClickListener() {
+        waterBarChart_todayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cal.setTime(origin);
@@ -272,12 +331,165 @@ public class Fragment3 extends Fragment {
                 cal.setTime(queryCompare);
 
                 BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
-                waterDataSet.setColor(getResources().getColor(R.color.purple_200));
+                waterDataSet.setColor(getResources().getColor(R.color.light_green));
                 BarData barData = new BarData(waterDataSet);
                 waterChart.setData(barData);
                 waterChart.setFitBars(true);
                 waterChart.animateXY(2000,2000);
                 waterChart.invalidate();
+            }
+        });
+
+        calorieBarChart_previousWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calorieCal.add(Calendar.DAY_OF_WEEK, -7);
+                String newBeginWeek = format.format(calorieCal.getTime());
+                calorieCal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(calorieCal.getTime());
+                calorieCal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+
+                float[] calorie_xData = databaseHelper.getCurrentCalorieDateDay(newBeginWeek, newEndWeek);
+                int[] calorie_yData = databaseHelper.getCurrentCalorieData(newBeginWeek, newEndWeek);
+
+                List<BarEntry> calorieEntries = new ArrayList<BarEntry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date calorie_queryCompare = calorieCal.getTime();
+
+                float calorie_dateCheck;
+                boolean calorie_DataFound;
+                for (int j=0; j<7; j++) {
+                    calorie_DataFound = false;
+                    calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
+                    for (int i=0; i<xData.length; i++) {
+                        if (calorie_dateCheck == calorie_xData[i]) {
+                            calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
+                            calorie_DataFound = true;
+                            break;
+                        }
+                    }
+                    if (!calorie_DataFound) {
+                        calorieEntries.add(new BarEntry(calorie_dateCheck, 0));
+                    }
+                    calorieCal.add(Calendar.DAY_OF_WEEK,1);
+                }
+                // Set cal back to normal
+                calorieCal.setTime(calorie_queryCompare);
+
+                BarDataSet calorieDataSet = new BarDataSet(calorieEntries, "Calories");
+                calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                BarData calorieBarData = new BarData(calorieDataSet);
+                calorieChart.setData(calorieBarData);
+                calorieChart.setFitBars(true);
+                calorieChart.animateXY(2000,2000);
+                Description calorieDescription = calorieChart.getDescription();
+                calorieDescription.setEnabled(false);
+                calorieChart.invalidate();
+            }
+        });
+
+        calorieBarChart_nextWeekButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calorieCal.add(Calendar.DAY_OF_WEEK, 7);
+                String newBeginWeek = format.format(calorieCal.getTime());
+                calorieCal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(calorieCal.getTime());
+                calorieCal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+
+                float[] calorie_xData = databaseHelper.getCurrentCalorieDateDay(newBeginWeek, newEndWeek);
+                int[] calorie_yData = databaseHelper.getCurrentCalorieData(newBeginWeek, newEndWeek);
+
+                List<BarEntry> calorieEntries = new ArrayList<BarEntry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date calorie_queryCompare = calorieCal.getTime();
+
+                float calorie_dateCheck;
+                boolean calorie_DataFound;
+                for (int j=0; j<7; j++) {
+                    calorie_DataFound = false;
+                    calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
+                    for (int i=0; i<xData.length; i++) {
+                        if (calorie_dateCheck == calorie_xData[i]) {
+                            calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
+                            calorie_DataFound = true;
+                            break;
+                        }
+                    }
+                    if (!calorie_DataFound) {
+                        calorieEntries.add(new BarEntry(calorie_dateCheck, 0));
+                    }
+                    calorieCal.add(Calendar.DAY_OF_WEEK,1);
+                }
+                // Set cal back to normal
+                calorieCal.setTime(calorie_queryCompare);
+
+                BarDataSet calorieDataSet = new BarDataSet(calorieEntries, "Calories");
+                calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                BarData calorieBarData = new BarData(calorieDataSet);
+                calorieChart.setData(calorieBarData);
+                calorieChart.setFitBars(true);
+                calorieChart.animateXY(2000,2000);
+                Description calorieDescription = calorieChart.getDescription();
+                calorieDescription.setEnabled(false);
+                calorieChart.invalidate();
+            }
+        });
+
+        calorieBarChart_todayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calorieCal.setTime(origin);
+                String newBeginWeek = format.format(calorieCal.getTime());
+                calorieCal.add(Calendar.DAY_OF_WEEK,6);
+                String newEndWeek = format.format(calorieCal.getTime());
+                calorieCal.add(Calendar.DAY_OF_WEEK, -6);
+                date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
+
+                float[] calorie_xData = databaseHelper.getCurrentCalorieDateDay(newBeginWeek, newEndWeek);
+                int[] calorie_yData = databaseHelper.getCurrentCalorieData(newBeginWeek, newEndWeek);
+
+                List<BarEntry> calorieEntries = new ArrayList<BarEntry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date calorie_queryCompare = calorieCal.getTime();
+
+                float calorie_dateCheck;
+                boolean calorie_DataFound;
+                for (int j=0; j<7; j++) {
+                    calorie_DataFound = false;
+                    calorie_dateCheck = Float.parseFloat(queryReturnFormat.format(calorieCal.getTime()));
+                    for (int i=0; i<xData.length; i++) {
+                        if (calorie_dateCheck == calorie_xData[i]) {
+                            calorieEntries.add(new BarEntry(calorie_dateCheck, calorie_yData[i]));
+                            calorie_DataFound = true;
+                            break;
+                        }
+                    }
+                    if (!calorie_DataFound) {
+                        calorieEntries.add(new BarEntry(calorie_dateCheck, 0));
+                    }
+                    calorieCal.add(Calendar.DAY_OF_WEEK,1);
+                }
+                // Set cal back to normal
+                calorieCal.setTime(calorie_queryCompare);
+
+                BarDataSet calorieDataSet = new BarDataSet(calorieEntries, "Calories");
+                calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                BarData calorieBarData = new BarData(calorieDataSet);
+                calorieChart.setData(calorieBarData);
+                calorieChart.setFitBars(true);
+                calorieChart.animateXY(2000,2000);
+                Description calorieDescription = calorieChart.getDescription();
+                calorieDescription.setEnabled(false);
+                calorieChart.invalidate();
             }
         });
 
