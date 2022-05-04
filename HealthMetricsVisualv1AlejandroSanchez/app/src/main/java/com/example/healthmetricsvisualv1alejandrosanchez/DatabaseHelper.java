@@ -32,6 +32,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                         "u_workout_current INT," +
                                         "u_workout_goal INT);";
         sqLiteDatabase.execSQL(createTableStatement);
+
+        String createWaterTable =   "CREATE TABLE waterTracker" +
+                                    "(water_date TEXT," +
+                                    "water_current INT," +
+                                    "water_goal INT);";
+        sqLiteDatabase.execSQL(createWaterTable);
+
+        String createCalorieTable = "CREATE TABLE calorieData" +
+                                    "(calorie_date TEXT," +
+                                    "calorie_current INT," +
+                                    "calorie_goal INT);";
+        sqLiteDatabase.execSQL(createCalorieTable);
+
+        String createWorkoutTable = "CREATE TABLE workoutData" +
+                                    "(workout_date TEXT," +
+                                    "workout_current INT," +
+                                    "workout_goal INT);";
+        sqLiteDatabase.execSQL(createWorkoutTable);
+
+        String createWeightTable =  "CREATE TABLE weightData" +
+                                    "(weight_date TEXT," +
+                                    "weight_current INT," +
+                                    "weight_goal INT);";
+        sqLiteDatabase.execSQL(createWeightTable);
     }
 
     @Override

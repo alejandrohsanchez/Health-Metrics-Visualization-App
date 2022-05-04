@@ -86,7 +86,7 @@ public class Fragment1 extends Fragment {
         // Calculate progress values
         double waterProgressValue, calorieProgressValue, workoutProgressValue;
         waterProgressValue = ((double)databaseHelper.getUserCurrentWater() / (double)databaseHelper.getUserGoalWater()) * 100;
-        calorieProgressValue = (databaseHelper.getUserCurrentCalorie()/ databaseHelper.getUserGoalCalorie()) * 100;
+        calorieProgressValue = (databaseHelper.getUserCurrentCalorie() / databaseHelper.getUserGoalCalorie()) * 100;
         workoutProgressValue = ((double)databaseHelper.getUserCurrentWorkout() / (double)databaseHelper.getUserGoalWorkout()) * 100;
 
         // Update what is on the page
@@ -137,7 +137,7 @@ public class Fragment1 extends Fragment {
                 databaseHelper.setUserCurrentCalorie(current_val);
                 currentCalorie.setText((int)current_val + "/" + (int) calorieGoal);
 
-                double progress = (databaseHelper.getUserCurrentCalorie() /databaseHelper.getUserGoalCalorie()) * 100;
+                double progress = (databaseHelper.getUserCurrentCalorie() / databaseHelper.getUserGoalCalorie()) * 100;
                 calorieProgressBar.setProgress((int)progress);
             }
         });
