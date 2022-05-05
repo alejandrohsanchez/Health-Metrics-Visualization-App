@@ -790,6 +790,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public int[] getCurrentWaterGoalData(String beginDate, String endDate, int numVal) {
+        int[] data = new int[numVal];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select water_goal from waterTracker " +
+                "where water_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by water_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getInt(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
+    }
+
     public int[] getCurrentCalorieData(String beginDate, String endDate, int numVal) {
         int[] data = new int[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
@@ -820,6 +839,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for (int i=0; i < data.length; i++) {
             if (cursor.moveToNext()) {
                 data[i] = cursor.getFloat(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
+    }
+
+    public int[] getCurrentCalorieGoalData(String beginDate, String endDate, int numVal) {
+        int[] data = new int[numVal];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select calorie_goal from calorieTracker " +
+                "where calorie_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by calorie_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getInt(0);
             }
         }
 
@@ -866,6 +904,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public int[] getCurrentWorkoutGoalData(String beginDate, String endDate, int numVal) {
+        int[] data = new int[numVal];
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString =    "select workout_goal from workoutTracker " +
+                "where workout_date between '" + beginDate + "' and '" + endDate + "' " +
+                "order by workout_date asc;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        for (int i=0; i < data.length; i++) {
+            if (cursor.moveToNext()) {
+                data[i] = cursor.getInt(0);
+            }
+        }
+
+        cursor.close();
+        db.close();
+        return data;
+    }
     // Not used or for reference -----------------------------------
     public List<UserModel> getEveryone() {
         List<UserModel> returnList = new ArrayList<>();
