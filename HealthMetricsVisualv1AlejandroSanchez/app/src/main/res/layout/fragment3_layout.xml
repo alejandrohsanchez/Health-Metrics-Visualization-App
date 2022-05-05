@@ -12,53 +12,62 @@
         android:padding="40dp"
         tools:context=".ui.main.PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/dateTest"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterBarChart_today_Button" />
+        <Button
+            android:id="@+id/toWeekly_calorieChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="weekly"
+            app:layout_constraintStart_toStartOf="@+id/calorieBarChart"
+            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart" />
+
+        <TextView
+            android:id="@+id/dateTest"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/waterBarChart_prevWeek_button" />
 
         <TextView
             android:id="@+id/dateTest2"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart_today_Button" />
+            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart_prevWeek_button" />
 
         <TextView
             android:id="@+id/dateTest3"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/workoutBarChart_today_Button" />
+            app:layout_constraintTop_toBottomOf="@+id/workoutBarChart_prevWeek_button" />
 
         <Button
             android:id="@+id/waterBarChart_prevWeek_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:backgroundTint="#A9BE57"
-            android:text="Prev week"
-            app:layout_constraintStart_toStartOf="@+id/dateTest"
-            app:layout_constraintTop_toBottomOf="@+id/waterBarChart" />
+            android:text="back"
+            app:layout_constraintStart_toStartOf="@+id/waterBarChart"
+            app:layout_constraintTop_toBottomOf="@+id/waterBarChart_today_Button" />
 
         <Button
             android:id="@+id/calorieBarChart_prevWeek_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:backgroundTint="#A9BE57"
-            android:text="Prev week"
-            app:layout_constraintStart_toStartOf="@+id/dateTest2"
-            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart" />
+            android:text="back"
+            app:layout_constraintStart_toStartOf="@+id/calorieBarChart"
+            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart_today_Button" />
 
         <Button
             android:id="@+id/workoutBarChart_prevWeek_button"
@@ -66,39 +75,36 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:backgroundTint="#A9BE57"
-            android:text="Prev week"
+            android:text="back"
             app:layout_constraintStart_toStartOf="@+id/workoutBarChart"
-            app:layout_constraintTop_toBottomOf="@+id/workoutBarChart" />
+            app:layout_constraintTop_toBottomOf="@+id/workoutBarChart_today_Button" />
 
         <Button
             android:id="@+id/waterBarChart_nextWeek_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:backgroundTint="#A9BE57"
-            android:text="Next week"
-            app:layout_constraintEnd_toEndOf="@+id/dateTest"
-            app:layout_constraintTop_toBottomOf="@+id/waterBarChart" />
+            android:text="next"
+            app:layout_constraintBottom_toBottomOf="@+id/waterBarChart_prevWeek_button"
+            app:layout_constraintEnd_toEndOf="@+id/waterBarChart" />
 
         <Button
             android:id="@+id/calorieBarChart_nextWeek_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:backgroundTint="#A9BE57"
-            android:text="Next week"
-            app:layout_constraintEnd_toEndOf="@+id/dateTest2"
-            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart" />
+            android:text="next"
+            app:layout_constraintBottom_toBottomOf="@+id/calorieBarChart_prevWeek_button"
+            app:layout_constraintEnd_toEndOf="@+id/calorieBarChart" />
 
         <Button
             android:id="@+id/workoutBarChart_nextWeek_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:backgroundTint="#A9BE57"
-            android:text="Next week"
-            app:layout_constraintEnd_toEndOf="@+id/workoutBarChart"
-            app:layout_constraintTop_toBottomOf="@+id/workoutBarChart" />
+            android:text="next"
+            app:layout_constraintBottom_toBottomOf="@+id/workoutBarChart_prevWeek_button"
+            app:layout_constraintEnd_toEndOf="@+id/workoutBarChart" />
 
         <Button
             android:id="@+id/waterBarChart_today_Button"
@@ -114,21 +120,21 @@
             android:id="@+id/calorieBarChart_today_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="100dp"
             android:backgroundTint="#A9BE57"
             android:text="Today"
             app:layout_constraintStart_toStartOf="@+id/waterBarChart_today_Button"
-            app:layout_constraintTop_toBottomOf="@+id/waterBarChart_prevWeek_button" />
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <Button
             android:id="@+id/workoutBarChart_today_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="100dp"
             android:backgroundTint="#A9BE57"
             android:text="Today"
             app:layout_constraintStart_toStartOf="@+id/calorieBarChart_today_Button"
-            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart_prevWeek_button" />
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/waterBarChart"
@@ -155,5 +161,53 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateTest3" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="100dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toWeekly_waterChart" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="100dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart" />
+
+        <Button
+            android:id="@+id/toWeekly_waterChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="weekly"
+            app:layout_constraintStart_toStartOf="@+id/waterBarChart"
+            app:layout_constraintTop_toBottomOf="@+id/waterBarChart" />
+
+        <Button
+            android:id="@+id/toMonthly_waterChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="monthly"
+            app:layout_constraintEnd_toEndOf="@+id/waterBarChart"
+            app:layout_constraintTop_toBottomOf="@+id/waterBarChart" />
+
+        <Button
+            android:id="@+id/toMonthly_calorieChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="monthly"
+            app:layout_constraintEnd_toEndOf="@+id/calorieBarChart"
+            app:layout_constraintTop_toBottomOf="@+id/calorieBarChart" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

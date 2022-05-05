@@ -18,6 +18,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        // SETTINGS TABLE
+        String init_settings =  "CREATE TABLE settings" +
+                                    "(waterChartView TEXT," +
+                                    "calorieChartView TEXT," +
+                                    "workoutChartView TEXT," +
+                                    "weightChartView TEXT);";
+        sqLiteDatabase.execSQL(init_settings);
+
+        String set_default_settings =    "INSERT INTO settings (waterChartView, calorieChartView, workoutChartView, weightChartView)" +
+                                            "VALUES" +
+                                            "('week', 'week', 'week', 'week')";
+        sqLiteDatabase.execSQL(set_default_settings);
+
+        // USER TABLE
         String createTableStatement =   "CREATE TABLE user" +
                                         "(u_name TEXT," +
                                         "u_age INT," +
@@ -33,14 +47,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                         "u_workout_goal INT);";
         sqLiteDatabase.execSQL(createTableStatement);
 
+        // WATER TRACKER TABLE
         String createWaterTable =   "CREATE TABLE waterTracker" +
                                     "(water_date DATE," +
                                     "water_current INT," +
                                     "water_goal INT);";
         sqLiteDatabase.execSQL(createWaterTable);
 
-        String populate_TestData_water =    "INSERT INTO waterTracker (water_date,water_current,water_goal)" +
+        String populate_TestData_water =    "INSERT INTO waterTracker (water_date,water_current,water_goal) " +
                                             "VALUES" +
+                                            "('2022-03-01', 10, 8),"+
+                                            "('2022-03-02', 6, 8),"+
+                                            "('2022-03-03', 6, 8),"+
+                                            "('2022-03-04', 5, 8),"+
+                                            "('2022-03-05', 2, 8),"+
+                                            "('2022-03-06', 2, 8),"+
+                                            "('2022-03-07', 0, 8),"+
+                                            "('2022-03-08', 1, 8),"+
+                                            "('2022-03-09', 10, 8),"+
+                                            "('2022-03-10', 10, 8),"+
+                                            "('2022-03-11', 3, 8),"+
+                                            "('2022-03-12', 8, 8),"+
+                                            "('2022-03-13', 5, 8),"+
+                                            "('2022-03-14', 1, 8),"+
+                                            "('2022-03-15', 4, 8),"+
+                                            "('2022-03-16', 3, 8),"+
+                                            "('2022-03-17', 8, 8),"+
+                                            "('2022-03-18', 5, 8),"+
+                                            "('2022-03-19', 0, 8),"+
+                                            "('2022-03-20', 1, 8),"+
+                                            "('2022-03-21', 5, 8),"+
+                                            "('2022-03-22', 10, 8),"+
+                                            "('2022-03-23', 9, 8),"+
+                                            "('2022-03-24', 5, 8),"+
+                                            "('2022-03-25', 6, 8),"+
+                                            "('2022-03-26', 3, 8),"+
+                                            "('2022-03-27', 10, 8),"+
+                                            "('2022-03-28', 12, 8),"+
+                                            "('2022-03-29', 2, 8),"+
+                                            "('2022-03-30', 5, 8),"+
+                                            "('2022-03-31', 6, 8),"+
+                                            "('2022-04-01', 7, 8),"+
+                                            "('2022-04-02', 0, 8),"+
+                                            "('2022-04-03', 5, 8),"+
+                                            "('2022-04-04', 5, 8),"+
+                                            "('2022-04-05', 4, 8),"+
+                                            "('2022-04-06', 5, 8),"+
+                                            "('2022-04-07', 10, 8),"+
+                                            "('2022-04-08', 15, 8),"+
+                                            "('2022-04-09', 7, 8),"+
+                                            "('2022-04-10', 1, 8),"+
+                                            "('2022-04-11', 5, 8),"+
+                                            "('2022-04-12', 0, 8),"+
+                                            "('2022-04-13', 2, 8),"+
+                                            "('2022-04-14', 5, 8),"+
+                                            "('2022-04-15', 5, 8),"+
+                                            "('2022-04-16', 2, 8),"+
+                                            "('2022-04-17', 10, 8),"+
                                             "('2022-04-18', 8, 8)," +
                                             "('2022-04-19', 6, 8)," +
                                             "('2022-04-20', 7, 8)," +
@@ -54,7 +117,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                             "('2022-04-28', 13, 8)," +
                                             "('2022-04-29', 7, 8)," +
                                             "('2022-04-30', 8, 8)," +
-                                            "('2022-04-31', 8, 8)," +
                                             "('2022-05-01', 8, 8)," +
                                             "('2022-05-02', 5, 8)," +
                                             "('2022-05-03', 4, 8)," +
@@ -68,9 +130,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                             "('2022-05-11', 5, 8)," +
                                             "('2022-05-12', 3, 8)," +
                                             "('2022-05-13', 4, 8)," +
-                                            "('2022-05-14', 8, 8)";
+                                            "('2022-05-14', 8, 8)," +
+                                            "('2022-05-15', 4, 8)," +
+                                            "('2022-05-16', 5, 8)," +
+                                            "('2022-05-17', 2, 8)," +
+                                            "('2022-05-18', 7, 8)," +
+                                            "('2022-05-19', 8, 8)," +
+                                            "('2022-05-20', 8, 8)," +
+                                            "('2022-05-21', 1, 8)," +
+                                            "('2022-05-22', 10, 8)," +
+                                            "('2022-05-23', 9, 8)," +
+                                            "('2022-05-24', 8, 8)," +
+                                            "('2022-05-25', 3, 8)," +
+                                            "('2022-05-26', 13, 8)," +
+                                            "('2022-05-27', 7, 8)," +
+                                            "('2022-05-28', 0, 8)," +
+                                            "('2022-05-29', 8, 8)," +
+                                            "('2022-05-30', 10, 8)," +
+                                            "('2022-05-31', 8, 8)," +
+                                            "('2022-06-01', 8, 8)," +
+                                            "('2022-06-02', 3, 8)," +
+                                            "('2022-06-03', 3, 8)," +
+                                            "('2022-06-04', 18, 8)," +
+                                            "('2022-06-05', 8, 8)," +
+                                            "('2022-06-06', 4, 8)," +
+                                            "('2022-06-07', 7, 8)," +
+                                            "('2022-06-08', 8, 8)," +
+                                            "('2022-06-09', 12, 8)," +
+                                            "('2022-06-10', 12, 8)," +
+                                            "('2022-06-11', 8, 8)," +
+                                            "('2022-06-12', 5, 8)," +
+                                            "('2022-06-13', 5, 8)," +
+                                            "('2022-06-14', 2, 8)," +
+                                            "('2022-06-15', 0, 8)," +
+                                            "('2022-06-16', 12, 8)," +
+                                            "('2022-06-17', 11, 8)," +
+                                            "('2022-06-18', 9, 8)," +
+                                            "('2022-06-19', 2, 8)," +
+                                            "('2022-06-20', 4, 8)," +
+                                            "('2022-06-21', 1, 8)," +
+                                            "('2022-06-22', 0, 8)," +
+                                            "('2022-06-23', 1, 8)," +
+                                            "('2022-06-24', 14, 8)," +
+                                            "('2022-06-25', 3, 8)," +
+                                            "('2022-06-26', 7, 8)," +
+                                            "('2022-06-27', 8, 8)," +
+                                            "('2022-06-28', 0, 8)," +
+                                            "('2022-06-29', 3, 8)," +
+                                            "('2022-06-30', 15, 8)";
         sqLiteDatabase.execSQL(populate_TestData_water);
 
+        // CALORIE TRACKER TABLE
         String createCalorieTable = "CREATE TABLE calorieTracker" +
                 "(calorie_date DATE," +
                 "calorie_current INT," +
@@ -79,6 +189,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String populate_TestData_calorie =  "INSERT INTO calorieTracker (calorie_date,calorie_current,calorie_goal)" +
                                             "VALUES" +
+                                            "('2022-03-01', 1500, 2000)," +
+                                            "('2022-03-02', 1250, 2000)," +
+                                            "('2022-03-03', 1300, 2000)," +
+                                            "('2022-03-04', 2100, 2000)," +
+                                            "('2022-03-05', 2300, 2000)," +
+                                            "('2022-03-06', 600, 2000)," +
+                                            "('2022-03-07', 2500, 2000)," +
+                                            "('2022-03-08', 2000, 2000)," +
+                                            "('2022-03-09', 1500, 2000)," +
+                                            "('2022-03-10', 1500, 2000)," +
+                                            "('2022-03-11', 1800, 2000)," +
+                                            "('2022-03-12', 1920, 2000)," +
+                                            "('2022-03-13', 3000, 2000)," +
+                                            "('2022-03-14', 2600, 2000)," +
+                                            "('2022-03-15', 1400, 2000)," +
+                                            "('2022-03-16', 900, 2000)," +
+                                            "('2022-03-17', 1500, 2000)," +
+                                            "('2022-03-18', 1700, 2000)," +
+                                            "('2022-03-19', 1360, 2000)," +
+                                            "('2022-03-20', 1970, 2000)," +
+                                            "('2022-03-21', 2010, 2000)," +
+                                            "('2022-03-22', 2590, 2000)," +
+                                            "('2022-03-23', 2390, 2000)," +
+                                            "('2022-03-24', 1560, 2000)," +
+                                            "('2022-03-25', 1395, 2000)," +
+                                            "('2022-03-26', 2035, 2000)," +
+                                            "('2022-03-27', 1480, 2000)," +
+                                            "('2022-03-28', 780, 2000)," +
+                                            "('2022-03-29', 2700, 2000)," +
+                                            "('2022-03-30', 2380, 2000)," +
+                                            "('2022-03-31', 1980, 2000)," +
+                                            "('2022-04-01', 1570, 2000)," +
+                                            "('2022-04-02', 1950, 2000)," +
+                                            "('2022-04-03', 1984, 2000)," +
+                                            "('2022-04-04', 3500, 2000)," +
+                                            "('2022-04-05', 2020, 2000)," +
+                                            "('2022-04-06', 1890, 2000)," +
+                                            "('2022-04-07', 1470, 2000)," +
+                                            "('2022-04-08', 2040, 2000)," +
+                                            "('2022-04-09', 2340, 2000)," +
+                                            "('2022-04-10', 1500, 2000)," +
+                                            "('2022-04-11', 3000, 2000)," +
+                                            "('2022-04-12', 1280, 2000)," +
+                                            "('2022-04-13', 1000, 2000)," +
+                                            "('2022-04-14', 1600, 2000)," +
+                                            "('2022-04-15', 1670, 2000)," +
+                                            "('2022-04-16', 1950, 2000)," +
+                                            "('2022-04-17', 2370, 2000)," +
                                             "('2022-04-18', 1500, 2000)," +
                                             "('2022-04-19', 1800, 2000)," +
                                             "('2022-04-20', 1600, 2000)," +
@@ -92,7 +250,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                             "('2022-04-28', 2000, 2000)," +
                                             "('2022-04-29', 2000, 2000)," +
                                             "('2022-04-30', 2100, 2000)," +
-                                            "('2022-04-31', 1900, 2000)," +
                                             "('2022-05-01', 1800, 2000)," +
                                             "('2022-05-02', 2000, 2000)," +
                                             "('2022-05-03', 1900, 2000)," +
@@ -106,7 +263,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                             "('2022-05-11', 2100, 2000)," +
                                             "('2022-05-12', 2000, 2000)," +
                                             "('2022-05-13', 1600, 2000)," +
-                                            "('2022-05-14', 1800, 2000)";
+                                            "('2022-05-14', 1700, 2000)," +
+                                            "('2022-05-15', 1920, 2000)," +
+                                            "('2022-05-16', 1850, 2000)," +
+                                            "('2022-05-17', 2090, 2000)," +
+                                            "('2022-05-18', 2400, 2000)," +
+                                            "('2022-05-19', 1490, 2000)," +
+                                            "('2022-05-20', 3290, 2000)," +
+                                            "('2022-05-21', 1800, 2000)," +
+                                            "('2022-05-22', 1490, 2000)," +
+                                            "('2022-05-23', 2190, 2000)," +
+                                            "('2022-05-24', 2260, 2000)," +
+                                            "('2022-05-25', 1900, 2000)," +
+                                            "('2022-05-26', 2030, 2000)," +
+                                            "('2022-05-27', 2000, 2000)," +
+                                            "('2022-05-28', 2090, 2000)," +
+                                            "('2022-05-29', 1800, 2000)," +
+                                            "('2022-05-30', 1600, 2000)," +
+                                            "('2022-05-31', 1600, 2000)," +
+                                            "('2022-06-01', 1250, 2000)," +
+                                            "('2022-06-02', 1680, 2000)," +
+                                            "('2022-06-03', 1600, 2000)," +
+                                            "('2022-06-04', 2030, 2000)," +
+                                            "('2022-06-05', 1510, 2000)," +
+                                            "('2022-06-06', 2510, 2000)," +
+                                            "('2022-06-07', 3400, 2000)," +
+                                            "('2022-06-08', 1270, 2000)," +
+                                            "('2022-06-09', 2300, 2000)," +
+                                            "('2022-06-10', 2600, 2000)," +
+                                            "('2022-06-11', 1675, 2000)," +
+                                            "('2022-06-12', 1300, 2000)," +
+                                            "('2022-06-13', 1900, 2000)," +
+                                            "('2022-06-14', 2800, 2000)," +
+                                            "('2022-06-15', 1400, 2000)," +
+                                            "('2022-06-16', 1700, 2000)," +
+                                            "('2022-06-17', 1450, 2000)," +
+                                            "('2022-06-18', 1890, 2000)," +
+                                            "('2022-06-19', 1520, 2000)," +
+                                            "('2022-06-20', 1750, 2000)," +
+                                            "('2022-06-21', 2340, 2000)," +
+                                            "('2022-06-22', 1980, 2000)," +
+                                            "('2022-06-23', 1640, 2000)," +
+                                            "('2022-06-24', 1750, 2000)," +
+                                            "('2022-06-25', 1930, 2000)," +
+                                            "('2022-06-26', 1390, 2000)," +
+                                            "('2022-06-27', 2570, 2000)," +
+                                            "('2022-06-28', 1280, 2000)," +
+                                            "('2022-06-29', 1760, 2000)," +
+                                            "('2022-06-30', 1890, 2000)";
         sqLiteDatabase.execSQL(populate_TestData_calorie);
 
         String createWorkoutTable = "CREATE TABLE workoutTracker" +
@@ -115,6 +319,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "workout_goal INT);";
         sqLiteDatabase.execSQL(createWorkoutTable);
 
+        // WORKOUT TRACKER TABLE
         String populate_TestData_workout =  "INSERT INTO workoutTracker (workout_date,workout_current,workout_goal)" +
                                             "VALUES" +
                                             "('2022-04-18', 12, 25)," +
@@ -153,6 +358,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "weight_goal DECIMAL);";
         sqLiteDatabase.execSQL(createWeightTable);
 
+        // WEIGHT TRACKER TABLE
         String populate_TestData_weight =   "INSERT INTO weightTracker (weight_date,weight_current,weight_goal)" +
                                             "VALUES" +
                                             "('2022-04-18', 191.5, 180)," +
@@ -228,6 +434,93 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return true;
     }
+
+    // Get settings information -----------------------------------
+    public String getWaterChartViewSetting() {
+        String setting = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select waterChartView from settings;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            setting = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return setting;
+    }
+
+    public String getCalorieChartViewSetting() {
+        String setting = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select calorieChartView from settings;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            setting = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return setting;
+    }
+
+    public String getWorkoutChartViewSetting() {
+        String setting = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select workoutChartView from settings;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            setting = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return setting;
+    }
+
+    public String getWeightChartViewSetting() {
+        String setting = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "select weightChartView from settings;";
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        while (cursor.moveToNext()) {
+            setting = cursor.getString(0);
+        }
+        cursor.close();
+        db.close();
+        return setting;
+    }
+
+    // Set settings -----------------------------------
+    public void setWaterChartViewSetting(String setting) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update settings set waterChartView = '" + setting + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setCalorieChartViewSetting(String setting) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update settings set calorieChartView = '" + setting + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setWorkoutChartViewSetting(String setting) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update settings set workoutChartView = '" + setting + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
+    public void setWeightChartViewSetting(String setting) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryString = "update settings set weightChartView = '" + setting + "';";
+        db.execSQL(queryString);
+        db.close();
+    }
+
     // Get personal information -----------------------------------
     public String getUsername() {
         String username = "";
@@ -459,8 +752,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Get graph data
-    public int[] getCurrentWaterData(String beginDate, String endDate) {
-        int[] data = new int[7];
+    public int[] getCurrentWaterData(String beginDate, String endDate, int numVal) {
+        int[] data = new int[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString =    "select water_current from waterTracker " +
                 "where water_date between '" + beginDate + "' and '" + endDate + "' " +
@@ -478,8 +771,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public float[] getCurrentWaterDateDay(String beginDate, String endDate) {
-        float[] data = new float[7];
+    public float[] getCurrentWaterDateDay(String beginDate, String endDate, int numVal) {
+        float[] data = new float[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString =    "select strftime('%d', water_date) from waterTracker " +
                 "where water_date between '" + beginDate + "' and '" + endDate + "' " +
@@ -497,8 +790,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public int[] getCurrentCalorieData(String beginDate, String endDate) {
-        int[] data = new int[7];
+    public int[] getCurrentCalorieData(String beginDate, String endDate, int numVal) {
+        int[] data = new int[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString =    "select calorie_current from calorieTracker " +
                 "where calorie_date between '" + beginDate + "' and '" + endDate + "' " +
@@ -516,8 +809,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public float[] getCurrentCalorieDateDay(String beginDate, String endDate) {
-        float[] data = new float[7];
+    public float[] getCurrentCalorieDateDay(String beginDate, String endDate, int numVal) {
+        float[] data = new float[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString =    "select strftime('%d', calorie_date) from calorieTracker " +
                 "where calorie_date between '" + beginDate + "' and '" + endDate + "' " +
@@ -535,8 +828,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public int[] getCurrentWorkoutData(String beginDate, String endDate) {
-        int[] data = new int[7];
+    public int[] getCurrentWorkoutData(String beginDate, String endDate, int numVal) {
+        int[] data = new int[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString =    "select workout_current from workoutTracker " +
                 "where workout_date between '" + beginDate + "' and '" + endDate + "' " +
@@ -554,8 +847,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public float[] getCurrentWorkoutDateDay(String beginDate, String endDate) {
-        float[] data = new float[7];
+    public float[] getCurrentWorkoutDateDay(String beginDate, String endDate, int numVal) {
+        float[] data = new float[numVal];
         SQLiteDatabase db = this.getReadableDatabase();
         String queryString =    "select strftime('%d', workout_date) from workoutTracker " +
                 "where workout_date between '" + beginDate + "' and '" + endDate + "' " +
