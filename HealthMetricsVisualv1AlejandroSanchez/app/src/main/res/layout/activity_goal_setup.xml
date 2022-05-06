@@ -13,9 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Workout minutes goal"
+        android:textColor="#FF000000"
+        app:layout_constraintEnd_toStartOf="@id/water_intake_goal"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/calorie_goal"
-        app:layout_constraintEnd_toStartOf="@id/water_intake_goal"/>
+        app:layout_constraintTop_toBottomOf="@+id/calorie_goal" />
 
     <TextView
         android:id="@+id/textView7"
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Calorie goal"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/weight_goal" />
 
@@ -31,11 +33,12 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:text="Enter your goals below."
         android:textAlignment="center"
-        android:textSize="34sp"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,10 +47,11 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:text="Water intake goal"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
     <TextView
         android:id="@+id/textView6"
@@ -55,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Weight goal"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/water_intake_goal" />
 
@@ -114,5 +119,33 @@
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/workout_goal" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="320dp"
+        android:layout_height="500dp"
+        android:background="#F5F5F5"
+        android:translationZ="-1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Don't worry. You can change these later."
+        android:textAlignment="center"
+        android:textColor="#FF000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

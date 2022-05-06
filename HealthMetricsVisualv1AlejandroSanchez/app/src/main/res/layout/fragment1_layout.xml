@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Name:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile" />
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:text="TextView"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_name_text"
         app:layout_constraintStart_toStartOf="@+id/wellness_name_text" />
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Age:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_name_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_name_text" />
@@ -51,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_age_text"
         app:layout_constraintStart_toStartOf="@+id/wellness_user_name" />
@@ -61,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Weight:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile2"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile2" />
@@ -71,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Water:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_profile3"
         app:layout_constraintTop_toBottomOf="@+id/wellness_profile3" />
@@ -81,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Calories:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_waterIntake_text"
         app:layout_constraintTop_toBottomOf="@+id/waterProgressBar" />
@@ -91,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="num"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/waterProgressBar"
         app:layout_constraintStart_toEndOf="@+id/waterProgressBar"
@@ -102,6 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="num"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/calorieProgressBar"
         app:layout_constraintStart_toEndOf="@+id/calorieProgressBar"
@@ -113,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="num"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/workoutProgressBar"
         app:layout_constraintStart_toEndOf="@+id/workoutProgressBar"
@@ -124,6 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Height:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_weight_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_weight_text" />
@@ -133,6 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="weight"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_weight_text"
         app:layout_constraintStart_toStartOf="@+id/wellness_user_age"
@@ -144,6 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="lbs"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_weight_text"
         app:layout_constraintStart_toEndOf="@+id/wellness_user_weight"
@@ -154,6 +167,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="height1"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_height_text"
         app:layout_constraintStart_toStartOf="@+id/wellness_user_weight"
@@ -165,6 +179,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="ft"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_user_height_1"
         app:layout_constraintStart_toEndOf="@+id/wellness_user_height_1"
@@ -176,6 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="height2"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_height_text"
         app:layout_constraintStart_toEndOf="@+id/wellness_height_1_text"
@@ -187,6 +203,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="in"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/wellness_user_height_2"
         app:layout_constraintStart_toEndOf="@+id/wellness_user_height_2"
@@ -199,6 +216,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Your Profile"
+        android:textColor="#FF000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -209,6 +227,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Personal Info"
+        android:textColor="#FF000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_age_text"
         app:layout_constraintTop_toBottomOf="@+id/wellness_age_text" />
@@ -219,9 +238,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Daily Wellness"
+        android:textColor="#FF000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_height_text"
-        app:layout_constraintTop_toBottomOf="@+id/wellness_height_text" />
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
     <Button
         android:id="@+id/wellness_add_water_button"
@@ -298,6 +318,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Workout:"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/wellness_calorie_text"
         app:layout_constraintTop_toBottomOf="@+id/calorieProgressBar" />
@@ -334,10 +355,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You Can Do It!"
+        android:textColor="#FF000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wellness_user_workout" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wellness_user_height_1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

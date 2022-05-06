@@ -14,8 +14,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
-        android:text="Get ready to level up your workout routine with Health Metrics Visualization"
+        android:text="Get ready to level up your workout routine with GetFit!"
         android:textAlignment="center"
+        android:textColor="#FF000000"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Enter your personal information and click the button below when you are ready to continue!"
         android:textAlignment="center"
+        android:textColor="#FF000000"
         android:textSize="20sp"
         android:translationZ="1dp"
         app:layout_constraintEnd_toEndOf="@+id/topMessage"
@@ -40,6 +42,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="30dp"
         android:text="Name"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/header1" />
 
@@ -64,6 +67,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="30dp"
         android:text="Age"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/user_name"
         app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
@@ -84,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="Height"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/user_height_1"
         app:layout_constraintTop_toTopOf="@+id/agePrompt" />
 
@@ -116,6 +121,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="30dp"
         android:text="Weight"
+        android:textColor="#FF000000"
         app:layout_constraintStart_toStartOf="@+id/user_age"
         app:layout_constraintTop_toBottomOf="@+id/user_age" />
 

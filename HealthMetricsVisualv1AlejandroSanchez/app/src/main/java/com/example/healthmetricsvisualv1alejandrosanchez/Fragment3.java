@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -24,11 +23,6 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IValueFormatter;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.utils.ViewPortHandler;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,8 +42,7 @@ public class Fragment3 extends Fragment {
         Button calorieBarChart_previousWeekButton, calorieBarChart_nextWeekButton, calorieBarChart_todayButton;
         Button workoutBarChart_previousWeekButton, workoutBarChart_nextWeekButton, workoutBarChart_todayButton;
         Button toWeeklyWaterChart, toMonthlyWaterChart, toWeeklyCalorieChart, toMonthlyCalorieChart, toWeeklyWorkoutChart, toMonthlyWorkoutChart;
-        CombinedChart waterChart, calorieChart;
-        BarChart workoutChart;
+        CombinedChart waterChart, calorieChart, workoutChart;
 
         // Initialize View
         View rootView = inflater.inflate(R.layout.fragment3_layout, container, false);
@@ -76,6 +69,8 @@ public class Fragment3 extends Fragment {
         toMonthlyWaterChart = rootView.findViewById(R.id.toMonthly_waterChart);
         toWeeklyCalorieChart = rootView.findViewById(R.id.toWeekly_calorieChart);
         toMonthlyCalorieChart = rootView.findViewById(R.id.toMonthly_calorieChart);
+        toWeeklyWorkoutChart = rootView.findViewById(R.id.toWeekly_workoutChart);
+        toMonthlyWorkoutChart = rootView.findViewById(R.id.toMonthly_workoutChart);
 
 
         // Assign graphs
@@ -169,7 +164,7 @@ public class Fragment3 extends Fragment {
             BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
             LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
             dataSet.setColor(getResources().getColor(R.color.black));
-            waterDataSet.setColor(getResources().getColor(R.color.light_green));
+            waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
             LineData lineData = new LineData(dataSet);
             BarData barData = new BarData(waterDataSet);
             lineData.setDrawValues(false);
@@ -178,7 +173,7 @@ public class Fragment3 extends Fragment {
             combinedData.setData(barData);
             combinedData.setValueTextSize(12f);
             waterChart.setData(combinedData);
-            waterChart.animateXY(2000, 2000);
+            waterChart.animateXY(500, 500);
             Description description = waterChart.getDescription();
             description.setEnabled(false);
 
@@ -259,7 +254,7 @@ public class Fragment3 extends Fragment {
             BarDataSet waterDataSet = new BarDataSet(entries, "Cups of Water");
             LineDataSet dataSet = new LineDataSet(goalEntries, "Daily Goal");
             dataSet.setColor(getResources().getColor(R.color.black));
-            waterDataSet.setColor(getResources().getColor(R.color.light_green));
+            waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
             LineData lineData = new LineData(dataSet);
             BarData barData = new BarData(waterDataSet);
             lineData.setDrawValues(false);
@@ -269,7 +264,7 @@ public class Fragment3 extends Fragment {
             combinedData.setData(barData);
             combinedData.setValueTextSize(12f);
             waterChart.setData(combinedData);
-            waterChart.animateXY(2000, 2000);
+            waterChart.animateXY(500, 500);
             Description description = waterChart.getDescription();
             description.setEnabled(false);
 
@@ -352,7 +347,7 @@ public class Fragment3 extends Fragment {
             BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
             LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
             dataSet.setColor(getResources().getColor(R.color.black));
-            calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+            calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
             LineData lineData = new LineData(dataSet);
             BarData barData = new BarData(calorieDataSet);
             lineData.setDrawValues(false);
@@ -361,7 +356,7 @@ public class Fragment3 extends Fragment {
             combinedData.setData(barData);
             combinedData.setValueTextSize(12f);
             calorieChart.setData(combinedData);
-            calorieChart.animateXY(2000, 2000);
+            calorieChart.animateXY(500, 500);
             Description description = calorieChart.getDescription();
             description.setEnabled(false);
 
@@ -441,7 +436,7 @@ public class Fragment3 extends Fragment {
             BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
             LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
             dataSet.setColor(getResources().getColor(R.color.black));
-            calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+            calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
             LineData lineData = new LineData(dataSet);
             BarData barData = new BarData(calorieDataSet);
             lineData.setDrawValues(false);
@@ -451,7 +446,7 @@ public class Fragment3 extends Fragment {
             combinedData.setData(barData);
             combinedData.setValueTextSize(12f);
             calorieChart.setData(combinedData);
-            calorieChart.animateXY(2000, 2000);
+            calorieChart.animateXY(500, 500);
             Description description = calorieChart.getDescription();
             description.setEnabled(false);
 
@@ -480,63 +475,192 @@ public class Fragment3 extends Fragment {
         if (currentWorkoutChartSetting.equals("week")) {
             workoutBarChart_previousWeekButton.setText("prev week");
             workoutBarChart_nextWeekButton.setText("next week");
-            //workoutCurrentDate = format.format(workoutCal.getTime());
-
-            // Beginning of the current week
             workoutCal.set(Calendar.DAY_OF_WEEK, workoutCal.getFirstDayOfWeek());
-            // origin will hold onto the original date that beginWeek contains
-            //Date origin = workoutCal.getTime();
             workoutBeginWeek = format.format(workoutCal.getTime());
+            month1 = getMonthName.format(workoutCal.getTime());
+            day1 = getDay.format(workoutCal.getTime());
+            // Beginning of next week
             workoutCal.add(Calendar.DAY_OF_WEEK, 6);
-            workoutEndWeek = format.format(workoutCal.getTime());
-            workoutCal.add(Calendar.DAY_OF_WEEK, -6);
+            calorieEndWeek = format.format(workoutCal.getTime());
+            day2 = getDay.format(workoutCal.getTime());
+            month2 = getMonthName.format(workoutCal.getTime());
+            workoutCal.add(Calendar.DAY_OF_WEEK, -6); // reset
+
+            workoutDate.setText("Week of " + month1 + " " + day1 + " - " + month2 + " " + day2);
 
             // Getting workout data
-            float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(workoutBeginWeek, workoutEndWeek, 7);
-            int[] workout_yData = databaseHelper.getCurrentWorkoutData(workoutBeginWeek, workoutEndWeek, 7);
+            float[] xData = databaseHelper.getCurrentWorkoutDateDay(workoutBeginWeek, calorieEndWeek, 7);
+            int[] goalData = databaseHelper.getCurrentWorkoutGoalData(workoutBeginWeek, calorieEndWeek, 7);
+            int[] yData = databaseHelper.getCurrentWorkoutData(workoutBeginWeek, calorieEndWeek, 7);
 
-            List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+            List<BarEntry> entries = new ArrayList<BarEntry>();
+            List<Entry> goalEntries = new ArrayList<Entry>();
 
-            Date workout_queryCompare = workoutCal.getTime();
+            // queryCompare will set date back to normal after using it to
+            // ensure every date in the query result has a value
+            Date queryCompare = workoutCal.getTime();
 
-            // WORKOUT CHECKER
-            float workout_dateCheck;
-            boolean workout_DataFound;
+            // Go through each day of the week, check if there is data for it
+            // If no data is found, set its value to zero
+            // CALORIE INTAKE CHECKER
+            float dateCheck;
+            boolean found;
             for (int j = 0; j < 7; j++) {
-                workout_DataFound = false;
-                workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
-                for (int i = 0; i < workout_xData.length; i++) {
-                    if (workout_dateCheck == workout_xData[i]) {
-                        workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
-                        workout_DataFound = true;
+                found = false;
+                dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                for (int i = 0; i < xData.length; i++) {
+                    if (dateCheck == xData[i]) {
+                        entries.add(new BarEntry(dateCheck, yData[i]));
+                        goalEntries.add(new Entry(dateCheck,goalData[i]));
+                        found = true;
                         break;
                     }
                 }
-                if (!workout_DataFound) {
-                    workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                if (!found) {
+                    entries.add(new BarEntry(dateCheck, 0));
+                    goalEntries.add(new Entry(dateCheck,0));
                 }
                 workoutCal.add(Calendar.DAY_OF_WEEK, 1);
             }
-            // Set workoutCal back to normal
-            workoutCal.setTime(workout_queryCompare);
+            // Set cal back to normal
+            workoutCal.setTime(queryCompare);
 
-            // Inserting data into workout bar graph
-            BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
-            workoutDataSet.setColor(getResources().getColor(R.color.light_green));
-            BarData workoutBarData = new BarData(workoutDataSet);
-            workoutChart.setData(workoutBarData);
-            workoutChart.setFitBars(true);
-            workoutChart.animateXY(2000, 2000);
-            Description workoutDescription = workoutChart.getDescription();
-            workoutDescription.setEnabled(false);
+            // Inserting data into calorie bar graph
+            BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+            LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+            dataSet.setColor(getResources().getColor(R.color.black));
+            workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+            LineData lineData = new LineData(dataSet);
+            BarData barData = new BarData(workoutDataSet);
+            lineData.setDrawValues(false);
+            CombinedData combinedData = new CombinedData();
+            combinedData.setData(lineData);
+            combinedData.setData(barData);
+            combinedData.setValueTextSize(12f);
+            workoutChart.setData(combinedData);
+            workoutChart.animateXY(500, 500);
+            Description description = workoutChart.getDescription();
+            description.setEnabled(false);
+
+            // Axes changes
+            XAxis xAxis = workoutChart.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setDrawGridLines(false);
+            YAxis leftAxis = workoutChart.getAxisLeft();
+            leftAxis.setDrawLabels(false);
+            leftAxis.setDrawAxisLine(false);
+            YAxis rightAxis = workoutChart.getAxisRight();
+            rightAxis.setDrawLabels(false);
+            rightAxis.setDrawAxisLine(false);
+
+            // Legend changes
+            Legend legend = workoutChart.getLegend();
+            legend.setForm(Legend.LegendForm.LINE);
+            legend.setTextSize(12f);
+            legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+            legend.setDrawInside(false);
+
+            // Load chart
             workoutChart.invalidate();
         }
         else if (currentWorkoutChartSetting.equals("month")) {
+            workoutBarChart_previousWeekButton.setText("prev month");
+            workoutBarChart_nextWeekButton.setText("next month");
+            int daysInWorkoutMonth = workoutCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+            workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+            workoutBeginMonth = format.format(workoutCal.getTime());
+            month1 = getMonthName.format(workoutCal.getTime());
+            // Beginning of next week
+            workoutCal.add(Calendar.DAY_OF_WEEK, daysInWorkoutMonth - 1);
+            workoutEndMonth = format.format(workoutCal.getTime());
+            workoutCal.add(Calendar.DAY_OF_WEEK, -1 * (daysInWorkoutMonth - 1)); // reset
+
+            workoutDate.setText("Month of " + month1);
+
+            // Getting workout data
+            float[] xData = databaseHelper.getCurrentWorkoutDateDay(workoutBeginMonth, workoutEndMonth, daysInWorkoutMonth);
+            int[] goalData = databaseHelper.getCurrentWorkoutGoalData(workoutBeginMonth, workoutEndMonth, daysInWorkoutMonth);
+            int[] yData = databaseHelper.getCurrentWorkoutData(workoutBeginMonth, workoutEndMonth, daysInWorkoutMonth);
+
+            List<BarEntry> entries = new ArrayList<BarEntry>();
+            List<Entry> goalEntries = new ArrayList<Entry>();
+
+            // queryCompare will set date back to normal after using it to
+            // ensure every date in the query result has a value
+            Date queryCompare = workoutCal.getTime();
+
+            // Go through each day of the week, check if there is data for it
+            // If no data is found, set its value to zero
+            // CALORIE INTAKE CHECKER
+            float dateCheck;
+            boolean found;
+            for (int j = 0; j < daysInWorkoutMonth; j++) {
+                found = false;
+                dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                for (int i = 0; i < xData.length; i++) {
+                    if (dateCheck == xData[i]) {
+                        entries.add(new BarEntry(dateCheck, yData[i]));
+                        goalEntries.add(new Entry(dateCheck,goalData[i]));
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    entries.add(new BarEntry(dateCheck, 0));
+                    goalEntries.add(new Entry(dateCheck,0));
+                }
+                workoutCal.add(Calendar.DAY_OF_WEEK, 1);
+            }
+            // Set cal back to normal
+            workoutCal.setTime(queryCompare);
+
+            // Inserting data into calorie bar graph
+            BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+            LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+            dataSet.setColor(getResources().getColor(R.color.black));
+            workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+            LineData lineData = new LineData(dataSet);
+            BarData barData = new BarData(workoutDataSet);
+            lineData.setDrawValues(false);
+            barData.setDrawValues(false);
+            CombinedData combinedData = new CombinedData();
+            combinedData.setData(lineData);
+            combinedData.setData(barData);
+            combinedData.setValueTextSize(12f);
+            workoutChart.setData(combinedData);
+            workoutChart.animateXY(500, 500);
+            Description description = workoutChart.getDescription();
+            description.setEnabled(false);
+
+            // Axes changes
+            XAxis xAxis = workoutChart.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setDrawGridLines(false);
+            YAxis leftAxis = workoutChart.getAxisLeft();
+            leftAxis.setDrawLabels(true);
+            leftAxis.setDrawAxisLine(false);
+            YAxis rightAxis = workoutChart.getAxisRight();
+            rightAxis.setDrawLabels(true);
+            rightAxis.setDrawAxisLine(false);
+
+            // Legend changes
+            Legend legend = workoutChart.getLegend();
+            legend.setForm(Legend.LegendForm.LINE);
+            legend.setTextSize(12f);
+            legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+            legend.setDrawInside(false);
+
+            // Load chart
+            workoutChart.invalidate();
 
         }
 
-//        int daysinWaterMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-//        System.out.println(daysinWaterMonth);
+        if (currentWeightChartSetting.equals("week")) {
+
+        }
+        else if (currentWeightChartSetting.equals("month")) {
+
+        }
 
         // Update what is on the screen
         //date.setText("Today's date: " + currentDate + "\n" + "Week of: " + beginWeek + "\n" + "End of week: " + endWeek);
@@ -603,7 +727,7 @@ public class Fragment3 extends Fragment {
                 BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
                 LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                 dataSet.setColor(getResources().getColor(R.color.black));
-                waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                 LineData lineData = new LineData(dataSet);
                 BarData barData = new BarData(waterDataSet);
                 lineData.setDrawValues(false);
@@ -612,7 +736,7 @@ public class Fragment3 extends Fragment {
                 combinedData.setData(barData);
                 combinedData.setValueTextSize(12f);
                 waterChart.setData(combinedData);
-                waterChart.animateXY(2000, 2000);
+                waterChart.animateXY(500, 500);
                 Description description = waterChart.getDescription();
                 description.setEnabled(false);
 
@@ -699,7 +823,7 @@ public class Fragment3 extends Fragment {
                 BarDataSet waterDataSet = new BarDataSet(entries, "Cups of Water");
                 LineDataSet dataSet = new LineDataSet(goalEntries, "Daily Goal");
                 dataSet.setColor(getResources().getColor(R.color.black));
-                waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                 LineData lineData = new LineData(dataSet);
                 BarData barData = new BarData(waterDataSet);
                 lineData.setDrawValues(false);
@@ -709,7 +833,7 @@ public class Fragment3 extends Fragment {
                 combinedData.setData(barData);
                 combinedData.setValueTextSize(12f);
                 waterChart.setData(combinedData);
-                waterChart.animateXY(2000, 2000);
+                waterChart.animateXY(500, 500);
                 Description description = waterChart.getDescription();
                 description.setEnabled(false);
 
@@ -796,7 +920,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                    waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(waterDataSet);
                     lineData.setDrawValues(false);
@@ -805,7 +929,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     waterChart.setData(combinedData);
-                    waterChart.animateXY(2000, 2000);
+                    waterChart.animateXY(500, 500);
                     Description description = waterChart.getDescription();
                     description.setEnabled(false);
 
@@ -885,7 +1009,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet waterDataSet = new BarDataSet(entries, "Cups of Water");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily Goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                    waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(waterDataSet);
                     lineData.setDrawValues(false);
@@ -895,7 +1019,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     waterChart.setData(combinedData);
-                    waterChart.animateXY(2000, 2000);
+                    waterChart.animateXY(500, 500);
                     Description description = waterChart.getDescription();
                     description.setEnabled(false);
 
@@ -982,7 +1106,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                    waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(waterDataSet);
                     lineData.setDrawValues(false);
@@ -991,7 +1115,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     waterChart.setData(combinedData);
-                    waterChart.animateXY(2000, 2000);
+                    waterChart.animateXY(500, 500);
                     Description description = waterChart.getDescription();
                     description.setEnabled(false);
 
@@ -1073,7 +1197,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet waterDataSet = new BarDataSet(entries, "Cups of Water");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily Goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                    waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(waterDataSet);
                     lineData.setDrawValues(false);
@@ -1083,7 +1207,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     waterChart.setData(combinedData);
-                    waterChart.animateXY(2000, 2000);
+                    waterChart.animateXY(500, 500);
                     Description description = waterChart.getDescription();
                     description.setEnabled(false);
 
@@ -1170,7 +1294,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet waterDataSet = new BarDataSet(entries, "Cups of water");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                    waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(waterDataSet);
                     lineData.setDrawValues(false);
@@ -1179,7 +1303,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     waterChart.setData(combinedData);
-                    waterChart.animateXY(2000, 2000);
+                    waterChart.animateXY(500, 500);
                     Description description = waterChart.getDescription();
                     description.setEnabled(false);
 
@@ -1259,7 +1383,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet waterDataSet = new BarDataSet(entries, "Cups of Water");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily Goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    waterDataSet.setColor(getResources().getColor(R.color.light_green));
+                    waterDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(waterDataSet);
                     lineData.setDrawValues(false);
@@ -1269,7 +1393,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     waterChart.setData(combinedData);
-                    waterChart.animateXY(2000, 2000);
+                    waterChart.animateXY(500, 500);
                     Description description = waterChart.getDescription();
                     description.setEnabled(false);
 
@@ -1297,7 +1421,7 @@ public class Fragment3 extends Fragment {
             }
         });
 
-        // Update calorie charts -- incomplete
+        // Update calorie charts -- done
         toWeeklyCalorieChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -1360,7 +1484,7 @@ public class Fragment3 extends Fragment {
                 BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                 LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                 dataSet.setColor(getResources().getColor(R.color.black));
-                calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                 LineData lineData = new LineData(dataSet);
                 BarData barData = new BarData(calorieDataSet);
                 lineData.setDrawValues(false);
@@ -1369,7 +1493,7 @@ public class Fragment3 extends Fragment {
                 combinedData.setData(barData);
                 combinedData.setValueTextSize(12f);
                 calorieChart.setData(combinedData);
-                calorieChart.animateXY(2000, 2000);
+                calorieChart.animateXY(500, 500);
                 Description description = calorieChart.getDescription();
                 description.setEnabled(false);
 
@@ -1456,7 +1580,7 @@ public class Fragment3 extends Fragment {
                 BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                 LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                 dataSet.setColor(getResources().getColor(R.color.black));
-                calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                 LineData lineData = new LineData(dataSet);
                 BarData barData = new BarData(calorieDataSet);
                 lineData.setDrawValues(false);
@@ -1466,7 +1590,7 @@ public class Fragment3 extends Fragment {
                 combinedData.setData(barData);
                 combinedData.setValueTextSize(12f);
                 calorieChart.setData(combinedData);
-                calorieChart.animateXY(2000, 2000);
+                calorieChart.animateXY(500, 500);
                 Description description = calorieChart.getDescription();
                 description.setEnabled(false);
 
@@ -1552,7 +1676,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                    calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(calorieDataSet);
                     lineData.setDrawValues(false);
@@ -1561,7 +1685,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     calorieChart.setData(combinedData);
-                    calorieChart.animateXY(2000, 2000);
+                    calorieChart.animateXY(500, 500);
                     Description description = calorieChart.getDescription();
                     description.setEnabled(false);
 
@@ -1640,7 +1764,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                    calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(calorieDataSet);
                     lineData.setDrawValues(false);
@@ -1650,7 +1774,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     calorieChart.setData(combinedData);
-                    calorieChart.animateXY(2000, 2000);
+                    calorieChart.animateXY(500, 500);
                     Description description = calorieChart.getDescription();
                     description.setEnabled(false);
 
@@ -1737,7 +1861,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                    calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(calorieDataSet);
                     lineData.setDrawValues(false);
@@ -1746,7 +1870,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     calorieChart.setData(combinedData);
-                    calorieChart.animateXY(2000, 2000);
+                    calorieChart.animateXY(500, 500);
                     Description description = calorieChart.getDescription();
                     description.setEnabled(false);
 
@@ -1827,7 +1951,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                    calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(calorieDataSet);
                     lineData.setDrawValues(false);
@@ -1837,7 +1961,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     calorieChart.setData(combinedData);
-                    calorieChart.animateXY(2000, 2000);
+                    calorieChart.animateXY(500, 500);
                     Description description = calorieChart.getDescription();
                     description.setEnabled(false);
 
@@ -1924,7 +2048,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                    calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(calorieDataSet);
                     lineData.setDrawValues(false);
@@ -1933,7 +2057,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     calorieChart.setData(combinedData);
-                    calorieChart.animateXY(2000, 2000);
+                    calorieChart.animateXY(500, 500);
                     Description description = calorieChart.getDescription();
                     description.setEnabled(false);
 
@@ -2013,7 +2137,7 @@ public class Fragment3 extends Fragment {
                     BarDataSet calorieDataSet = new BarDataSet(entries, "Daily calorie intake");
                     LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
                     dataSet.setColor(getResources().getColor(R.color.black));
-                    calorieDataSet.setColor(getResources().getColor(R.color.light_green));
+                    calorieDataSet.setColor(getResources().getColor(R.color.pale_orange2));
                     LineData lineData = new LineData(dataSet);
                     BarData barData = new BarData(calorieDataSet);
                     lineData.setDrawValues(false);
@@ -2023,7 +2147,7 @@ public class Fragment3 extends Fragment {
                     combinedData.setData(barData);
                     combinedData.setValueTextSize(12f);
                     calorieChart.setData(combinedData);
-                    calorieChart.animateXY(2000, 2000);
+                    calorieChart.animateXY(500, 500);
                     Description description = calorieChart.getDescription();
                     description.setEnabled(false);
 
@@ -2051,56 +2175,385 @@ public class Fragment3 extends Fragment {
             }
         });
 
+        // Update workout charts -- incomplete
+        toWeeklyWorkoutChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newBeginWeek, newEndWeek, month1, day1, month2, day2;
+                databaseHelper.setWorkoutChartViewSetting("week");
+                workoutBarChart_previousWeekButton.setText("prev week");
+                workoutBarChart_nextWeekButton.setText("next week");
+                workoutCal.setTime(origin);
+                workoutCal.set(Calendar.DAY_OF_WEEK, workoutCal.getFirstDayOfWeek());
+                newBeginWeek = format.format(workoutCal.getTime());
+                month1 = getMonthName.format(workoutCal.getTime());
+                day1 = getDay.format(workoutCal.getTime());
+                // Beginning of next week
+                workoutCal.add(Calendar.DAY_OF_WEEK, 6);
+                newEndWeek = format.format(workoutCal.getTime());
+                month2 = getMonthName.format(workoutCal.getTime());
+                day2 = getDay.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK, -6); // reset
+
+                workoutDate.setText("Week of " + month1 + " " + day1 + " - " + month2 + " " + day2);
+
+                // Getting workout data
+                float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
+                int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginWeek, newEndWeek, 7);
+                int[] yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+
+                List<BarEntry> entries = new ArrayList<BarEntry>();
+                List<Entry> goalEntries = new ArrayList<Entry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date queryCompare = workoutCal.getTime();
+
+                // Go through each day of the week, check if there is data for it
+                // If no data is found, set its value to zero
+                // CALORIE INTAKE CHECKER
+                float dateCheck;
+                boolean found;
+                for (int j = 0; j < 7; j++) {
+                    found = false;
+                    dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                    for (int i = 0; i < xData.length; i++) {
+                        if (dateCheck == xData[i]) {
+                            entries.add(new BarEntry(dateCheck, yData[i]));
+                            goalEntries.add(new Entry(dateCheck,goalData[i]));
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        entries.add(new BarEntry(dateCheck, 0));
+                        goalEntries.add(new Entry(dateCheck,0));
+                    }
+                    workoutCal.add(Calendar.DAY_OF_WEEK, 1);
+                }
+                // Set cal back to normal
+                workoutCal.setTime(queryCompare);
+
+                // Inserting data into calorie bar graph
+                BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                dataSet.setColor(getResources().getColor(R.color.black));
+                workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                LineData lineData = new LineData(dataSet);
+                BarData barData = new BarData(workoutDataSet);
+                lineData.setDrawValues(false);
+                CombinedData combinedData = new CombinedData();
+                combinedData.setData(lineData);
+                combinedData.setData(barData);
+                combinedData.setValueTextSize(12f);
+                workoutChart.setData(combinedData);
+                workoutChart.animateXY(500, 500);
+                Description description = workoutChart.getDescription();
+                description.setEnabled(false);
+
+                // Axes changes
+                XAxis xAxis = workoutChart.getXAxis();
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setDrawGridLines(false);
+                YAxis leftAxis = workoutChart.getAxisLeft();
+                leftAxis.setDrawLabels(false);
+                leftAxis.setDrawAxisLine(false);
+                YAxis rightAxis = workoutChart.getAxisRight();
+                rightAxis.setDrawLabels(false);
+                rightAxis.setDrawAxisLine(false);
+
+                // Legend changes
+                Legend legend = workoutChart.getLegend();
+                legend.setForm(Legend.LegendForm.LINE);
+                legend.setTextSize(12f);
+                legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                legend.setDrawInside(false);
+
+                // Load chart
+                workoutChart.invalidate();
+            }
+        });
+
+        toMonthlyWorkoutChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newBeginMonth, newEndMonth, month1;
+                int daysInWorkoutMonth = workoutCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+                databaseHelper.setWorkoutChartViewSetting("month");
+                workoutBarChart_previousWeekButton.setText("prev month");
+                workoutBarChart_nextWeekButton.setText("next month");
+                workoutCal.setTime(origin);
+                workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+                newBeginMonth = format.format(workoutCal.getTime());
+                month1 = getMonthName.format(workoutCal.getTime());
+                // Beginning of next week
+                workoutCal.add(Calendar.DAY_OF_WEEK, daysInWorkoutMonth - 1);
+                newEndMonth = format.format(workoutCal.getTime());
+                workoutCal.add(Calendar.DAY_OF_WEEK, -1 * (daysInWorkoutMonth - 1)); // reset
+
+                workoutDate.setText("Month of " + month1);
+
+                // Getting workout data
+                float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                int[] yData = databaseHelper.getCurrentWorkoutData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+
+                List<BarEntry> entries = new ArrayList<BarEntry>();
+                List<Entry> goalEntries = new ArrayList<Entry>();
+
+                // queryCompare will set date back to normal after using it to
+                // ensure every date in the query result has a value
+                Date queryCompare = workoutCal.getTime();
+
+                // Go through each day of the week, check if there is data for it
+                // If no data is found, set its value to zero
+                // CALORIE INTAKE CHECKER
+                float dateCheck;
+                boolean found;
+                for (int j = 0; j < daysInWorkoutMonth; j++) {
+                    found = false;
+                    dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                    for (int i = 0; i < xData.length; i++) {
+                        if (dateCheck == xData[i]) {
+                            entries.add(new BarEntry(dateCheck, yData[i]));
+                            goalEntries.add(new Entry(dateCheck,goalData[i]));
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        entries.add(new BarEntry(dateCheck, 0));
+                        goalEntries.add(new Entry(dateCheck,0));
+                    }
+                    workoutCal.add(Calendar.DAY_OF_WEEK, 1);
+                }
+                // Set cal back to normal
+                workoutCal.setTime(queryCompare);
+
+                // Inserting data into calorie bar graph
+                BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                dataSet.setColor(getResources().getColor(R.color.black));
+                workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                LineData lineData = new LineData(dataSet);
+                BarData barData = new BarData(workoutDataSet);
+                lineData.setDrawValues(false);
+                barData.setDrawValues(false);
+                CombinedData combinedData = new CombinedData();
+                combinedData.setData(lineData);
+                combinedData.setData(barData);
+                combinedData.setValueTextSize(12f);
+                workoutChart.setData(combinedData);
+                workoutChart.animateXY(500, 500);
+                Description description = workoutChart.getDescription();
+                description.setEnabled(false);
+
+                // Axes changes
+                XAxis xAxis = workoutChart.getXAxis();
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setDrawGridLines(false);
+                YAxis leftAxis = workoutChart.getAxisLeft();
+                leftAxis.setDrawLabels(true);
+                leftAxis.setDrawAxisLine(false);
+                YAxis rightAxis = workoutChart.getAxisRight();
+                rightAxis.setDrawLabels(true);
+                rightAxis.setDrawAxisLine(false);
+
+                // Legend changes
+                Legend legend = workoutChart.getLegend();
+                legend.setForm(Legend.LegendForm.LINE);
+                legend.setTextSize(12f);
+                legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                legend.setDrawInside(false);
+
+                // Load chart
+                workoutChart.invalidate();
+            }
+        });
+
         workoutBarChart_previousWeekButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String currentWorkoutChartSetting = databaseHelper.getWorkoutChartViewSetting();
                 if (currentWorkoutChartSetting.equals("week")) {
+                    String month1, day1, month2, day2;
                     workoutCal.add(Calendar.DAY_OF_WEEK, -7);
                     String newBeginWeek = format.format(workoutCal.getTime());
+                    month1 = getMonthName.format(workoutCal.getTime());
+                    day1 = getDay.format(workoutCal.getTime());
                     workoutCal.add(Calendar.DAY_OF_WEEK, 6);
                     String newEndWeek = format.format(workoutCal.getTime());
+                    month2 = getMonthName.format(workoutCal.getTime());
+                    day2 = getDay.format(workoutCal.getTime());
                     workoutCal.add(Calendar.DAY_OF_WEEK, -6);
-                    //date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
 
-                    float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
-                    int[] workout_yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+                    workoutDate.setText("Week of " + month1 + " " + day1 + " - " + month2 + " " + day2);
 
-                    List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+                    // Getting workout data
+                    float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
+                    int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginWeek, newEndWeek, 7);
+                    int[] yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+
+                    List<BarEntry> entries = new ArrayList<BarEntry>();
+                    List<Entry> goalEntries = new ArrayList<Entry>();
 
                     // queryCompare will set date back to normal after using it to
                     // ensure every date in the query result has a value
-                    Date workout_queryCompare = workoutCal.getTime();
+                    Date queryCompare = workoutCal.getTime();
 
-                    float workout_dateCheck;
-                    boolean workout_DataFound;
+                    // Go through each day of the week, check if there is data for it
+                    // If no data is found, set its value to zero
+                    // CALORIE INTAKE CHECKER
+                    float dateCheck;
+                    boolean found;
                     for (int j = 0; j < 7; j++) {
-                        workout_DataFound = false;
-                        workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
-                        for (int i = 0; i < workout_xData.length; i++) {
-                            if (workout_dateCheck == workout_xData[i]) {
-                                workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
-                                workout_DataFound = true;
+                        found = false;
+                        dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                        for (int i = 0; i < xData.length; i++) {
+                            if (dateCheck == xData[i]) {
+                                entries.add(new BarEntry(dateCheck, yData[i]));
+                                goalEntries.add(new Entry(dateCheck,goalData[i]));
+                                found = true;
                                 break;
                             }
                         }
-                        if (!workout_DataFound) {
-                            workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                        if (!found) {
+                            entries.add(new BarEntry(dateCheck, 0));
+                            goalEntries.add(new Entry(dateCheck,0));
                         }
                         workoutCal.add(Calendar.DAY_OF_WEEK, 1);
                     }
                     // Set cal back to normal
-                    workoutCal.setTime(workout_queryCompare);
+                    workoutCal.setTime(queryCompare);
 
-                    BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
-                    workoutDataSet.setColor(getResources().getColor(R.color.light_green));
-                    BarData workoutBarData = new BarData(workoutDataSet);
-                    workoutChart.setData(workoutBarData);
-                    workoutChart.setFitBars(true);
-                    workoutChart.animateXY(2000, 2000);
-                    Description workoutDescription = workoutChart.getDescription();
-                    workoutDescription.setEnabled(false);
+                    // Inserting data into calorie bar graph
+                    BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                    LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                    dataSet.setColor(getResources().getColor(R.color.black));
+                    workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                    LineData lineData = new LineData(dataSet);
+                    BarData barData = new BarData(workoutDataSet);
+                    lineData.setDrawValues(false);
+                    CombinedData combinedData = new CombinedData();
+                    combinedData.setData(lineData);
+                    combinedData.setData(barData);
+                    combinedData.setValueTextSize(12f);
+                    workoutChart.setData(combinedData);
+                    workoutChart.animateXY(500, 500);
+                    Description description = workoutChart.getDescription();
+                    description.setEnabled(false);
+
+                    // Axes changes
+                    XAxis xAxis = workoutChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawGridLines(false);
+                    YAxis leftAxis = workoutChart.getAxisLeft();
+                    leftAxis.setDrawLabels(false);
+                    leftAxis.setDrawAxisLine(false);
+                    YAxis rightAxis = workoutChart.getAxisRight();
+                    rightAxis.setDrawLabels(false);
+                    rightAxis.setDrawAxisLine(false);
+
+                    // Legend changes
+                    Legend legend = workoutChart.getLegend();
+                    legend.setForm(Legend.LegendForm.LINE);
+                    legend.setTextSize(12f);
+                    legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                    legend.setDrawInside(false);
+
+                    // Load chart
                     workoutChart.invalidate();
+
+                }
+                else if (currentWorkoutChartSetting.equals("month")) {
+                    String month1;
+                    // Go into the last day of the previous month
+                    workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+                    workoutCal.add(Calendar.DAY_OF_WEEK, -1);
+                    int daysInWorkoutMonth = workoutCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+                    String newEndMonth = format.format(workoutCal.getTime());
+                    workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+                    String newBeginMonth = format.format(workoutCal.getTime());
+                    month1 = getMonthName.format(workoutCal.getTime());
+
+                    workoutDate.setText("Month of " + month1);
+
+                    // Getting workout data
+                    float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                    int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                    int[] yData = databaseHelper.getCurrentWorkoutData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+
+                    List<BarEntry> entries = new ArrayList<BarEntry>();
+                    List<Entry> goalEntries = new ArrayList<Entry>();
+
+                    // queryCompare will set date back to normal after using it to
+                    // ensure every date in the query result has a value
+                    Date queryCompare = workoutCal.getTime();
+
+                    // Go through each day of the week, check if there is data for it
+                    // If no data is found, set its value to zero
+                    // CALORIE INTAKE CHECKER
+                    float dateCheck;
+                    boolean found;
+                    for (int j = 0; j < daysInWorkoutMonth; j++) {
+                        found = false;
+                        dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                        for (int i = 0; i < xData.length; i++) {
+                            if (dateCheck == xData[i]) {
+                                entries.add(new BarEntry(dateCheck, yData[i]));
+                                goalEntries.add(new Entry(dateCheck,goalData[i]));
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            entries.add(new BarEntry(dateCheck, 0));
+                            goalEntries.add(new Entry(dateCheck,0));
+                        }
+                        workoutCal.add(Calendar.DAY_OF_WEEK, 1);
+                    }
+                    // Set cal back to normal
+                    workoutCal.setTime(queryCompare);
+
+                    // Inserting data into calorie bar graph
+                    BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                    LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                    dataSet.setColor(getResources().getColor(R.color.black));
+                    workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                    LineData lineData = new LineData(dataSet);
+                    BarData barData = new BarData(workoutDataSet);
+                    lineData.setDrawValues(false);
+                    barData.setDrawValues(false);
+                    CombinedData combinedData = new CombinedData();
+                    combinedData.setData(lineData);
+                    combinedData.setData(barData);
+                    combinedData.setValueTextSize(12f);
+                    workoutChart.setData(combinedData);
+                    workoutChart.animateXY(500, 500);
+                    Description description = workoutChart.getDescription();
+                    description.setEnabled(false);
+
+                    // Axes changes
+                    XAxis xAxis = workoutChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawGridLines(false);
+                    YAxis leftAxis = workoutChart.getAxisLeft();
+                    leftAxis.setDrawLabels(true);
+                    leftAxis.setDrawAxisLine(false);
+                    YAxis rightAxis = workoutChart.getAxisRight();
+                    rightAxis.setDrawLabels(true);
+                    rightAxis.setDrawAxisLine(false);
+
+                    // Legend changes
+                    Legend legend = workoutChart.getLegend();
+                    legend.setForm(Legend.LegendForm.LINE);
+                    legend.setTextSize(12f);
+                    legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                    legend.setDrawInside(false);
+
+                    // Load chart
+                    workoutChart.invalidate();
+
                 }
             }
         });
@@ -2110,52 +2563,187 @@ public class Fragment3 extends Fragment {
             public void onClick(View view) {
                 String currentWorkoutChartSetting = databaseHelper.getWorkoutChartViewSetting();
                 if (currentWorkoutChartSetting.equals("week")) {
+                    String month1, day1, month2, day2;
                     workoutCal.add(Calendar.DAY_OF_WEEK, 7);
                     String newBeginWeek = format.format(workoutCal.getTime());
+                    month1 = getMonthName.format(workoutCal.getTime());
+                    day1 = getDay.format(workoutCal.getTime());
                     workoutCal.add(Calendar.DAY_OF_WEEK, 6);
                     String newEndWeek = format.format(workoutCal.getTime());
+                    month2 = getMonthName.format(workoutCal.getTime());
+                    day2 = getDay.format(workoutCal.getTime());
                     workoutCal.add(Calendar.DAY_OF_WEEK, -6);
-                    //date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
 
-                    float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
-                    int[] workout_yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+                    workoutDate.setText("Week of " + month1 + " " + day1 + " - " + month2 + " " + day2);
 
-                    List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+                    // Getting workout data
+                    float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
+                    int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginWeek, newEndWeek, 7);
+                    int[] yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+
+                    List<BarEntry> entries = new ArrayList<BarEntry>();
+                    List<Entry> goalEntries = new ArrayList<Entry>();
 
                     // queryCompare will set date back to normal after using it to
                     // ensure every date in the query result has a value
-                    Date workout_queryCompare = workoutCal.getTime();
+                    Date queryCompare = workoutCal.getTime();
 
-                    float workout_dateCheck;
-                    boolean workout_DataFound;
+                    // Go through each day of the week, check if there is data for it
+                    // If no data is found, set its value to zero
+                    // CALORIE INTAKE CHECKER
+                    float dateCheck;
+                    boolean found;
                     for (int j = 0; j < 7; j++) {
-                        workout_DataFound = false;
-                        workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
-                        for (int i = 0; i < workout_xData.length; i++) {
-                            if (workout_dateCheck == workout_xData[i]) {
-                                workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
-                                workout_DataFound = true;
+                        found = false;
+                        dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                        for (int i = 0; i < xData.length; i++) {
+                            if (dateCheck == xData[i]) {
+                                entries.add(new BarEntry(dateCheck, yData[i]));
+                                goalEntries.add(new Entry(dateCheck,goalData[i]));
+                                found = true;
                                 break;
                             }
                         }
-                        if (!workout_DataFound) {
-                            workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                        if (!found) {
+                            entries.add(new BarEntry(dateCheck, 0));
+                            goalEntries.add(new Entry(dateCheck,0));
                         }
                         workoutCal.add(Calendar.DAY_OF_WEEK, 1);
                     }
                     // Set cal back to normal
-                    workoutCal.setTime(workout_queryCompare);
+                    workoutCal.setTime(queryCompare);
 
-                    BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
-                    workoutDataSet.setColor(getResources().getColor(R.color.light_green));
-                    BarData workoutBarData = new BarData(workoutDataSet);
-                    workoutChart.setData(workoutBarData);
-                    workoutChart.setFitBars(true);
-                    workoutChart.animateXY(2000, 2000);
-                    Description workoutDescription = workoutChart.getDescription();
-                    workoutDescription.setEnabled(false);
+                    // Inserting data into calorie bar graph
+                    BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                    LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                    dataSet.setColor(getResources().getColor(R.color.black));
+                    workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                    LineData lineData = new LineData(dataSet);
+                    BarData barData = new BarData(workoutDataSet);
+                    lineData.setDrawValues(false);
+                    CombinedData combinedData = new CombinedData();
+                    combinedData.setData(lineData);
+                    combinedData.setData(barData);
+                    combinedData.setValueTextSize(12f);
+                    workoutChart.setData(combinedData);
+                    workoutChart.animateXY(500, 500);
+                    Description description = workoutChart.getDescription();
+                    description.setEnabled(false);
+
+                    // Axes changes
+                    XAxis xAxis = workoutChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawGridLines(false);
+                    YAxis leftAxis = workoutChart.getAxisLeft();
+                    leftAxis.setDrawLabels(false);
+                    leftAxis.setDrawAxisLine(false);
+                    YAxis rightAxis = workoutChart.getAxisRight();
+                    rightAxis.setDrawLabels(false);
+                    rightAxis.setDrawAxisLine(false);
+
+                    // Legend changes
+                    Legend legend = workoutChart.getLegend();
+                    legend.setForm(Legend.LegendForm.LINE);
+                    legend.setTextSize(12f);
+                    legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                    legend.setDrawInside(false);
+
+                    // Load chart
+                    workoutChart.invalidate();
+
+                }
+                else if (currentWorkoutChartSetting.equals("month")) {
+                    String month1;
+                    // Go to the first day of the next month
+                    workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+                    int daysInWorkoutMonth = workoutCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+                    workoutCal.add(Calendar.DAY_OF_WEEK, daysInWorkoutMonth);
+                    String newBeginMonth = format.format(workoutCal.getTime());
+                    month1 = getMonthName.format(workoutCal.getTime());
+                    daysInWorkoutMonth = workoutCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+                    workoutCal.add(Calendar.DAY_OF_MONTH, daysInWorkoutMonth - 1);
+                    String newEndMonth = format.format(workoutCal.getTime());
+                    workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+
+                    workoutDate.setText("Month of " + month1);
+
+                    // Getting workout data
+                    float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                    int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                    int[] yData = databaseHelper.getCurrentWorkoutData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+
+                    List<BarEntry> entries = new ArrayList<BarEntry>();
+                    List<Entry> goalEntries = new ArrayList<Entry>();
+
+                    // queryCompare will set date back to normal after using it to
+                    // ensure every date in the query result has a value
+                    Date queryCompare = workoutCal.getTime();
+
+                    // Go through each day of the week, check if there is data for it
+                    // If no data is found, set its value to zero
+                    // CALORIE INTAKE CHECKER
+                    float dateCheck;
+                    boolean found;
+                    for (int j = 0; j < daysInWorkoutMonth; j++) {
+                        found = false;
+                        dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                        for (int i = 0; i < xData.length; i++) {
+                            if (dateCheck == xData[i]) {
+                                entries.add(new BarEntry(dateCheck, yData[i]));
+                                goalEntries.add(new Entry(dateCheck, goalData[i]));
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            entries.add(new BarEntry(dateCheck, 0));
+                            goalEntries.add(new Entry(dateCheck, 0));
+                        }
+                        workoutCal.add(Calendar.DAY_OF_WEEK, 1);
+                    }
+                    // Set cal back to normal
+                    workoutCal.setTime(queryCompare);
+
+                    // Inserting data into calorie bar graph
+                    BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                    LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                    dataSet.setColor(getResources().getColor(R.color.black));
+                    workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                    LineData lineData = new LineData(dataSet);
+                    BarData barData = new BarData(workoutDataSet);
+                    lineData.setDrawValues(false);
+                    barData.setDrawValues(false);
+                    CombinedData combinedData = new CombinedData();
+                    combinedData.setData(lineData);
+                    combinedData.setData(barData);
+                    combinedData.setValueTextSize(12f);
+                    workoutChart.setData(combinedData);
+                    workoutChart.animateXY(500, 500);
+                    Description description = workoutChart.getDescription();
+                    description.setEnabled(false);
+
+                    // Axes changes
+                    XAxis xAxis = workoutChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawGridLines(false);
+                    YAxis leftAxis = workoutChart.getAxisLeft();
+                    leftAxis.setDrawLabels(true);
+                    leftAxis.setDrawAxisLine(false);
+                    YAxis rightAxis = workoutChart.getAxisRight();
+                    rightAxis.setDrawLabels(true);
+                    rightAxis.setDrawAxisLine(false);
+
+                    // Legend changes
+                    Legend legend = workoutChart.getLegend();
+                    legend.setForm(Legend.LegendForm.LINE);
+                    legend.setTextSize(12f);
+                    legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                    legend.setDrawInside(false);
+
+                    // Load chart
                     workoutChart.invalidate();
                 }
+
             }
         });
 
@@ -2164,62 +2752,188 @@ public class Fragment3 extends Fragment {
             public void onClick(View view) {
                 String currentWorkoutChartSetting = databaseHelper.getWorkoutChartViewSetting();
                 if (currentWorkoutChartSetting.equals("week")) {
+                    String month1, day1, month2, day2;
                     workoutCal.setTime(origin);
                     String newBeginWeek = format.format(workoutCal.getTime());
+                    month1 = getMonthName.format(workoutCal.getTime());
+                    day1 = getDay.format(workoutCal.getTime());
                     workoutCal.add(Calendar.DAY_OF_WEEK, 6);
                     String newEndWeek = format.format(workoutCal.getTime());
+                    month2 = getMonthName.format(workoutCal.getTime());
+                    day2 = getDay.format(workoutCal.getTime());
                     workoutCal.add(Calendar.DAY_OF_WEEK, -6);
-                    //date.setText("Today's date: " + currentDate + "\n" + "Week of: " + newBeginWeek + "\n" + "End of week: " + newEndWeek);
 
-                    float[] workout_xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
-                    int[] workout_yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+                    workoutDate.setText("Week of " + month1 + " " + day1 + " - " + month2 + " " + day2);
 
-                    List<BarEntry> workoutEntries = new ArrayList<BarEntry>();
+                    // Getting workout data
+                    float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginWeek, newEndWeek, 7);
+                    int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginWeek, newEndWeek, 7);
+                    int[] yData = databaseHelper.getCurrentWorkoutData(newBeginWeek, newEndWeek, 7);
+
+                    List<BarEntry> entries = new ArrayList<BarEntry>();
+                    List<Entry> goalEntries = new ArrayList<Entry>();
 
                     // queryCompare will set date back to normal after using it to
                     // ensure every date in the query result has a value
-                    Date workout_queryCompare = workoutCal.getTime();
+                    Date queryCompare = workoutCal.getTime();
 
-                    float workout_dateCheck;
-                    boolean workout_DataFound;
+                    // Go through each day of the week, check if there is data for it
+                    // If no data is found, set its value to zero
+                    // CALORIE INTAKE CHECKER
+                    float dateCheck;
+                    boolean found;
                     for (int j = 0; j < 7; j++) {
-                        workout_DataFound = false;
-                        workout_dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
-                        for (int i = 0; i < workout_xData.length; i++) {
-                            if (workout_dateCheck == workout_xData[i]) {
-                                workoutEntries.add(new BarEntry(workout_dateCheck, workout_yData[i]));
-                                workout_DataFound = true;
+                        found = false;
+                        dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                        for (int i = 0; i < xData.length; i++) {
+                            if (dateCheck == xData[i]) {
+                                entries.add(new BarEntry(dateCheck, yData[i]));
+                                goalEntries.add(new Entry(dateCheck,goalData[i]));
+                                found = true;
                                 break;
                             }
                         }
-                        if (!workout_DataFound) {
-                            workoutEntries.add(new BarEntry(workout_dateCheck, 0));
+                        if (!found) {
+                            entries.add(new BarEntry(dateCheck, 0));
+                            goalEntries.add(new Entry(dateCheck,0));
                         }
                         workoutCal.add(Calendar.DAY_OF_WEEK, 1);
                     }
                     // Set cal back to normal
-                    workoutCal.setTime(workout_queryCompare);
+                    workoutCal.setTime(queryCompare);
 
-                    BarDataSet workoutDataSet = new BarDataSet(workoutEntries, "Daily workout hours");
-                    workoutDataSet.setColor(getResources().getColor(R.color.light_green));
-                    BarData workoutBarData = new BarData(workoutDataSet);
-                    workoutChart.setData(workoutBarData);
-                    workoutChart.setFitBars(true);
-                    workoutChart.animateXY(2000, 2000);
-                    Description workoutDescription = workoutChart.getDescription();
-                    workoutDescription.setEnabled(false);
+                    // Inserting data into calorie bar graph
+                    BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                    LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                    dataSet.setColor(getResources().getColor(R.color.black));
+                    workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                    LineData lineData = new LineData(dataSet);
+                    BarData barData = new BarData(workoutDataSet);
+                    lineData.setDrawValues(false);
+                    CombinedData combinedData = new CombinedData();
+                    combinedData.setData(lineData);
+                    combinedData.setData(barData);
+                    combinedData.setValueTextSize(12f);
+                    workoutChart.setData(combinedData);
+                    workoutChart.animateXY(500, 500);
+                    Description description = workoutChart.getDescription();
+                    description.setEnabled(false);
+
+                    // Axes changes
+                    XAxis xAxis = workoutChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawGridLines(false);
+                    YAxis leftAxis = workoutChart.getAxisLeft();
+                    leftAxis.setDrawLabels(false);
+                    leftAxis.setDrawAxisLine(false);
+                    YAxis rightAxis = workoutChart.getAxisRight();
+                    rightAxis.setDrawLabels(false);
+                    rightAxis.setDrawAxisLine(false);
+
+                    // Legend changes
+                    Legend legend = workoutChart.getLegend();
+                    legend.setForm(Legend.LegendForm.LINE);
+                    legend.setTextSize(12f);
+                    legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                    legend.setDrawInside(false);
+
+                    // Load chart
                     workoutChart.invalidate();
+
+                }
+                else if (currentWorkoutChartSetting.equals("month")) {
+                    String month1;
+                    workoutCal.setTime(origin);
+                    workoutCal.set(Calendar.DAY_OF_MONTH, 1);
+                    String newBeginMonth = format.format(workoutCal.getTime());
+                    month1 = getMonthName.format(workoutCal.getTime());
+                    int daysInWorkoutMonth = workoutCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+                    workoutCal.add(Calendar.DAY_OF_WEEK, daysInWorkoutMonth - 1);
+                    String newEndMonth = format.format(workoutCal.getTime());
+                    workoutCal.add(Calendar.DAY_OF_WEEK, -1 * (daysInWorkoutMonth - 1));
+
+                    workoutDate.setText("Month of " + month1);
+
+                    // Getting workout data
+                    float[] xData = databaseHelper.getCurrentWorkoutDateDay(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                    int[] goalData = databaseHelper.getCurrentWorkoutGoalData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+                    int[] yData = databaseHelper.getCurrentWorkoutData(newBeginMonth, newEndMonth, daysInWorkoutMonth);
+
+                    List<BarEntry> entries = new ArrayList<BarEntry>();
+                    List<Entry> goalEntries = new ArrayList<Entry>();
+
+                    // queryCompare will set date back to normal after using it to
+                    // ensure every date in the query result has a value
+                    Date queryCompare = workoutCal.getTime();
+
+                    // Go through each day of the week, check if there is data for it
+                    // If no data is found, set its value to zero
+                    // CALORIE INTAKE CHECKER
+                    float dateCheck;
+                    boolean found;
+                    for (int j = 0; j < daysInWorkoutMonth; j++) {
+                        found = false;
+                        dateCheck = Float.parseFloat(queryReturnFormat.format(workoutCal.getTime()));
+                        for (int i = 0; i < xData.length; i++) {
+                            if (dateCheck == xData[i]) {
+                                entries.add(new BarEntry(dateCheck, yData[i]));
+                                goalEntries.add(new Entry(dateCheck,goalData[i]));
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            entries.add(new BarEntry(dateCheck, 0));
+                            goalEntries.add(new Entry(dateCheck,0));
+                        }
+                        workoutCal.add(Calendar.DAY_OF_WEEK, 1);
+                    }
+                    // Set cal back to normal
+                    workoutCal.setTime(queryCompare);
+
+                    // Inserting data into calorie bar graph
+                    BarDataSet workoutDataSet = new BarDataSet(entries, "Workout Hours");
+                    LineDataSet dataSet = new LineDataSet(goalEntries, "Daily goal");
+                    dataSet.setColor(getResources().getColor(R.color.black));
+                    workoutDataSet.setColor(getResources().getColor(R.color.pale_orange2));
+                    LineData lineData = new LineData(dataSet);
+                    BarData barData = new BarData(workoutDataSet);
+                    lineData.setDrawValues(false);
+                    barData.setDrawValues(false);
+                    CombinedData combinedData = new CombinedData();
+                    combinedData.setData(lineData);
+                    combinedData.setData(barData);
+                    combinedData.setValueTextSize(12f);
+                    workoutChart.setData(combinedData);
+                    workoutChart.animateXY(500, 500);
+                    Description description = workoutChart.getDescription();
+                    description.setEnabled(false);
+
+                    // Axes changes
+                    XAxis xAxis = workoutChart.getXAxis();
+                    xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                    xAxis.setDrawGridLines(false);
+                    YAxis leftAxis = workoutChart.getAxisLeft();
+                    leftAxis.setDrawLabels(true);
+                    leftAxis.setDrawAxisLine(false);
+                    YAxis rightAxis = workoutChart.getAxisRight();
+                    rightAxis.setDrawLabels(true);
+                    rightAxis.setDrawAxisLine(false);
+
+                    // Legend changes
+                    Legend legend = workoutChart.getLegend();
+                    legend.setForm(Legend.LegendForm.LINE);
+                    legend.setTextSize(12f);
+                    legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+                    legend.setDrawInside(false);
+
+                    // Load chart
+                    workoutChart.invalidate();
+
                 }
             }
         });
 
         return rootView;
-    }
-    private class MyValueFormatter extends ValueFormatter implements IValueFormatter {
-
-        @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-            return value + " day";
-        }
     }
 }

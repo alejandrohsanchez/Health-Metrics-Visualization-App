@@ -19,9 +19,11 @@ import com.example.healthmetricsvisualv1alejandrosanchez.R;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Fragment1 extends Fragment {
-
-
+// On startup, insert new data after deleting the entry where the date matches the current date
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,6 +42,19 @@ public class Fragment1 extends Fragment {
 
         // Create database object
         databaseHelper = new DatabaseHelper(getActivity());
+
+        // Set the date format
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        // Calendars for each graph
+        Calendar cal = Calendar.getInstance();
+
+        // Update current data
+        String todayDate = format.format(cal.getTime());
+        databaseHelper.replaceWaterTrackerDateEntry(todayDate);
+        databaseHelper.replaceCalorieTrackerDateEntry(todayDate);
+        databaseHelper.replaceWorkoutTrackerDateEntry(todayDate);
+
 
         // Assign Text Views
         name = (TextView) rootView.findViewById(R.id.wellness_user_name);
@@ -102,6 +117,7 @@ public class Fragment1 extends Fragment {
         waterProgressBar.setProgress((int)waterProgressValue);
         calorieProgressBar.setProgress((int)calorieProgressValue);
         workoutProgressBar.setProgress((int)workoutProgressValue);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +127,8 @@ public class Fragment1 extends Fragment {
                 databaseHelper.setUserCurrentWater(current_val);
                 // Update the text
                 currentWater.setText(current_val + "/" + waterGoal);
+
+                databaseHelper.replaceWaterTrackerDateEntry(todayDate);
 
                 double progress = ((double)databaseHelper.getUserCurrentWater() / (double)databaseHelper.getUserGoalWater()) * 100;
                 waterProgressBar.setProgress((int)progress);
@@ -123,6 +141,8 @@ public class Fragment1 extends Fragment {
                 int current_val = databaseHelper.getUserCurrentWater() - 1;
                 databaseHelper.setUserCurrentWater(current_val);
                 currentWater.setText(current_val + "/" + waterGoal);
+
+                databaseHelper.replaceWaterTrackerDateEntry(todayDate);
 
                 double progress = ((double)databaseHelper.getUserCurrentWater() / (double)databaseHelper.getUserGoalWater()) * 100;
                 waterProgressBar.setProgress((int)progress);
@@ -137,6 +157,8 @@ public class Fragment1 extends Fragment {
                 databaseHelper.setUserCurrentCalorie(current_val);
                 currentCalorie.setText((int)current_val + "/" + (int) calorieGoal);
 
+                databaseHelper.replaceCalorieTrackerDateEntry(todayDate);
+
                 double progress = (databaseHelper.getUserCurrentCalorie() / databaseHelper.getUserGoalCalorie()) * 100;
                 calorieProgressBar.setProgress((int)progress);
             }
@@ -150,6 +172,8 @@ public class Fragment1 extends Fragment {
                 databaseHelper.setUserCurrentWorkout(current_val);
                 currentWorkout.setText(current_val + "/" + workoutGoal);
 
+                databaseHelper.replaceWorkoutTrackerDateEntry(todayDate);
+
                 double progress = ((double)databaseHelper.getUserCurrentWorkout() / (double)databaseHelper.getUserGoalWorkout()) * 100;
                 workoutProgressBar.setProgress((int)progress);
             }
@@ -157,6 +181,4 @@ public class Fragment1 extends Fragment {
 
         return rootView;
     }
-
-
 }
